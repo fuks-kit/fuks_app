@@ -2,12 +2,19 @@
 
 The official fuks app
 
-## Getting Started
+## Project structure
 
-This project is a starting point for a Flutter application.
+- ```lib/```: Contains all dart source code
+  - ```generated/```: Code that was generated and shouldn't be touched!
+  - ```services/```: Services providers, like the doorman-service, for the UI components
+  - ```ui/```: All User Interface components and Widgets
+    - ```dialogs/```: Shared dialogs likes conformation dialogs
+    - ```pages/```: All pages in the App
+    - ```theme/```: Theme data like fonts, colors, shapes, etc.
+    - ```widgets/```: Widgets that are shared across pages
+  - ```utils/```: Helper functions that are used across components. For example Breakpoint calculation
 
-A few resources to get you started if this is your first Flutter project:
-
+## Getting Started with Flutter
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
