@@ -9,10 +9,10 @@ lib                           # All dart source code
 ├── generated                 # Code that was generated and shouldn't be touched!
 ├── services                  # Services providers, like the doorman-service, for the UI components
 ├── ui                        # All User Interface components and Widgets
-│   ├── dialogs         # Shared dialogs likes conformation dialogs
-│   ├── pages           # All pages in the App
-│   ├── theme           # Theme data like fonts, colors, shapes, etc.
-│   └── widgets         # Widgets that are shared across pages
+│   ├── dialogs               # Shared dialogs likes conformation dialogs
+│   ├── pages                 # All pages in the App
+│   ├── theme                 # Theme data like fonts, colors, shapes, etc.
+│   └── widgets               # Widgets that are shared across pages
 └── utils                     # Helper functions that are used across components
 ```
 
