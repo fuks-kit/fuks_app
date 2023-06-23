@@ -88,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
             icon: Icon(Icons.settings),
+            tooltip: 'Settings',
             onPressed: () => print('Open Settings'),
           ),
         ],
