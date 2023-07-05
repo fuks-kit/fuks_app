@@ -7,7 +7,7 @@ The official fuks app
 ```bash
 lib                           # All dart source code
 ├── generated                 # Code that was generated and shouldn't be touched!
-├── services                  # Services providers, like the doorman-service, for the UI components
+├── services                  # Services providers, like the doorman-service, for UI components
 ├── ui                        # All User Interface components and Widgets
 │   ├── dialogs               # Shared dialogs likes conformation dialogs
 │   ├── pages                 # All pages in the App
