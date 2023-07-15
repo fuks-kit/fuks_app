@@ -17,11 +17,11 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Hellooooooo '),
+            Text('Hellooooooo '),
           ],
         ),
       ),
