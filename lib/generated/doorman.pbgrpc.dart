@@ -22,10 +22,10 @@ export 'doorman.pb.dart';
 
 @$pb.GrpcServiceName('endpoints.doorman.Doorman')
 class DoormanClient extends $grpc.Client {
-  static final _$checkAccount = $grpc.ClientMethod<$0.Empty, $1.AccountState>(
-      '/endpoints.doorman.Doorman/CheckAccount',
+  static final _$checkPermissions = $grpc.ClientMethod<$0.Empty, $1.OfficePermission>(
+      '/endpoints.doorman.Doorman/CheckPermissions',
       ($0.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $1.AccountState.fromBuffer(value));
+      ($core.List<$core.int> value) => $1.OfficePermission.fromBuffer(value));
   static final _$openDoor = $grpc.ClientMethod<$0.Empty, $1.DoorState>(
       '/endpoints.doorman.Doorman/OpenDoor',
       ($0.Empty value) => value.writeToBuffer(),
@@ -37,8 +37,8 @@ class DoormanClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$1.AccountState> checkAccount($0.Empty request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$checkAccount, request, options: options);
+  $grpc.ResponseFuture<$1.OfficePermission> checkPermissions($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$checkPermissions, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.DoorState> openDoor($0.Empty request, {$grpc.CallOptions? options}) {
@@ -51,13 +51,13 @@ abstract class DoormanServiceBase extends $grpc.Service {
   $core.String get $name => 'endpoints.doorman.Doorman';
 
   DoormanServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.Empty, $1.AccountState>(
-        'CheckAccount',
-        checkAccount_Pre,
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.OfficePermission>(
+        'CheckPermissions',
+        checkPermissions_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
-        ($1.AccountState value) => value.writeToBuffer()));
+        ($1.OfficePermission value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $1.DoorState>(
         'OpenDoor',
         openDoor_Pre,
@@ -67,14 +67,14 @@ abstract class DoormanServiceBase extends $grpc.Service {
         ($1.DoorState value) => value.writeToBuffer()));
   }
 
-  $async.Future<$1.AccountState> checkAccount_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
-    return checkAccount(call, await request);
+  $async.Future<$1.OfficePermission> checkPermissions_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return checkPermissions(call, await request);
   }
 
   $async.Future<$1.DoorState> openDoor_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
     return openDoor(call, await request);
   }
 
-  $async.Future<$1.AccountState> checkAccount($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$1.OfficePermission> checkPermissions($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$1.DoorState> openDoor($grpc.ServiceCall call, $0.Empty request);
 }

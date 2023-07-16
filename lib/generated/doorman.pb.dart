@@ -13,22 +13,18 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'doorman.pbenum.dart';
-import 'google/protobuf/duration.pb.dart' as $3;
-import 'google/protobuf/timestamp.pb.dart' as $2;
+import 'google/protobuf/duration.pb.dart' as $2;
 
-export 'doorman.pbenum.dart';
+class OfficePermission extends $pb.GeneratedMessage {
+  factory OfficePermission() => create();
+  OfficePermission._() : super();
+  factory OfficePermission.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OfficePermission.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-class AccountState extends $pb.GeneratedMessage {
-  factory AccountState() => create();
-  AccountState._() : super();
-  factory AccountState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory AccountState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AccountState', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman'), createEmptyInstance: create)
-    ..e<Organization>(1, _omitFieldNames ? '' : 'organization', $pb.PbFieldType.OE, defaultOrMaker: Organization.UNKNOWN, valueOf: Organization.valueOf, enumValues: Organization.values)
-    ..aOB(2, _omitFieldNames ? '' : 'hasAccess')
-    ..aOB(3, _omitFieldNames ? '' : 'activeFuksMember')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OfficePermission', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'hasAccess')
+    ..aOB(2, _omitFieldNames ? '' : 'isFuksMember')
+    ..aOB(3, _omitFieldNames ? '' : 'isActiveFuks')
     ..hasRequiredFields = false
   ;
 
@@ -36,49 +32,49 @@ class AccountState extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  AccountState clone() => AccountState()..mergeFromMessage(this);
+  OfficePermission clone() => OfficePermission()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  AccountState copyWith(void Function(AccountState) updates) => super.copyWith((message) => updates(message as AccountState)) as AccountState;
+  OfficePermission copyWith(void Function(OfficePermission) updates) => super.copyWith((message) => updates(message as OfficePermission)) as OfficePermission;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static AccountState create() => AccountState._();
-  AccountState createEmptyInstance() => create();
-  static $pb.PbList<AccountState> createRepeated() => $pb.PbList<AccountState>();
+  static OfficePermission create() => OfficePermission._();
+  OfficePermission createEmptyInstance() => create();
+  static $pb.PbList<OfficePermission> createRepeated() => $pb.PbList<OfficePermission>();
   @$core.pragma('dart2js:noInline')
-  static AccountState getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AccountState>(create);
-  static AccountState? _defaultInstance;
+  static OfficePermission getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OfficePermission>(create);
+  static OfficePermission? _defaultInstance;
 
   @$pb.TagNumber(1)
-  Organization get organization => $_getN(0);
+  $core.bool get hasAccess => $_getBF(0);
   @$pb.TagNumber(1)
-  set organization(Organization v) { setField(1, v); }
+  set hasAccess($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasOrganization() => $_has(0);
+  $core.bool hasHasAccess() => $_has(0);
   @$pb.TagNumber(1)
-  void clearOrganization() => clearField(1);
+  void clearHasAccess() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get hasAccess => $_getBF(1);
+  $core.bool get isFuksMember => $_getBF(1);
   @$pb.TagNumber(2)
-  set hasAccess($core.bool v) { $_setBool(1, v); }
+  set isFuksMember($core.bool v) { $_setBool(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasHasAccess() => $_has(1);
+  $core.bool hasIsFuksMember() => $_has(1);
   @$pb.TagNumber(2)
-  void clearHasAccess() => clearField(2);
+  void clearIsFuksMember() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.bool get activeFuksMember => $_getBF(2);
+  $core.bool get isActiveFuks => $_getBF(2);
   @$pb.TagNumber(3)
-  set activeFuksMember($core.bool v) { $_setBool(2, v); }
+  set isActiveFuks($core.bool v) { $_setBool(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasActiveFuksMember() => $_has(2);
+  $core.bool hasIsActiveFuks() => $_has(2);
   @$pb.TagNumber(3)
-  void clearActiveFuksMember() => clearField(3);
+  void clearIsActiveFuks() => clearField(3);
 }
 
 class DoorState extends $pb.GeneratedMessage {
@@ -89,8 +85,7 @@ class DoorState extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DoorState', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'open')
-    ..aOM<$2.Timestamp>(2, _omitFieldNames ? '' : 'lastOpened', subBuilder: $2.Timestamp.create)
-    ..aOM<$3.Duration>(3, _omitFieldNames ? '' : 'openDuration', subBuilder: $3.Duration.create)
+    ..aOM<$2.Duration>(2, _omitFieldNames ? '' : 'openDuration', subBuilder: $2.Duration.create)
     ..hasRequiredFields = false
   ;
 
@@ -125,26 +120,15 @@ class DoorState extends $pb.GeneratedMessage {
   void clearOpen() => clearField(1);
 
   @$pb.TagNumber(2)
-  $2.Timestamp get lastOpened => $_getN(1);
+  $2.Duration get openDuration => $_getN(1);
   @$pb.TagNumber(2)
-  set lastOpened($2.Timestamp v) { setField(2, v); }
+  set openDuration($2.Duration v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasLastOpened() => $_has(1);
+  $core.bool hasOpenDuration() => $_has(1);
   @$pb.TagNumber(2)
-  void clearLastOpened() => clearField(2);
+  void clearOpenDuration() => clearField(2);
   @$pb.TagNumber(2)
-  $2.Timestamp ensureLastOpened() => $_ensure(1);
-
-  @$pb.TagNumber(3)
-  $3.Duration get openDuration => $_getN(2);
-  @$pb.TagNumber(3)
-  set openDuration($3.Duration v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasOpenDuration() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearOpenDuration() => clearField(3);
-  @$pb.TagNumber(3)
-  $3.Duration ensureOpenDuration() => $_ensure(2);
+  $2.Duration ensureOpenDuration() => $_ensure(1);
 }
 
 
