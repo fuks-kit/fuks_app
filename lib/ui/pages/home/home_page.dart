@@ -14,9 +14,9 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            tooltip: 'Logout',
+            tooltip: 'Sign out',
             onPressed: () {
-              FirebaseAuth.instance.currentUser?.delete();
+              FirebaseAuth.instance.signOut();
             },
           ),
           IconButton(
