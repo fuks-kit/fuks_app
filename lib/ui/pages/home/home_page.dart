@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
             title: SelectableText(
               FirebaseAuth.instance.currentUser?.uid ?? "No user id",
             ),
+            subtitle: const Text('User Id'),
           ),
           Padding(
             padding: const EdgeInsets.all(10),
