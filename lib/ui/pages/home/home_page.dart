@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuks_app/services/doorman.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,11 +18,33 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Hellooooooo '),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: ElevatedButton(
+                onPressed: () async {
+                  debugPrint('on check account');
+                  doorman.checkAccount();
+                  final info = await doorman.checkAccount();
+                  debugPrint('hasAccess: ${info.hasAccess}');
+                },
+                child: const Text('Check Account'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: ElevatedButton(
+                onPressed: () async {
+                  debugPrint('on open door');
+                  final info = await doorman.openDoor();
+                  debugPrint('info ${info.openDuration}');
+                },
+                child: const Text('Open door'),
+              ),
+            ),
           ],
         ),
       ),
