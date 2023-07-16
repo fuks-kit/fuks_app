@@ -43,7 +43,9 @@ class HomePage extends StatelessWidget {
             child: FilledButton(
               onPressed: () async {
                 debugPrint('on check account');
+                final startTime = DateTime.now();
                 final info = await doorman.checkPermissions();
+                debugPrint('request duration: ${DateTime.now().difference(startTime)}');
                 debugPrint('hasAccess: ${info.hasAccess}');
               },
               child: const Text('Check Account'),
