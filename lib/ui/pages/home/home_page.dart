@@ -30,34 +30,36 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ElevatedButton(
-                onPressed: () async {
-                  debugPrint('on check account');
-                  final info = await doorman.checkPermissions();
-                  debugPrint('hasAccess: ${info.hasAccess}');
-                },
-                child: const Text('Check Account'),
-              ),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: SelectableText(
+              FirebaseAuth.instance.currentUser?.uid ?? "No user id",
             ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ElevatedButton(
-                onPressed: () async {
-                  debugPrint('on open door');
-                  final info = await doorman.openDoor();
-                  debugPrint('info ${info.openDuration}');
-                },
-                child: const Text('Open door'),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: FilledButton(
+              onPressed: () async {
+                debugPrint('on check account');
+                final info = await doorman.checkPermissions();
+                debugPrint('hasAccess: ${info.hasAccess}');
+              },
+              child: const Text('Check Account'),
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: FilledButton.tonal(
+              onPressed: () async {
+                debugPrint('on open door');
+                final info = await doorman.openDoor();
+                debugPrint('info ${info.openDuration}');
+              },
+              child: const Text('Open door'),
+            ),
+          ),
+        ],
       ),
     );
   }
