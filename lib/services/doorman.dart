@@ -30,9 +30,9 @@ class DoormanServiceWithToken {
     );
   }
 
-  Future<AccountState> checkAccount() async {
+  Future<OfficePermission> checkPermissions() async {
     final token = await user?.getIdToken();
-    return _client.checkAccount(Empty(), options: _authOptions(token));
+    return _client.checkPermissions(Empty(), options: _authOptions(token));
   }
 
   Future<DoorState> openDoor() async {

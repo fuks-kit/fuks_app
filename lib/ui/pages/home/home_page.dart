@@ -39,8 +39,7 @@ class HomePage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () async {
                   debugPrint('on check account');
-                  doorman.checkAccount();
-                  final info = await doorman.checkAccount();
+                  final info = await doorman.checkPermissions();
                   debugPrint('hasAccess: ${info.hasAccess}');
                 },
                 child: const Text('Check Account'),
