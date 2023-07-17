@@ -18,7 +18,7 @@ class TermsAndConditions extends StatelessWidget {
         children: [
           TextSpan(
             text:
-                "Sign in to sync your progress across all devices and platforms. "
+                "Sign in to sync your data across all devices and platforms. "
                 "By signing up, you accept our ",
             style: style,
           ),
