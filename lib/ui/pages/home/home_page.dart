@@ -9,7 +9,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('fuks App'),
         actions: [
           IconButton(
@@ -22,11 +21,6 @@ class HomePage extends StatelessWidget {
                 FirebaseAuth.instance.signOut();
               }
             },
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'Settings',
-            onPressed: () => print('Open Settings'),
           ),
         ],
       ),

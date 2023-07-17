@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// const _seedColor = Color(0xffEB5E28);
+const fuksColor = Color(0xffEB5E28);
 const _seedColor = Colors.blue;
 
 final _colorsLight = ColorScheme.fromSeed(
