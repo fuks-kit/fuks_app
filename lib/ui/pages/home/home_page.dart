@@ -46,7 +46,9 @@ class HomePage extends StatelessWidget {
                 final startTime = DateTime.now();
                 final info = await doorman.checkPermissions();
                 debugPrint('request duration: ${DateTime.now().difference(startTime)}');
-                debugPrint('hasAccess: ${info.hasAccess}');
+                debugPrint('hasAccess:    ${info.hasAccess}');
+                debugPrint('isFuksMember: ${info.isFuksMember}');
+                debugPrint('isActiveFuks: ${info.isActiveFuks}');
               },
               child: const Text('Check Account'),
             ),
