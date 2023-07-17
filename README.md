@@ -24,3 +24,7 @@ lib                           # All dart source code
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+### Helpful links
+
+* [App Icon Generation](https://icon.kitchen)
