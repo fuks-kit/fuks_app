@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_apple.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_button.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_google.dart';
@@ -28,6 +29,8 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme;
+
     final buttons = <Widget>[
       ListTile(
         title: AppleSignInButton(
@@ -91,7 +94,14 @@ class SignInScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 30),
                 width: 300,
                 height: 300,
-                child: const Placeholder(),
+                child: SvgPicture.asset(
+                  "assets/fuks_logo.svg",
+                  theme: SvgTheme(currentColor: color.primary),
+                  colorFilter: ColorFilter.mode(
+                    color.primary,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
