@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fuks_app/ui/pages/sign_in/sign_in_apple.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_button.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_google.dart';
 import 'package:fuks_app/ui/pages/sign_in/terms.dart';
@@ -28,6 +29,12 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final buttons = <Widget>[
+      ListTile(
+        title: AppleSignInButton(
+          onCredentials: (credentials) =>
+              _signInWithCredentials(context, credentials),
+        ),
+      ),
       ListTile(
         title: GoogleSignInButton(
           onCredentials: (credentials) =>
