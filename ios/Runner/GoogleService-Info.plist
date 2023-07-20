@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>350005315493-a139j5f5tt10ca8iob7cpi5hoo0fd8p8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.350005315493-a139j5f5tt10ca8iob7cpi5hoo0fd8p8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDzkrUxkik7QhLt9hU6K460ggFtAJa11Wo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>350005315493</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.fuks.app</string>
+	<key>PROJECT_ID</key>
+	<string>fuks-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fuks-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:350005315493:ios:018c281fd3b9a8ed9e8a4c</string>
+</dict>
+</plist>

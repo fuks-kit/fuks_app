@@ -1,4 +1,4 @@
-package org.fuks.app.fuks_app
+package org.fuks.app
 
 import io.flutter.embedding.android.FlutterActivity
 

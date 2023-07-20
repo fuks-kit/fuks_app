@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "350005315493",
+    "project_id": "fuks-app",
+    "storage_bucket": "fuks-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350005315493:android:85344055cd6a1c989e8a4c",
+        "android_client_info": {
+          "package_name": "org.fuks.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350005315493-1vff0rjmc1jbvma4udc15tp64153ik93.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDXVf_nyxg1FNKxX-p0MVK7qAK8_xItfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350005315493-1vff0rjmc1jbvma4udc15tp64153ik93.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "350005315493-9gh00dgk522rpgsji52dbmidaqmhfh7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.fuks.app.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
