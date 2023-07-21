@@ -6,7 +6,6 @@ import 'package:fuks_app/generated/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/doorman.pbgrpc.dart';
 import 'package:fuks_app/services/doorman_cert.dart';
 import 'package:grpc/grpc.dart';
-import 'package:grpc/grpc_or_grpcweb.dart';
 
 // final _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
 //   // host: '192.168.0.125',
