@@ -19,14 +19,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late Future<OfficePermission> _request;
 
-  final auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
     super.initState();
     _request = doorman.checkPermissions();
 
-    debugPrint('user id: ${auth.currentUser?.uid}');
+    debugPrint('user id: ${_auth.currentUser?.uid}');
   }
 
   void _refreshPermissions() {
@@ -42,8 +42,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: auth.currentUser?.displayName != null
-            ? Text('Hi, ${auth.currentUser?.displayName}')
+        title: _auth.currentUser?.displayName != null
+            ? Text('Hi, ${_auth.currentUser?.displayName}')
             : const Text(''),
         actions: [
           IconButton(
