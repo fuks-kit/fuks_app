@@ -6,9 +6,11 @@ class ErrorScaffold extends StatelessWidget {
   const ErrorScaffold({
     super.key,
     this.error,
+    this.actions,
   });
 
   final Object? error;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class ErrorScaffold extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        actions: actions,
       ),
       body: SafeArea(
         child: ListView(
