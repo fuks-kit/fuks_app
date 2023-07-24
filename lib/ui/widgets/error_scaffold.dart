@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/utils/error.dart';
-import 'package:ms_undraw/ms_undraw.dart';
+import 'package:undraw/undraw.dart';
 
 class ErrorScaffold extends StatelessWidget {
   const ErrorScaffold({

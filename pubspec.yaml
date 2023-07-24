@@ -37,9 +37,10 @@ dependencies:
   grpc: ^3.1.0
   flutter_svg: ^2.0.7
   sign_in_with_apple: ^5.0.0
-  ms_undraw:
+  undraw:
     git:
-      url: https://github.com/pzierahn/ms_undraw.git
+      url: https://github.com/pzierahn/undraw.git
+      ref: offline
   app_settings: ^5.0.0
 
 dev_dependencies:

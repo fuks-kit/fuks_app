@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/dialogs/error.dart';
-import 'package:ms_undraw/ms_undraw.dart';
+import 'package:undraw/undraw.dart';
 
 class AccessScaffold extends StatelessWidget {
   const AccessScaffold({

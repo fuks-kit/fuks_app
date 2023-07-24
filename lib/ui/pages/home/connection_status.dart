@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
-import 'package:ms_undraw/ms_undraw.dart';
+import 'package:undraw/undraw.dart';
 
 class ConnectionStatus extends StatelessWidget {
   const ConnectionStatus({

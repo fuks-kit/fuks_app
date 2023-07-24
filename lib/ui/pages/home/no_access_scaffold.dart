@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ms_undraw/ms_undraw.dart';
+import 'package:undraw/undraw.dart';
 
 class NoAccessScaffold extends StatelessWidget {
   const NoAccessScaffold({
