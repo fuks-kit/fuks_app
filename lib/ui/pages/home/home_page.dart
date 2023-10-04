@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fuks_app/generated/doorman.pb.dart';
 import 'package:fuks_app/services/doorman.dart';
-import 'package:fuks_app/ui/pages/home/access_scaffold.dart';
+import 'package:fuks_app/ui/pages/home/access.dart';
 import 'package:fuks_app/ui/pages/home/connection_status.dart';
-import 'package:fuks_app/ui/pages/home/no_access_scaffold.dart';
+import 'package:fuks_app/ui/pages/home/no_access.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:fuks_app/utils/error.dart';
 
@@ -20,26 +21,28 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late Future<OfficePermission> _request;
 
-  final _auth = FirebaseAuth.instance;
-
   @override
   void initState() {
     super.initState();
 
-    final mockObj = OfficePermission();
-    mockObj.hasAccess = false;
-
+    // Debug stuff to test the UI
+    // final mockObj = OfficePermission();
+    // mockObj.hasAccess = false;
+    // mockObj.isFuksMember = true;
+    // mockObj.isActiveFuks = false;
+    //
     // _request = Future(() => mockObj);
-    _request = doorman.checkPermissions();
+    // _request = Future.error(const GrpcError.unavailable());
 
-    debugPrint('user id: ${_auth.currentUser?.uid}');
+    _request = doorman.checkPermissions();
   }
 
-  void _refreshPermissions() {
-    debugPrint('_refreshPermissions');
+  Future<void> _refreshPermissions() {
     setState(() {
       _request = doorman.checkPermissions();
     });
+
+    return _request;
   }
 
   @override
@@ -61,40 +64,63 @@ class _HomePageState extends State<HomePage> {
     return FutureBuilder<OfficePermission>(
       future: _request,
       builder: (context, snap) {
-        debugPrint('snap.hasData: ${snap.hasData}');
-        debugPrint('snap.hasError: ${snap.hasError}');
+        Widget body;
 
         if (snap.hasError && ErrorUtils.isNotConnected(snap.error)) {
-          return ConnectionStatus(
+          body = ConnectionStatus(
             onRefreshPermissions: _refreshPermissions,
             actions: actions,
           );
-        }
-
-        if (snap.hasError) {
-          return ErrorScaffold(
+        } else if (snap.hasError) {
+          body = ErrorBody(
             error: snap.error,
-            actions: actions,
+          );
+        } else if (!snap.hasData) {
+          body = const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (snap.requireData.hasAccess) {
+          body = AccessBody(
+            permission: snap.requireData,
+          );
+        } else {
+          body = NoAccess(
+            permission: snap.requireData,
+            onRefresh: _refreshPermissions,
           );
         }
 
-        if (!snap.hasData) {
-          return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: false,
+            title: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: SvgPicture.asset(
+                    "assets/fuks_logo.svg",
+                    colorFilter: const ColorFilter.mode(
+                      Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  'fuks',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                // if (permission.isFuksMember)
+              ],
             ),
-          );
-        }
-
-        final permission = snap.requireData;
-
-        if (permission.hasAccess) {
-          return AccessScaffold(
             actions: actions,
-          );
-        }
-
-        return NoAccessScaffold(actions: actions);
+          ),
+          body: body,
+        );
       },
     );
   }
