@@ -35,16 +35,15 @@ class _FuksAppState extends State<FuksApp> {
         "authStateChanges: ${user?.uid}",
       );
       if (user == null) {
-        _navigator.currentState?.pushReplacementNamed(SignInScreen.routeName);
+        _navigator.currentState?.pushReplacementNamed(SignInScreen.route);
       } else {
-        _navigator.currentState?.pushReplacementNamed('home');
+        _navigator.currentState?.pushReplacementNamed(HomePage.route);
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       navigatorKey: _navigator,
       title: 'fuks App',
@@ -53,33 +52,11 @@ class _FuksAppState extends State<FuksApp> {
       darkTheme: fuksThemeDark,
       debugShowCheckedModeBanner: false,
       initialRoute: FirebaseAuth.instance.currentUser == null
-          ? SignInScreen.routeName
-          : 'home',
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case 'home':
-            return MaterialPageRoute(
-              settings: settings,
-              builder: (_) => const HomePage(),
-            );
-          case SignInScreen.routeName:
-            return MaterialPageRoute(
-              settings: settings,
-              builder: (_) => const SignInScreen(),
-            );
-          default:
-            return MaterialPageRoute(
-              settings: settings,
-              builder: (_) => Scaffold(
-                appBar: AppBar(
-                  title: const Text('404'),
-                ),
-                body: const Center(
-                  child: Text('Sorry! Page not found :/'),
-                ),
-              ),
-            );
-        }
+          ? SignInScreen.route
+          : HomePage.route,
+      routes: {
+        HomePage.route: (context) => const HomePage(),
+        SignInScreen.route: (context) => const SignInScreen(),
       },
     );
   }

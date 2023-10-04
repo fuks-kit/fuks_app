@@ -11,6 +11,8 @@ import 'package:fuks_app/utils/error.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  static const String route = 'home';
+
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }

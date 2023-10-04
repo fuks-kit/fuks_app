@@ -12,7 +12,7 @@ import 'package:fuks_app/ui/dialogs/error.dart';
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
-  static const routeName = 'sign-in';
+  static const route = 'sign-in';
 
   void _signInWithCredentials(
       BuildContext context, AuthCredential credentials) {
