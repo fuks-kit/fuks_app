@@ -8,6 +8,13 @@ const _seedColor = Colors.blue;
 final _colorsLight = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: _seedColor,
+  background: Colors.white,
+  onBackground: Colors.black,
+  surface: Colors.white,
+  onSurface: Colors.black,
+  surfaceTint: Colors.white,
+  // secondary: const Color(0xFF4CAF50),
+  // onSecondary: const Color(0xFF2C2C2C),
 );
 
 final _colorsDark = ColorScheme.fromSeed(
@@ -19,6 +26,17 @@ final fuksThemeLight = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   colorScheme: _colorsLight,
+  appBarTheme: AppBarTheme(
+    elevation: 0,
+    scrolledUnderElevation: 2,
+    shadowColor: _colorsLight.onSurface,
+    // centerTitle: false,
+    // titleTextStyle: TextStyle(
+    //   fontWeight: FontWeight.w500,
+    //   color: _colorsLight.onSurface,
+    //   // fontSize: 20,
+    // ),
+  ),
 );
 
 final fuksThemeDark = ThemeData(
