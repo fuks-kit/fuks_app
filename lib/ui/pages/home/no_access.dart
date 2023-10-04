@@ -95,7 +95,7 @@ class NoAccess extends StatelessWidget {
                 backgroundColor: colorScheme.secondary,
               ),
               icon: const Icon(Icons.refresh),
-              label: const Text('Refresh'),
+              label: const Text('Try Again'),
             ),
           ],
         ),
