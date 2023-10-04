@@ -2,16 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/doorman.pb.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/dialogs/error.dart';
+import 'package:fuks_app/ui/pages/home/access_timer.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:undraw/undraw.dart';
 
-class AccessBody extends StatelessWidget {
-  const AccessBody({
-    super.key,
-    required this.permission,
-  });
+class AccessBody extends StatefulWidget {
+  const AccessBody({super.key});
 
-  final OfficePermission permission;
+  @override
+  State createState() => _AccessBodyState();
+}
+
+class _AccessBodyState extends State<AccessBody> {
+  bool _loading = false;
+
+  void _onSuccess(DoorState status) {
+    setState(() => _loading = false);
+
+    final duration = Duration(
+      seconds: status.openDuration.seconds.toInt(),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      duration: duration,
+      content: AccessTimer(duration: duration),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +65,26 @@ class AccessBody extends StatelessWidget {
         const SizedBox(height: 60),
         FilledButton.icon(
           onPressed: () {
-            doorman.openDoor().catchError(
-                (error, trace) => showErrorInfo(context, error, trace));
+            setState(() {
+              _loading = true;
+            });
+
+            doorman.openDoor().then(_onSuccess).catchError(
+              (error, trace) {
+                setState(() => _loading = false);
+                showErrorInfo(context, error, trace);
+              },
+            );
           },
-          icon: const Icon(Icons.key),
+          icon: _loading
+              ? SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    color: colorScheme.onPrimary,
+                  ),
+                )
+              : const Icon(Icons.key),
           label: const Text('Open door'),
         ),
       ],

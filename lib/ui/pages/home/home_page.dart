@@ -78,9 +78,7 @@ class _HomePageState extends State<HomePage> {
             child: CircularProgressIndicator(),
           );
         } else if (snap.requireData.hasAccess) {
-          body = AccessBody(
-            permission: snap.requireData,
-          );
+          body = const AccessBody();
         } else {
           body = NoAccess(
             permission: snap.requireData,
