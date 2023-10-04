@@ -70,21 +70,21 @@ class ConnectionStatus extends StatelessWidget {
           runSpacing: 8,
           alignment: WrapAlignment.center,
           children: [
-            // if (Platform.isAndroid || Platform.isIOS)
-            TextButton.icon(
-              onPressed: () {
-                if (Platform.isAndroid) {
-                  AppSettings.openAppSettings(
-                    type: AppSettingsType.wifi,
-                  );
-                }
-              },
-              icon: const Icon(Icons.wifi),
-              label: const Text('Check Wi-Fi'),
-              style: TextButton.styleFrom(
-                foregroundColor: colorScheme.secondary,
+            if (Platform.isAndroid)
+              TextButton.icon(
+                onPressed: () {
+                  if (Platform.isAndroid) {
+                    AppSettings.openAppSettings(
+                      type: AppSettingsType.wifi,
+                    );
+                  }
+                },
+                icon: const Icon(Icons.wifi),
+                label: const Text('Check Wi-Fi'),
+                style: TextButton.styleFrom(
+                  foregroundColor: colorScheme.secondary,
+                ),
               ),
-            ),
             FilledButton.icon(
               onPressed: onRefreshPermissions,
               icon: const Icon(Icons.refresh),
