@@ -63,6 +63,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     final actions = <Widget>[
       IconButton(
         icon: const Icon(Icons.logout),
@@ -111,8 +113,8 @@ class _HomePageState extends State<HomePage> {
                   height: 24,
                   child: SvgPicture.asset(
                     "assets/fuks_logo.svg",
-                    colorFilter: const ColorFilter.mode(
-                      Colors.black,
+                    colorFilter: ColorFilter.mode(
+                      colorScheme.onSurface,
                       BlendMode.srcIn,
                     ),
                   ),
