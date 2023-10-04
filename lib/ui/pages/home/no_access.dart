@@ -23,7 +23,7 @@ class NoAccess extends StatelessWidget {
     String message;
     if (permission.isFuksMember) {
       message =
-          'You signed in with your fuks account. When you become an active member, you will have access to the office';
+          'Once you become an active member, signing in with your fuks account will grant you access to the office';
     } else {
       message =
           'If you are a VWI member, please give your board your User ID to get access to the office';
@@ -35,8 +35,8 @@ class NoAccess extends StatelessWidget {
       maxWidth: 400,
       children: [
         UnDraw(
-          width: 192,
-          height: 192,
+          width: 256,
+          height: 256,
           padding: const EdgeInsets.all(8),
           illustration: UnDrawIllustration.starry_window,
           color: colorScheme.secondary,
