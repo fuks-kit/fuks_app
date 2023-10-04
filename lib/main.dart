@@ -31,13 +31,18 @@ class _FuksAppState extends State<FuksApp> {
   void initState() {
     super.initState();
     FirebaseAuth.instance.authStateChanges().listen((user) {
-      debugPrint(
-        "authStateChanges: ${user?.uid}",
-      );
+      debugPrint("authStateChanges: ${user?.uid}");
+
       if (user == null) {
-        _navigator.currentState?.pushReplacementNamed(SignInScreen.route);
+        _navigator.currentState?.pushNamedAndRemoveUntil(
+          SignInScreen.route,
+          (_) => false,
+        );
       } else {
-        _navigator.currentState?.pushReplacementNamed(HomePage.route);
+        _navigator.currentState?.pushNamedAndRemoveUntil(
+          HomePage.route,
+          (_) => false,
+        );
       }
     });
   }
