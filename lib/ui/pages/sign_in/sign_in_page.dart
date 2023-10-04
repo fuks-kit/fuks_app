@@ -66,27 +66,7 @@ class SignInScreen extends StatelessWidget {
             shrinkWrap: true,
             primary: false,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: ListTile(
-                  title: Column(
-                    children: [
-                      Text(
-                        'Sign In',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium
-                            ?.merge(const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 24),
+              SizedBox(
                 width: 192,
                 height: 192,
                 child: SvgPicture.asset(
@@ -98,16 +78,17 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: buttons,
-                ),
+              const SizedBox(height: 60),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: buttons,
               ),
-              const ListTile(title: TermsAndConditions()),
+              const SizedBox(height: 16),
+              const ListTile(
+                title: TermsAndConditions(),
+              ),
             ],
           ),
         ),

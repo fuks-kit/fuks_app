@@ -85,6 +85,7 @@ class SignInButton extends StatelessWidget {
         ),
       );
     }
+
     final body = Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 16.0,

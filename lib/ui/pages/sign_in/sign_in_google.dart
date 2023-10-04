@@ -18,6 +18,7 @@ class GoogleSignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SignInButton(
       text: title,
+      outlined: true,
       onPressed: () => Authenticate.googleCredential()
           .then((credentials) => onCredentials(credentials))
           .catchError(
