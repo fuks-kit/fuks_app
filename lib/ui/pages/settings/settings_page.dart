@@ -15,20 +15,47 @@ class SettingsPage extends StatelessWidget {
     Navigator.of(context).pushNamed(route);
   }
 
-  void _onSignOut(BuildContext context) {
-    ConfirmDialog.show(
-      context,
-      title: 'Sign out',
-      content: 'Are you sure you want to sign out?',
-      onConfirm: () {
-        if (_auth.currentUser?.isAnonymous ?? true) {
-          _auth.currentUser?.delete();
-        } else {
-          _auth.signOut();
-        }
-      },
-    );
-  }
+  void _onSignOut(BuildContext context) => ConfirmDialog.show(
+        context,
+        title: 'Sign out',
+        content: 'Are you sure you want to sign out?',
+        onConfirm: () {
+          if (_auth.currentUser?.isAnonymous ?? true) {
+            _auth.currentUser?.delete();
+          } else {
+            _auth.signOut();
+          }
+        },
+      );
+
+  void _onDeleteAccount(BuildContext context) => ConfirmDialog.show(
+        context,
+        title: 'Delete account',
+        content: 'Are you sure you want to delete your account?',
+        onConfirm: () async {
+          final user = FirebaseAuth.instance.currentUser;
+          if (user == null) {
+            return;
+          }
+
+          if (user.isAnonymous) {
+            user.delete();
+            return;
+          }
+
+          if (user.providerData.isEmpty) {
+            return;
+          }
+
+          for (var data in user.providerData) {
+            final credentials = await Authenticate.credentialsForUserInfo(data);
+            await user.reauthenticateWithCredential(credentials);
+
+            user.delete();
+            break;
+          }
+        },
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -70,28 +97,7 @@ class SettingsPage extends StatelessWidget {
             ),
             title: const Text('Delete Account'),
             subtitle: const Text('This action is irreversible'),
-            onTap: () {
-              ConfirmDialog.show(
-                context,
-                title: 'Delete account',
-                content: 'Are you sure you want to delete your account?',
-                onConfirm: () async {
-                  final user = FirebaseAuth.instance.currentUser;
-                  if (user == null) {
-                    return;
-                  }
-
-                  for (var data in user.providerData) {
-                    final credentials =
-                        await Authenticate.credentialsForUserInfo(data);
-                    await user.reauthenticateWithCredential(credentials);
-
-                    user.delete();
-                    break;
-                  }
-                },
-              );
-            },
+            onTap: () => _onDeleteAccount(context),
           ),
         ],
       ),
