@@ -62,26 +62,21 @@ class SignInScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedListView(
-            minWidth: 500,
-            maxWidth: 500,
+            maxWidth: 400,
             shrinkWrap: true,
             primary: false,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: ListTile(
                   title: Column(
                     children: [
                       Text(
-                        'fuks App',
-                        style: Theme.of(context).textTheme.displaySmall,
-                      ),
-                      Text(
-                        "Sign In",
+                        'Sign In',
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
-                            .headlineSmall
+                            .headlineMedium
                             ?.merge(const TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
@@ -92,13 +87,13 @@ class SignInScreen extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 30),
-                width: 300,
-                height: 300,
+                width: 192,
+                height: 192,
                 child: SvgPicture.asset(
                   "assets/fuks_logo.svg",
                   theme: SvgTheme(currentColor: color.primary),
                   colorFilter: ColorFilter.mode(
-                    color.primary,
+                    color.onSurface,
                     BlendMode.srcIn,
                   ),
                 ),
