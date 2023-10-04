@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fuks_app/ui/dialogs/confirm_dialog.dart';
 import 'package:fuks_app/ui/pages/settings/account_avatar.dart';
+import 'package:fuks_app/utils/authenticate.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -74,8 +75,20 @@ class SettingsPage extends StatelessWidget {
                 context,
                 title: 'Delete account',
                 content: 'Are you sure you want to delete your account?',
-                onConfirm: () {
-                  _auth.currentUser?.delete();
+                onConfirm: () async {
+                  final user = FirebaseAuth.instance.currentUser;
+                  if (user == null) {
+                    return;
+                  }
+
+                  for (var data in user.providerData) {
+                    final credentials =
+                        await Authenticate.credentialsForUserInfo(data);
+                    await user.reauthenticateWithCredential(credentials);
+
+                    user.delete();
+                    break;
+                  }
                 },
               );
             },
