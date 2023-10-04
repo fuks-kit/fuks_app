@@ -12,7 +12,7 @@ class AccountAvatar extends StatelessWidget {
 
     if (photo.isEmpty) {
       return const CircleAvatar(
-        child: Icon(Icons.person),
+        child: Icon(Icons.fingerprint),
       );
     } else {
       return CircleAvatar(

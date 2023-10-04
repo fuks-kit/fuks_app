@@ -1,12 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fuks_app/generated/doorman.pb.dart';
 import 'package:fuks_app/services/doorman.dart';
-import 'package:fuks_app/ui/dialogs/confirm_dialog.dart';
 import 'package:fuks_app/ui/pages/home/access.dart';
 import 'package:fuks_app/ui/pages/home/connection_status.dart';
 import 'package:fuks_app/ui/pages/home/no_access.dart';
+import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:fuks_app/utils/error.dart';
 
@@ -46,30 +45,17 @@ class _HomePageState extends State<HomePage> {
     return _request;
   }
 
-  void _onSignOut() {
-    ConfirmDialog.show(
-      context,
-      title: 'Sign out',
-      content: 'Are you sure you want to sign out?',
-      onConfirm: () {
-        if (FirebaseAuth.instance.currentUser?.isAnonymous ?? true) {
-          FirebaseAuth.instance.currentUser?.delete();
-        } else {
-          FirebaseAuth.instance.signOut();
-        }
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
     final actions = <Widget>[
       IconButton(
-        icon: const Icon(Icons.logout),
-        tooltip: 'Sign out',
-        onPressed: _onSignOut,
+        icon: const Icon(Icons.settings),
+        tooltip: 'Settings',
+        onPressed: () {
+          SettingsPage.show(context);
+        },
       ),
     ];
 

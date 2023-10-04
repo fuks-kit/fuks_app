@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fuks_app/firebase_options.dart';
 import 'package:fuks_app/ui/pages/home/home_page.dart';
+import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_page.dart';
 import 'package:fuks_app/ui/theme/theme.dart';
 
@@ -29,7 +30,6 @@ class _FuksAppState extends State<FuksApp> {
 
   @override
   void initState() {
-    super.initState();
     FirebaseAuth.instance.authStateChanges().listen((user) {
       debugPrint("authStateChanges: ${user?.uid}");
 
@@ -45,6 +45,8 @@ class _FuksAppState extends State<FuksApp> {
         );
       }
     });
+
+    super.initState();
   }
 
   @override
@@ -62,6 +64,7 @@ class _FuksAppState extends State<FuksApp> {
       routes: {
         HomePage.route: (context) => const HomePage(),
         SignInScreen.route: (context) => const SignInScreen(),
+        SettingsPage.route: (context) => const SettingsPage(),
       },
     );
   }
