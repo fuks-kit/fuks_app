@@ -35,7 +35,7 @@ class _FuksAppState extends State<FuksApp> {
 
       if (user == null) {
         _navigator.currentState?.pushNamedAndRemoveUntil(
-          SignInScreen.route,
+          SignInPage.route,
           (_) => false,
         );
       } else {
@@ -59,11 +59,11 @@ class _FuksAppState extends State<FuksApp> {
       darkTheme: fuksThemeDark,
       debugShowCheckedModeBanner: false,
       initialRoute: FirebaseAuth.instance.currentUser == null
-          ? SignInScreen.route
+          ? SignInPage.route
           : HomePage.route,
       routes: {
         HomePage.route: (context) => const HomePage(),
-        SignInScreen.route: (context) => const SignInScreen(),
+        SignInPage.route: (context) => const SignInPage(),
         SettingsPage.route: (context) => const SettingsPage(),
       },
     );

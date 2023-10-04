@@ -9,8 +9,8 @@ import 'package:fuks_app/ui/pages/sign_in/terms.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/dialogs/error.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   static const route = 'sign-in';
 
