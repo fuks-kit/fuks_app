@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fuks_app/generated/doorman.pb.dart';
 import 'package:fuks_app/services/doorman.dart';
+import 'package:fuks_app/ui/dialogs/confirm_dialog.dart';
 import 'package:fuks_app/ui/pages/home/access.dart';
 import 'package:fuks_app/ui/pages/home/connection_status.dart';
 import 'package:fuks_app/ui/pages/home/no_access.dart';
@@ -45,19 +46,28 @@ class _HomePageState extends State<HomePage> {
     return _request;
   }
 
+  void _onSignOut() {
+    ConfirmDialog.show(
+      context,
+      title: 'Sign out',
+      content: 'Are you sure you want to sign out?',
+      onConfirm: () {
+        if (FirebaseAuth.instance.currentUser?.isAnonymous ?? true) {
+          FirebaseAuth.instance.currentUser?.delete();
+        } else {
+          FirebaseAuth.instance.signOut();
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final actions = <Widget>[
       IconButton(
         icon: const Icon(Icons.logout),
         tooltip: 'Sign out',
-        onPressed: () {
-          if (FirebaseAuth.instance.currentUser?.isAnonymous ?? true) {
-            FirebaseAuth.instance.currentUser?.delete();
-          } else {
-            FirebaseAuth.instance.signOut();
-          }
-        },
+        onPressed: _onSignOut,
       ),
     ];
 
