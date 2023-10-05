@@ -17,7 +17,9 @@ class SignInPage extends StatelessWidget {
   static const route = 'sign-in';
 
   void _signInWithCredentials(
-      BuildContext context, AuthCredential credentials) {
+    BuildContext context,
+    AuthCredential credentials,
+  ) {
     FirebaseAuth.instance.signInWithCredential(credentials).catchError(
           (error, stack) => showErrorInfo(context, error, stack),
         );
