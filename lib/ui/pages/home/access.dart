@@ -85,7 +85,7 @@ class _AccessBodyState extends State<AccessBody> {
                   ),
                 )
               : const Icon(Icons.key),
-          label: const Text('Open door'),
+          label: const Text('Open Door'),
         ),
       ],
     );
