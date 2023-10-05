@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -32,31 +34,28 @@ class SignInPage extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
 
     final buttons = <Widget>[
-      ListTile(
-        title: AppleSignInButton(
-          onCredentials: (credentials) =>
-              _signInWithCredentials(context, credentials),
+      if (!kIsWeb && (Platform.isIOS || Platform.isMacOS))
+        ListTile(
+          title: AppleSignInButton(
+            onCredentials: (credentials) =>
+                _signInWithCredentials(context, credentials),
+          ),
         ),
-      ),
       ListTile(
         title: GoogleSignInButton(
           onCredentials: (credentials) =>
               _signInWithCredentials(context, credentials),
         ),
       ),
-    ];
-
-    if (!kIsWeb) {
-      final skip = ListTile(
-        title: SignInButton(
-          text: 'Skip',
-          onPressed: () => _signInAnonymously(context),
-          outlined: true,
+      if (!kIsWeb)
+        ListTile(
+          title: SignInButton(
+            text: 'Skip',
+            onPressed: () => _signInAnonymously(context),
+            outlined: true,
+          ),
         ),
-      );
-
-      buttons.add(skip);
-    }
+    ];
 
     return Scaffold(
       body: SafeArea(
