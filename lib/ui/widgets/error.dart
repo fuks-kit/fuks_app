@@ -4,17 +4,14 @@ import 'package:fuks_app/utils/error.dart';
 dynamic showErrorInfo(BuildContext context, Object? error, StackTrace trace) {
   final colors = Theme.of(context).colorScheme;
 
-  debugPrint(error?.toString());
-  debugPrintStack(stackTrace: trace);
-
   final snackBar = SnackBar(
     content: SelectableText(
       ErrorUtils.toText(error),
       style: TextStyle(
-        color: colors.onErrorContainer,
+        color: colors.onError,
       ),
     ),
-    backgroundColor: colors.errorContainer,
+    backgroundColor: colors.error,
     duration: const Duration(seconds: 10),
   );
 

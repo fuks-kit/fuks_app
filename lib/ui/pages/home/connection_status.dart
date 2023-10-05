@@ -1,19 +1,28 @@
 import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
+import 'package:fuks_app/ui/widgets/error.dart';
 import 'package:undraw/undraw.dart';
 
-class ConnectionStatus extends StatelessWidget {
+class ConnectionStatus extends StatefulWidget {
   const ConnectionStatus({
     super.key,
     required this.onRefreshPermissions,
     this.actions,
   });
 
-  final VoidCallback onRefreshPermissions;
+  final AsyncCallback onRefreshPermissions;
   final List<Widget>? actions;
+
+  @override
+  State createState() => _ConnectionStatusState();
+}
+
+class _ConnectionStatusState extends State<ConnectionStatus> {
+  bool _isRefreshing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +95,27 @@ class ConnectionStatus extends StatelessWidget {
                 ),
               ),
             FilledButton.icon(
-              onPressed: onRefreshPermissions,
-              icon: const Icon(Icons.refresh),
+              onPressed: !_isRefreshing
+                  ? () {
+                      setState(() => _isRefreshing = true);
+                      widget.onRefreshPermissions().then((_) {
+                        setState(() => _isRefreshing = false);
+                      }).catchError((error) {
+                        setState(() => _isRefreshing = false);
+                        showErrorInfo(context, error, StackTrace.current);
+                      });
+                    }
+                  : () {},
+              icon: _isRefreshing
+                  ? SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: colorScheme.onSecondary,
+                      ),
+                    )
+                  : const Icon(Icons.refresh),
               label: const Text('Try Again'),
               style: TextButton.styleFrom(
                 foregroundColor: colorScheme.onSecondary,

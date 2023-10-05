@@ -37,12 +37,12 @@ class _HomePageState extends State<HomePage> {
     _request = doorman.checkPermissions();
   }
 
-  Future<void> _refreshPermissions() {
+  Future<void> _refreshPermissions() async {
     setState(() {
       _request = doorman.checkPermissions();
     });
 
-    return _request;
+    await _request;
   }
 
   @override

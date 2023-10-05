@@ -28,10 +28,14 @@ class ErrorUtils {
       return error.message;
     }
 
-    if (error is GrpcError) {
-      return "${error.codeName}: ${error.message}";
+    if (error is GrpcError && error.code == StatusCode.unavailable) {
+      return 'No connection';
     }
 
-    return "${error ?? "Unknown Error"}";
+    if (error is GrpcError) {
+      return '${error.codeName}: ${error.message}';
+    }
+
+    return '${error ?? 'Unknown Error'}';
   }
 }
