@@ -64,7 +64,7 @@ class NoAccess extends StatelessWidget {
           alignment: WrapAlignment.center,
           children: [
             if (!permission.isFuksMember)
-              TextButton.icon(
+              OutlinedButton.icon(
                 onPressed: () {
                   // Copy user id to clipboard
                   final auth = FirebaseAuth.instance;
@@ -80,7 +80,7 @@ class NoAccess extends StatelessWidget {
                     ),
                   );
                 },
-                style: TextButton.styleFrom(
+                style: OutlinedButton.styleFrom(
                   foregroundColor: colorScheme.secondary,
                 ),
                 icon: const Icon(Icons.copy),
