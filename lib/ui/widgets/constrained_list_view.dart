@@ -8,12 +8,14 @@ class ConstrainedListView extends StatelessWidget {
     this.maxWidth = 800,
     this.shrinkWrap = false,
     this.primary,
+    this.padding,
   });
 
   final List<Widget> children;
   final double maxWidth;
   final bool shrinkWrap;
   final bool? primary;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,10 @@ class ConstrainedListView extends StatelessWidget {
           .map(
             (child) => Center(
               child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: breakpoint.spacing,
-                ),
+                padding: padding ??
+                    EdgeInsets.symmetric(
+                      horizontal: breakpoint.spacing,
+                    ),
                 constraints: BoxConstraints(
                   maxWidth: maxWidth,
                 ),
