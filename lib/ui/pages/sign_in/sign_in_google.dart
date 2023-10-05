@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_button.dart';
-import 'package:fuks_app/ui/dialogs/error.dart';
+import 'package:fuks_app/ui/widgets/error.dart';
 import 'package:fuks_app/utils/authenticate.dart';
 
 class GoogleSignInButton extends StatelessWidget {

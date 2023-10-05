@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fuks_app/ui/dialogs/confirm_dialog.dart';
+import 'package:fuks_app/ui/widgets/confirm_dialog.dart';
 import 'package:fuks_app/ui/pages/settings/account_avatar.dart';
 import 'package:fuks_app/utils/authenticate.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/ui/dialogs/error.dart';
+import 'package:fuks_app/ui/widgets/error.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_button.dart';
 import 'package:fuks_app/utils/authenticate.dart';

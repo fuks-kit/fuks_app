@@ -7,7 +7,7 @@ import 'package:fuks_app/ui/pages/sign_in/sign_in_button.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_google.dart';
 import 'package:fuks_app/ui/pages/sign_in/terms.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
-import 'package:fuks_app/ui/dialogs/error.dart';
+import 'package:fuks_app/ui/widgets/error.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
