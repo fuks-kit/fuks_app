@@ -17,9 +17,8 @@ lib                           # All dart source code
 
 ## Prepare a new release
 
-1. Update the version in `pubspec.yaml`
+1. Update the version and build number in `pubspec.yaml`
 2. Update version in `lib/ui/pages/settings/settings_page.dart`
 3. Create a new git tag:
-    1. git tag -a v1.0.0 -m "Release v1.0.0"
-    2. git push origin v1.0.0
-4. Create a new release on GitHub
+    1. `git tag -a v1.0.0 -m "Release v1.0.0"`
+    2. `git push origin v1.0.0`
