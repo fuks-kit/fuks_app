@@ -22,3 +22,4 @@ lib                           # All dart source code
 3. Create a new git tag:
     1. `git tag -a v1.0.0 -m "Release v1.0.0"`
     2. `git push origin v1.0.0`
+4. Merge `main` branch into `release` branch
