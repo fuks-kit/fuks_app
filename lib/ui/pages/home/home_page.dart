@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fuks_app/generated/doorman.pb.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/pages/home/access.dart';
@@ -7,6 +6,7 @@ import 'package:fuks_app/ui/pages/home/connection_status.dart';
 import 'package:fuks_app/ui/pages/home/no_access.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
+import 'package:fuks_app/ui/widgets/fuks_logo.dart';
 import 'package:fuks_app/utils/error.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,8 +47,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     final actions = <Widget>[
       IconButton(
         icon: const Icon(Icons.settings),
@@ -89,30 +87,7 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
           appBar: AppBar(
             centerTitle: false,
-            title: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: SvgPicture.asset(
-                    "assets/fuks_logo.svg",
-                    colorFilter: ColorFilter.mode(
-                      colorScheme.onSurface,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                const Text(
-                  'fuks',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                // if (permission.isFuksMember)
-              ],
-            ),
+            title: const FuksLogo(),
             actions: actions,
           ),
           body: body,
