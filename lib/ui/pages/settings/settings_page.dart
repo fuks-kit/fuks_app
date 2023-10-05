@@ -1,9 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fuks_app/ui/widgets/confirm_dialog.dart';
 import 'package:fuks_app/ui/pages/settings/account_avatar.dart';
+import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/utils/authenticate.dart';
+import 'package:fuks_app/utils/terms_and_privacy.dart';
+
+const _version = '1.0.0';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -59,16 +64,45 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    final titleStyle = textTheme.titleMedium?.copyWith(
+      fontWeight: FontWeight.w500,
+    );
+    final subtitleStyle = textTheme.bodySmall?.copyWith(
+      color: color.outline,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: ListView(
+      body: ConstrainedListView(
+        maxWidth: 600,
+        padding: EdgeInsets.zero,
         children: [
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.only(left: 16, top: 0, bottom: 8),
+            child: Text(
+              'Account',
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           ListTile(
+            minLeadingWidth: 32,
             leading: const AccountAvatar(),
-            title: const Text('User ID'),
-            subtitle: Text(_auth.currentUser?.uid ?? ''),
+            title: Text(
+              'User ID',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              _auth.currentUser?.uid ?? '',
+              style: subtitleStyle,
+            ),
             onTap: () async {
               // Copy to clipboard
               Clipboard.setData(
@@ -84,20 +118,117 @@ class SettingsPage extends StatelessWidget {
           ),
           if (!(_auth.currentUser?.isAnonymous ?? true))
             ListTile(
-              leading: const CircleAvatar(
-                child: Icon(Icons.logout),
+              minLeadingWidth: 32,
+              leading: const Icon(Icons.logout),
+              title: Text(
+                'Sign out',
+                style: titleStyle,
               ),
-              title: const Text('Sign out'),
-              subtitle: const Text('Sign out from your account'),
+              subtitle: Text(
+                'Sign out from your account',
+                style: subtitleStyle,
+              ),
               onTap: () => _onSignOut(context),
             ),
           ListTile(
-            leading: const CircleAvatar(
-              child: Icon(Icons.delete),
+            minLeadingWidth: 32,
+            leading: const Icon(Icons.delete),
+            title: Text(
+              'Delete Account',
+              style: titleStyle,
             ),
-            title: const Text('Delete Account'),
-            subtitle: const Text('This action is irreversible'),
+            subtitle: Text(
+              'This action is irreversible',
+              style: subtitleStyle,
+            ),
             onTap: () => _onDeleteAccount(context),
+          ),
+          // const Divider(indent: 16, endIndent: 16, height: 60),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.only(left: 16, top: 44, bottom: 8),
+            child: Text(
+              'About',
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            minLeadingWidth: 32,
+            leading: const Icon(Icons.policy),
+            title: Text(
+              'Terms and Conditions',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Read our terms of service',
+              style: subtitleStyle,
+            ),
+            onTap: () => showTermsAndConditions(),
+            // trailing: Icon(
+            //   Icons.open_in_browser,
+            //   // size: 12,
+            //   color: color.outline,
+            // ),
+          ),
+          ListTile(
+            minLeadingWidth: 32,
+            leading: const Icon(Icons.privacy_tip),
+            title: Text(
+              'Privacy Policy',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Read our privacy policy',
+              style: subtitleStyle,
+            ),
+            onTap: () => showPrivacyPolicy(),
+            // trailing: Icon(
+            //   Icons.open_in_browser,
+            //   // size: 12,
+            //   color: color.outline,
+            // ),
+          ),
+          ListTile(
+            minLeadingWidth: 32,
+            leading: const Icon(Icons.code),
+            title: Text(
+              'Licenses',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'View open source licenses',
+              style: subtitleStyle,
+            ),
+            onTap: () => showLicensePage(
+              context: context,
+              applicationVersion: _version,
+              applicationLegalese: '© 2023 fuks e.V.',
+              applicationIcon: SizedBox(
+                width: 48,
+                height: 48,
+                child: SvgPicture.asset(
+                  "assets/fuks_logo.svg",
+                  colorFilter: ColorFilter.mode(
+                    color.onSurface,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          ListTile(
+            minLeadingWidth: 32,
+            leading: const Icon(Icons.verified),
+            title: Text(
+              'Version',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              _version,
+              style: subtitleStyle,
+            ),
           ),
         ],
       ),

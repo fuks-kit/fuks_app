@@ -11,11 +11,10 @@ class AccountAvatar extends StatelessWidget {
     final photo = _auth.currentUser?.photoURL ?? "";
 
     if (photo.isEmpty) {
-      return const CircleAvatar(
-        child: Icon(Icons.fingerprint),
-      );
+      return const Icon(Icons.fingerprint);
     } else {
       return CircleAvatar(
+        radius: 16,
         backgroundImage: NetworkImage(photo),
       );
     }

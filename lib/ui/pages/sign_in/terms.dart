@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fuks_app/utils/terms_and_privacy.dart';
 
 class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({super.key});
@@ -17,23 +18,24 @@ class TermsAndConditions extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text:
-                "Sign in to sync your data across all devices and platforms. "
-                "By signing up, you accept our ",
+            text: 'By signing up, you accept our ',
             style: style,
           ),
           TextSpan(
-              text: "Terms of Use",
-              style: specialStyle,
-              recognizer: TapGestureRecognizer()..onTap = () {}),
-          TextSpan(
-            text: " and ",
-            style: style,
-          ),
-          TextSpan(
-            text: "Privacy Policy",
+            text: 'Terms of Use',
             style: specialStyle,
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () => showTermsAndConditions(),
+          ),
+          TextSpan(
+            text: ' and ',
+            style: style,
+          ),
+          TextSpan(
+            text: 'Privacy Policy',
+            style: specialStyle,
+            recognizer: TapGestureRecognizer()
+              ..onTap = () => showPrivacyPolicy(),
           ),
         ],
       ),
