@@ -29,13 +29,7 @@ final fuksThemeLight = ThemeData(
   appBarTheme: AppBarTheme(
     elevation: 0,
     scrolledUnderElevation: 2,
-    shadowColor: _colorsLight.onSurface,
-    // centerTitle: false,
-    // titleTextStyle: TextStyle(
-    //   fontWeight: FontWeight.w500,
-    //   color: _colorsLight.onSurface,
-    //   // fontSize: 20,
-    // ),
+    shadowColor: _colorsLight.shadow,
   ),
 );
 
@@ -43,4 +37,9 @@ final fuksThemeDark = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
   colorScheme: _colorsDark,
+  appBarTheme: AppBarTheme(
+    elevation: 0,
+    scrolledUnderElevation: 2,
+    shadowColor: _colorsLight.shadow,
+  ),
 );
