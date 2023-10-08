@@ -17,7 +17,6 @@ class FuksLogo extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        // if (permission.isFuksMember)
       ],
     );
   }
