@@ -11,11 +11,9 @@ class ConnectionStatus extends StatefulWidget {
   const ConnectionStatus({
     super.key,
     required this.onRefreshPermissions,
-    this.actions,
   });
 
   final AsyncCallback onRefreshPermissions;
-  final List<Widget>? actions;
 
   @override
   State createState() => _ConnectionStatusState();
