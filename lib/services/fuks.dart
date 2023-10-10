@@ -28,7 +28,7 @@ class FuksService {
     return Events(items: [
       Event(
         title: 'GBB Treffen',
-        subtitle: 'Oct 17, 2023 07:30 PM / fuks Office',
+        subtitle: 'Oct 17, 2023 07:30 PM at the fuks office',
       ),
       Event(
         title: 'Teamtreffen',
