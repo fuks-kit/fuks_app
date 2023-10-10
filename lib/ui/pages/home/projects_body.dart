@@ -46,7 +46,8 @@ class ProjectsBody extends StatelessWidget {
                 title: 'Projekte',
                 subtitle:
                     'Fuks projects are a great way to get to know other students and to get involved in the student community',
-                illustration: UnDrawIllustration.reading,
+                illustration: UnDrawIllustration.business_man,
+                // dimension: 300,
               );
             }
 
