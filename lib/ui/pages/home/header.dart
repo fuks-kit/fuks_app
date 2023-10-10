@@ -7,11 +7,13 @@ class HeaderWithIllustration extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.illustration,
+    this.dimension = 200,
   });
 
   final String title;
   final String subtitle;
   final UnDrawIllustration illustration;
+  final double dimension;
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +50,8 @@ class HeaderWithIllustration extends StatelessWidget {
             vertical: 16,
           ),
           child: UnDraw(
-            width: 200,
-            height: 200,
+            width: dimension,
+            height: dimension,
             illustration: illustration,
             color: colorScheme.primary,
           ),
