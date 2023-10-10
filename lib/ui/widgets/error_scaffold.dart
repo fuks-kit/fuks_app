@@ -5,10 +5,12 @@ import 'package:undraw/undraw.dart';
 class ErrorScaffold extends StatelessWidget {
   const ErrorScaffold({
     super.key,
+    this.title,
     this.error,
     this.actions,
   });
 
+  final String? title;
   final Object? error;
   final List<Widget>? actions;
 
@@ -18,11 +20,9 @@ class ErrorScaffold extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Error',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-          ),
+        title: Text(
+          title ?? 'Error',
+          style: const TextStyle(fontWeight: FontWeight.w600),
         ),
         actions: actions,
       ),

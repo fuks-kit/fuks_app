@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FuksLogo extends StatelessWidget {
-  const FuksLogo({Key? key}) : super(key: key);
+  const FuksLogo({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        FuksIcon(),
-        SizedBox(width: 8),
         Text(
           'fuks',
           style: TextStyle(
             fontWeight: FontWeight.w500,
           ),
         ),
+        SizedBox(width: 8),
+        FuksIcon(),
       ],
     );
   }

@@ -12,6 +12,10 @@ class OfficePage extends StatefulWidget {
 
   static const String route = 'office';
 
+  static void show(BuildContext context) {
+    Navigator.of(context).pushNamed(route);
+  }
+
   @override
   State<StatefulWidget> createState() => _OfficePageState();
 }
