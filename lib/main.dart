@@ -4,6 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fuks_app/firebase_options.dart';
+import 'package:fuks_app/ui/pages/events/events_page.dart';
+import 'package:fuks_app/ui/pages/kt/kt_page.dart';
+import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/pages/home/home_page.dart';
@@ -68,7 +71,10 @@ class _FuksAppState extends State<FuksApp> {
         SignInPage.route: (context) => const SignInPage(),
         SettingsPage.route: (context) => const SettingsPage(),
         HomePage.route: (context) => const HomePage(),
+        EventsPage.route: (context) => const EventsPage(),
         ProjectPage.route: (context) => const ProjectPage(),
+        ProjectsPage.route: (context) => const ProjectsPage(),
+        KTPage.route: (context) => const KTPage(),
       },
     );
   }

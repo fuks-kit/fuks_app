@@ -1,11 +1,27 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:fuks_app/services/fuks.dart';
-import 'package:fuks_app/ui/pages/home/header.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-import 'package:undraw/undraw.dart';
+
+class EventsPage extends StatelessWidget {
+  const EventsPage({super.key});
+
+  static const String route = 'events';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Events'),
+      ),
+      body: const EventsBody(),
+    );
+  }
+
+  static void show(BuildContext context) {
+    Navigator.of(context).pushNamed(route);
+  }
+}
 
 class EventsBody extends StatelessWidget {
   const EventsBody({super.key});
@@ -80,22 +96,13 @@ class EventsBody extends StatelessWidget {
         }
 
         return ConstrainedListViewBuilder(
-          itemCount: data.length + 1,
+          itemCount: data.length,
           itemBuilder: (context, index) {
-            if (index == 0) {
-              return const HeaderWithIllustration(
-                title: 'Come and join us!',
-                subtitle: 'We are looking forward to meeting you!',
-                illustration: UnDrawIllustration.having_fun,
-              );
-            }
-
-            final event = data[index - 1];
+            final event = data[index];
 
             return Container(
               margin: const EdgeInsets.all(8),
               width: double.infinity,
-              // padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(

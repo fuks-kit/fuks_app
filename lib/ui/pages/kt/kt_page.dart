@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/services/fuks.dart';
-import 'package:fuks_app/ui/pages/home/header.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-import 'package:undraw/illustrations.g.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+
+class KTPage extends StatelessWidget {
+  const KTPage({super.key});
+
+  static const String route = 'karlsruher-transfer';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Karlsruher Transfer'),
+      ),
+      body: const KTBody(),
+    );
+  }
+
+  static void show(BuildContext context) {
+    Navigator.of(context).pushNamed(route);
+  }
+}
 
 class KTBody extends StatelessWidget {
   const KTBody({super.key});
@@ -44,18 +62,9 @@ class KTBody extends StatelessWidget {
             endIndent: 16,
             color: colorScheme.outlineVariant,
           ),
-          itemCount: data.length + 1,
+          itemCount: data.length,
           itemBuilder: (context, index) {
-            if (index == 0) {
-              return const HeaderWithIllustration(
-                title: 'Karlsruher Transfer',
-                subtitle:
-                    'The Karlsruher Transfer a free magazine for students in Karlsruhe',
-                illustration: UnDrawIllustration.reading,
-              );
-            }
-
-            final kt = data[index - 1];
+            final kt = data[index];
 
             return ListTile(
               title: Text(

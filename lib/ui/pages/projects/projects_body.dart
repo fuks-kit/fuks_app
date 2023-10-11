@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/services/fuks.dart';
-import 'package:fuks_app/ui/pages/home/header.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-import 'package:undraw/illustrations.g.dart';
+
+class ProjectsPage extends StatelessWidget {
+  const ProjectsPage({super.key});
+
+  static const String route = 'projects';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Projekte'),
+      ),
+      body: const ProjectsBody(),
+    );
+  }
+
+  static void show(BuildContext context) {
+    Navigator.of(context).pushNamed(route);
+  }
+}
 
 class ProjectsBody extends StatelessWidget {
   const ProjectsBody({super.key});
@@ -39,19 +57,9 @@ class ProjectsBody extends StatelessWidget {
         }
 
         return ConstrainedListViewBuilder(
-          itemCount: data.length + 1,
+          itemCount: data.length,
           itemBuilder: (context, index) {
-            if (index == 0) {
-              return const HeaderWithIllustration(
-                title: 'Projekte',
-                subtitle:
-                    'Fuks projects are a great way to get to know other students and to get involved in the student community',
-                illustration: UnDrawIllustration.business_man,
-                // dimension: 300,
-              );
-            }
-
-            final project = data[index - 1];
+            final project = data[index];
 
             return Container(
               margin: const EdgeInsets.all(8),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/ui/pages/home/events_body.dart';
-import 'package:fuks_app/ui/pages/home/kt_body.dart';
-import 'package:fuks_app/ui/pages/home/projects_body.dart';
+import 'package:fuks_app/ui/pages/events/events_page.dart';
+import 'package:fuks_app/ui/pages/home/header.dart';
+import 'package:fuks_app/ui/pages/kt/kt_page.dart';
+import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
+import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/fuks_logo.dart';
+import 'package:undraw/illustrations.g.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,75 +19,99 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _index = 0;
-
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const FuksLogo(),
-        ),
-        drawer: NavigationDrawer(
-          selectedIndex: _index,
-          onDestinationSelected: (index) {
-            if (index < 3) {
-              setState(() => _index = index);
-              Navigator.of(context).pop();
-            }
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
-            if (index == 3) {
-              OfficePage.show(context);
-            }
+    final titleStyle = textTheme.titleMedium?.copyWith(
+      fontWeight: FontWeight.bold,
+    );
+    final subtitleStyle = textTheme.bodySmall?.copyWith(
+      color: colorScheme.outline,
+    );
 
-            if (index == 4) {
-              SettingsPage.show(context);
-            }
-          },
-          children: const [
-            DrawerHeader(
-              child: Center(
-                child: FuksIcon(
-                  size: 80,
-                ),
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const FuksLogo(),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.key),
+            onPressed: () => OfficePage.show(context),
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () => SettingsPage.show(context),
+          ),
+        ],
+      ),
+      body: ConstrainedListView(
+        children: [
+          const HeaderWithIllustration(
+            title: 'Willkommen!',
+            subtitle:
+                'Wir sind die Hochschulgruppe fuks und wir machen coole Sachen',
+            illustration: UnDrawIllustration.adventure,
+            dimension: 200,
+          ),
+          ListTile(
+            onTap: () => EventsPage.show(context),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
             ),
-            NavigationDrawerDestination(
-              icon: Icon(Icons.event_outlined),
-              selectedIcon: Icon(Icons.event),
-              label: Text('Events'),
+            leading: const CircleAvatar(
+              child: Icon(Icons.event),
             ),
-            NavigationDrawerDestination(
-              icon: Icon(Icons.work_outline),
-              selectedIcon: Icon(Icons.work),
-              label: Text('Projekte'),
+            title: Text(
+              'Events',
+              style: titleStyle,
             ),
-            NavigationDrawerDestination(
-              icon: Icon(Icons.newspaper_outlined),
-              selectedIcon: Icon(Icons.newspaper),
-              label: Text('Karlsruhe Transfer'),
+            subtitle: Text(
+              'Hier findest du alle unsere Events',
+              style: subtitleStyle,
             ),
-            NavigationDrawerDestination(
-              icon: Icon(Icons.key_outlined),
-              selectedIcon: Icon(Icons.key),
-              label: Text('Büro Zugang'),
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          const SizedBox(height: 16),
+          ListTile(
+            onTap: () => ProjectsPage.show(context),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
             ),
-            NavigationDrawerDestination(
-              icon: Icon(Icons.settings_outlined),
-              selectedIcon: Icon(Icons.settings),
-              label: Text('Settings'),
+            leading: const CircleAvatar(
+              child: Icon(Icons.work),
             ),
-          ],
-        ),
-        body: IndexedStack(
-          index: _index,
-          children: const [
-            EventsBody(),
-            ProjectsBody(),
-            KTBody(),
-          ],
-        ),
+            title: Text(
+              'Projekte',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Hier sind unsere Projekte und Arbeitsgruppen',
+              style: subtitleStyle,
+            ),
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          const SizedBox(height: 16),
+          ListTile(
+            onTap: () => KTPage.show(context),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            leading: const CircleAvatar(
+              child: Icon(Icons.newspaper),
+            ),
+            title: Text(
+              'Karlsruhe Transfer',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Der Karlsruhe Transfer ist ein Magazin für Studierende',
+              style: subtitleStyle,
+            ),
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          const SizedBox(height: 16),
+        ],
       ),
     );
   }
