@@ -18,6 +18,12 @@ final _colorsDark = ColorScheme.fromSeed(
   seedColor: _seedColor,
 );
 
+const _listTileTheme = ListTileThemeData(
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+  ),
+);
+
 final fuksThemeLight = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
@@ -27,6 +33,7 @@ final fuksThemeLight = ThemeData(
     scrolledUnderElevation: 2,
     shadowColor: _colorsLight.shadow,
   ),
+  listTileTheme: _listTileTheme,
 );
 
 final fuksThemeDark = ThemeData(
@@ -38,4 +45,5 @@ final fuksThemeDark = ThemeData(
     scrolledUnderElevation: 2,
     shadowColor: _colorsLight.shadow,
   ),
+  listTileTheme: _listTileTheme,
 );
