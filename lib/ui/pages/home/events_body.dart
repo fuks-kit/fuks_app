@@ -10,6 +10,46 @@ import 'package:undraw/undraw.dart';
 class EventsBody extends StatelessWidget {
   const EventsBody({super.key});
 
+  void _onTapEvent(BuildContext context, Event event) {
+    if (event.lineThrough) {
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(event.title),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(event.subtitle),
+              const Divider(),
+              const ListTile(
+                contentPadding: EdgeInsets.zero,
+                trailing: Icon(Icons.pin_drop),
+                title: Text('Location'),
+                subtitle: Text('Waldhornstraße 27, 76131 Karlsruhe'),
+              ),
+              const ListTile(
+                contentPadding: EdgeInsets.zero,
+                trailing: Icon(Icons.email),
+                title: Text('Contact'),
+                subtitle: Text('dominik.mueller@fuks.org'),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -64,7 +104,9 @@ class EventsBody extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: !event.lineThrough ? () {} : null,
+                onTap: !event.lineThrough
+                    ? () => _onTapEvent(context, event)
+                    : null,
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
