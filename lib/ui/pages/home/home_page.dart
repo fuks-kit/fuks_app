@@ -37,10 +37,12 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.key),
+            tooltip: 'Büro Zugang',
             onPressed: () => OfficePage.show(context),
           ),
           IconButton(
             icon: const Icon(Icons.settings),
+            tooltip: 'Einstellungen',
             onPressed: () => SettingsPage.show(context),
           ),
         ],
