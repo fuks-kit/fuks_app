@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     final textTheme = Theme.of(context).textTheme;
 
     final titleStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w600,
     );
     final subtitleStyle = textTheme.bodySmall?.copyWith(
       color: colorScheme.outline,

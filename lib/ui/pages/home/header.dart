@@ -33,7 +33,7 @@ class HeaderWithIllustration extends StatelessWidget {
               Text(
                 title,
                 style: textTheme.displayMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                   // color: colorScheme.primary,
                 ),
               ),
