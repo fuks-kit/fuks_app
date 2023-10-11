@@ -11,8 +11,6 @@ final _colorsLight = ColorScheme.fromSeed(
   surface: Colors.white,
   onSurface: Colors.black,
   surfaceTint: Colors.white,
-  // secondary: const Color(0xFF4CAF50),
-  // onSecondary: const Color(0xFF2C2C2C),
 );
 
 final _colorsDark = ColorScheme.fromSeed(
