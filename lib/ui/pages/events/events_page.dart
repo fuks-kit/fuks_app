@@ -96,55 +96,43 @@ class EventsBody extends StatelessWidget {
         }
 
         return ConstrainedListViewBuilder(
+          divider: Divider(
+            indent: 16,
+            endIndent: 16,
+            color: colorScheme.outlineVariant,
+          ),
           itemCount: data.length,
           itemBuilder: (context, index) {
             final event = data[index];
 
-            return Container(
-              margin: const EdgeInsets.all(8),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: colorScheme.outlineVariant,
-                  width: 1,
-                ),
-              ),
-              child: InkWell(
-                onTap: !event.lineThrough
-                    ? () => _onTapEvent(context, event)
-                    : null,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (event.label != null)
-                        Text(
-                          event.label!,
-                          style: textTheme.bodySmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: colorScheme.primary,
-                          ),
-                        ),
-                      Text(
-                        event.title,
-                        style: titleStyle?.copyWith(
-                          decoration: event.lineThrough
-                              ? TextDecoration.lineThrough
-                              : null,
-                        ),
+            return ListTile(
+              onTap: () => _onTapEvent(context, event),
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (event.label != null)
+                    Text(
+                      event.label!,
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme.primary,
                       ),
-                      Text(
-                        event.subtitle,
-                        style: subtitleStyle?.copyWith(
-                          decoration: event.lineThrough
-                              ? TextDecoration.lineThrough
-                              : null,
-                        ),
-                      ),
-                    ],
+                    ),
+                  Text(
+                    event.title,
+                    style: titleStyle?.copyWith(
+                      decoration:
+                          event.lineThrough ? TextDecoration.lineThrough : null,
+                    ),
                   ),
+                ],
+              ),
+              subtitle: Text(
+                event.subtitle,
+                style: subtitleStyle?.copyWith(
+                  decoration:
+                      event.lineThrough ? TextDecoration.lineThrough : null,
                 ),
               ),
             );
