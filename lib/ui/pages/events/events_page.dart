@@ -106,7 +106,8 @@ class EventsBody extends StatelessWidget {
             final event = data[index];
 
             return ListTile(
-              onTap: () => _onTapEvent(context, event),
+              onTap:
+                  !event.lineThrough ? () => _onTapEvent(context, event) : null,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
