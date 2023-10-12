@@ -93,6 +93,22 @@ class FuksService {
             'https://fuks.org/wp-content/uploads/2022/09/KT61xxxxxxxx-6.jpg',
         pdfUrl: 'https://fuks.org/wp-content/uploads/2022/09/KT61-Zufall.pdf',
       ),
+      KarlsruherTransferEdition(
+        title: 'KT 60 – Schätze',
+        subtitle:
+            'In dieser Ausgabe liegt der Redaktion das Thema "Schätze" besonders am Herzen, da sie inmitten der Pandemie etwas Positives und Wertvolles in diesem Magazin präsentieren möchte, indem sie die Vielfalt des Begriffs "Schätze" beleuchtet und die Leser dazu anregt, ihren eigenen Wert im Leben neu zu entdecken.',
+        imageUrl:
+            'https://fuks.org/wp-content/uploads/2021/12/0001-734x1030.jpg',
+        pdfUrl: 'https://fuks.org/wp-content/uploads/2022/01/KT-60.pdf',
+      ),
+      KarlsruherTransferEdition(
+        title: 'KT 59 – Muster',
+        subtitle:
+            'Die KT*-Redaktion hat spannende Themen aus Wissenschaft und Technik ausgewählt, um gegen Isolation und Langeweile anzukämpfen.',
+        imageUrl:
+            'https://fuks.org/wp-content/uploads/2021/06/Cover_KT59_Seite_1_530x375.jpg',
+        pdfUrl: 'https://fuks.org/wp-content/uploads/2021/06/KT59.pdf',
+      ),
     ]);
   }
 
