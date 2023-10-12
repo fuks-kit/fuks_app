@@ -28,27 +28,21 @@ class FuksService {
     return Events(items: [
       Event(
         title: 'GBB Treffen',
-        subtitle: 'Oct 17, 2023 07:30 PM at the fuks office',
+        subtitle: 'Das treffen für Beratung und Bewerbungen',
+        contactName: 'Dominik Müller',
+        contactEMail: 'dominik.mueller@fuks.org',
+        contactImageUrl: _dominikImage,
+        date: DateTime(2023, 10, 17, 19, 30),
+        location: 'Waldhornstraße 27, 76131 Karlsruhe',
       ),
       Event(
-        title: 'Teamtreffen',
-        subtitle: 'Jeden Dienstag um 18:00 Uhr im Wiwi Gebäude',
-      ),
-      Event(
-        label: 'Jetzt Anmelden!',
-        title: 'Info Abend',
-        subtitle: 'Kneipen hopping am 12.10.2023 um 19:00 Uhr',
-        buttonTitle: 'Jetzt Anmelden',
-        url: 'https://fuks.org',
-      ),
-      Event(
-        title: 'Marketing Treffen',
-        subtitle: 'Mittwoch um 19:00 Uhr im fuks Büro',
-      ),
-      Event(
-        title: 'Websiten Treffen',
-        subtitle: 'Mittwoch um 19:00 Uhr im fuks Büro',
-        lineThrough: true,
+        title: 'KT-Treffen',
+        subtitle: 'Redaktionstreffen für den Karlsruher Transfer',
+        contactName: 'Jean Weber',
+        contactEMail: 'jean.weber@fuks.org',
+        contactImageUrl: _jeanImage,
+        date: DateTime(2023, 10, 18, 20, 00),
+        location: 'Waldhornstraße 27, 76131 Karlsruhe',
       ),
     ]);
   }
@@ -155,17 +149,27 @@ class Event {
     this.label,
     required this.title,
     required this.subtitle,
-    this.buttonTitle,
-    this.url,
-    this.lineThrough = false,
+    this.contactName,
+    this.contactEMail,
+    this.contactImageUrl,
+    this.date,
+    this.location,
+    this.details,
   });
 
   final String? label;
   final String title;
   final String subtitle;
-  final String? buttonTitle;
-  final String? url;
-  final bool lineThrough;
+  final String? contactName;
+  final String? contactEMail;
+  final String? contactImageUrl;
+
+  final DateTime? date;
+  final String? location;
+
+  final String? details;
+
+  bool get hasContact => contactName != null && contactEMail != null;
 }
 
 class Projects {

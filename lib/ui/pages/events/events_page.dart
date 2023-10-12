@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fuks_app/services/fuks.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
+import 'package:intl/intl.dart';
+
+final _dateFormat = DateFormat('dd-MM-yyyy kk:mm');
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -26,53 +29,13 @@ class EventsPage extends StatelessWidget {
 class EventsBody extends StatelessWidget {
   const EventsBody({super.key});
 
-  void _onTapEvent(BuildContext context, Event event) {
-    if (event.lineThrough) {
-      return;
-    }
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(event.title),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(event.subtitle),
-              const Divider(),
-              const ListTile(
-                contentPadding: EdgeInsets.zero,
-                trailing: Icon(Icons.pin_drop),
-                title: Text('Location'),
-                subtitle: Text('Waldhornstraße 27, 76131 Karlsruhe'),
-              ),
-              const ListTile(
-                contentPadding: EdgeInsets.zero,
-                trailing: Icon(Icons.email),
-                title: Text('Contact'),
-                subtitle: Text('dominik.mueller@fuks.org'),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Close'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     final titleStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
     );
     final subtitleStyle = textTheme.bodySmall?.copyWith(
       color: colorScheme.outline,
@@ -96,45 +59,79 @@ class EventsBody extends StatelessWidget {
         }
 
         return ConstrainedListViewBuilder(
-          divider: Divider(
-            indent: 16,
-            endIndent: 16,
-            color: colorScheme.outlineVariant,
-          ),
           itemCount: data.length,
           itemBuilder: (context, index) {
             final event = data[index];
 
-            return ListTile(
-              onTap:
-                  !event.lineThrough ? () => _onTapEvent(context, event) : null,
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            return Container(
+              margin: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: colorScheme.outlineVariant,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
                 children: [
-                  if (event.label != null)
-                    Text(
-                      event.label!,
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: colorScheme.primary,
-                      ),
+                  ListTile(
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (event.label != null)
+                          Text(
+                            event.label!,
+                            style: textTheme.bodySmall?.copyWith(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: colorScheme.primary,
+                            ),
+                          ),
+                        Text(
+                          event.title,
+                          style: titleStyle,
+                        ),
+                      ],
                     ),
-                  Text(
-                    event.title,
-                    style: titleStyle?.copyWith(
-                      decoration:
-                          event.lineThrough ? TextDecoration.lineThrough : null,
+                    subtitle: Text(
+                      event.subtitle,
+                      style: subtitleStyle,
                     ),
                   ),
+                  ListTile(
+                    minLeadingWidth: 32,
+                    dense: true,
+                    leading: const Icon(Icons.event_outlined),
+                    title: const Text('Date'),
+                    subtitle: Text(
+                      _dateFormat.format(event.date!),
+                      style: subtitleStyle,
+                    ),
+                  ),
+                  ListTile(
+                    minLeadingWidth: 32,
+                    dense: true,
+                    leading: const Icon(Icons.pin_drop_outlined),
+                    title: const Text('Location'),
+                    subtitle: Text(
+                      event.location!,
+                      style: subtitleStyle,
+                    ),
+                  ),
+                  ListTile(
+                    minLeadingWidth: 32,
+                    dense: true,
+                    leading: const Icon(Icons.email_outlined),
+                    title: const Text('Contact'),
+                    subtitle: Text(
+                      '${event.contactName} <${event.contactEMail}>',
+                      style: subtitleStyle,
+                    ),
+                  )
                 ],
-              ),
-              subtitle: Text(
-                event.subtitle,
-                style: subtitleStyle?.copyWith(
-                  decoration:
-                      event.lineThrough ? TextDecoration.lineThrough : null,
-                ),
               ),
             );
           },
