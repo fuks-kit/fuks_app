@@ -39,7 +39,9 @@ class HeaderWithIllustration extends StatelessWidget {
               ),
               Text(
                 subtitle,
-                style: textTheme.bodyMedium,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.outline,
+                ),
               ),
             ],
           ),
