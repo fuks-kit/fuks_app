@@ -34,7 +34,7 @@ class EventsBody extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final titleStyle = textTheme.titleMedium?.copyWith(
+    final titleStyle = textTheme.titleLarge?.copyWith(
       fontWeight: FontWeight.w600,
     );
     final subtitleStyle = textTheme.bodySmall?.copyWith(
@@ -87,7 +87,7 @@ class EventsBody extends StatelessWidget {
                             style: textTheme.bodySmall?.copyWith(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              color: colorScheme.primary,
+                              color: colorScheme.tertiary,
                             ),
                           ),
                         Text(
@@ -101,9 +101,9 @@ class EventsBody extends StatelessWidget {
                       style: subtitleStyle,
                     ),
                   ),
+                  const Divider(height: 1),
                   ListTile(
                     minLeadingWidth: 32,
-                    dense: true,
                     leading: const Icon(Icons.event_outlined),
                     title: const Text('Date'),
                     subtitle: Text(
@@ -113,7 +113,6 @@ class EventsBody extends StatelessWidget {
                   ),
                   ListTile(
                     minLeadingWidth: 32,
-                    dense: true,
                     leading: const Icon(Icons.pin_drop_outlined),
                     title: const Text('Location'),
                     subtitle: Text(
@@ -123,14 +122,24 @@ class EventsBody extends StatelessWidget {
                   ),
                   ListTile(
                     minLeadingWidth: 32,
-                    dense: true,
-                    leading: const Icon(Icons.email_outlined),
+                    leading: const Icon(Icons.alternate_email_outlined),
                     title: const Text('Contact'),
                     subtitle: Text(
                       '${event.contactName} <${event.contactEMail}>',
                       style: subtitleStyle,
                     ),
-                  )
+                  ),
+                  if (event.signUpUrl != null) const Divider(height: 1),
+                  if (event.signUpUrl != null)
+                    ListTile(
+                      minLeadingWidth: 32,
+                      leading: const Icon(Icons.favorite_outline),
+                      title: const Text('Jetzt Anmelden!'),
+                      iconColor: colorScheme.primary,
+                      textColor: colorScheme.primary,
+                      onTap: () {},
+                      // tileColor: colorScheme.surfaceVariant,
+                    ),
                 ],
               ),
             );
