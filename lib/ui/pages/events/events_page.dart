@@ -3,6 +3,7 @@ import 'package:fuks_app/services/fuks.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 final _dateFormat = DateFormat('dd-MM-yyyy kk:mm');
 
@@ -119,6 +120,11 @@ class EventsBody extends StatelessWidget {
                       event.location!,
                       style: subtitleStyle,
                     ),
+                    onTap: () {
+                      launchUrlString(
+                        'https://www.google.com/maps/place/${event.location}',
+                      );
+                    },
                   ),
                   ListTile(
                     minLeadingWidth: 32,
@@ -128,6 +134,9 @@ class EventsBody extends StatelessWidget {
                       '${event.contactName} <${event.contactEMail}>',
                       style: subtitleStyle,
                     ),
+                    onTap: () {
+                      launchUrlString('mailto:${event.contactEMail}');
+                    },
                   ),
                   if (event.signUpUrl != null) const Divider(height: 1),
                   if (event.signUpUrl != null)
