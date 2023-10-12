@@ -52,8 +52,8 @@ class _HomePageState extends State<HomePage> {
           const HeaderWithIllustration(
             title: 'Willkommen!',
             subtitle:
-                'Wir sind die Hochschulgruppe fuks und wir machen coole Sachen',
-            illustration: UnDrawIllustration.adventure,
+                'Wir sind studentische Unternehmensberatung fuks e.V. aus Karlsruhe',
+            illustration: UnDrawIllustration.positive_attitude,
             dimension: 200,
           ),
           ListTile(
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               style: titleStyle,
             ),
             subtitle: Text(
-              'Hier findest du alle unsere Events',
+              'Nehm an unseren Events teil und lerne uns kennen',
               style: subtitleStyle,
             ),
             trailing: const Icon(Icons.navigate_next),
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
               style: titleStyle,
             ),
             subtitle: Text(
-              'Hier sind unsere Projekte und Arbeitsgruppen',
+              'Unsere Projekte sind vielfältig und spannend',
               style: subtitleStyle,
             ),
             trailing: const Icon(Icons.navigate_next),
