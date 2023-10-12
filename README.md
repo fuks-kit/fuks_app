@@ -23,3 +23,18 @@ lib                           # All dart source code
     1. `git tag -a v1.0.0 -m "Release v1.0.0"`
     2. `git push origin v1.0.0`
 4. Merge `main` branch into `release` branch
+
+## Build a new Android release
+
+```shell
+git checkout release
+
+flutter build appbundle
+
+# Upload the generated app bundle to the Play Console
+```
+
+## Build a new iOS release
+
+A new release is automatically created when the `main` and `release` branches are merged. XCode
+Cloud will automatically create a new release and upload the app to the App Store.
