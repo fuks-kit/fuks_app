@@ -44,6 +44,24 @@ class FuksService {
         date: DateTime(2023, 10, 18, 20, 00),
         location: 'Waldhornstraße 27, 76131 Karlsruhe',
       ),
+      Event(
+        title: 'Infoabend',
+        subtitle: 'Informationsabend für interessierten',
+        contactName: 'Nina Neumann',
+        contactEMail: 'nina.neumann@fuks.org',
+        contactImageUrl: _ninaImage,
+        date: DateTime(2023, 11, 06, 20, 00),
+        location: 'Waldhornstraße 27, 76131 Karlsruhe',
+      ),
+      Event(
+        title: 'Mentor-Mentee Abend',
+        subtitle: 'Abend für Mentoren und Mentees',
+        contactName: 'Nina Neumann',
+        contactEMail: 'nina.neumann@fuks.org',
+        contactImageUrl: _ninaImage,
+        date: DateTime(2023, 11, 14, 20, 00),
+        location: 'Waldhornstraße 27, 76131 Karlsruhe',
+      ),
     ]);
   }
 
