@@ -100,7 +100,7 @@ class FuksService {
     return Projects(items: [
       Project(
         imageUrl:
-            'https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80',
+            'https://images.unsplash.com/photo-1587215231250-c0c8e03eb455?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80',
         illustration: UnDrawIllustration.calculator,
         label: 'Jetzt bewerben!',
         title: 'Erstellung Kostenkalkulation',
@@ -109,13 +109,7 @@ class FuksService {
         managerName: 'Niklas Hübschle',
         managerEmail: 'niklas.huebschle@fuks.org',
         managerImageUrl: _niklasImage,
-        details: '''# Erstellung Kostenkalkulation
-
-![Image](https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==&auto=format&fit=crop&w=3270&q=80)
-
-Jetzt bewerben bei [Niklas Hübschle](mailto:niklas.huebschle@fuks.org)
-
-## Ausgangssituation
+        details: '''## Ausgangssituation
 Unser Kunde ist ein bekanntes, größeres Unternehmen aus der Region und gerade dabei, ein neues Anwendungszentrum für die eigene Forschung zu bauen. Während die Aufgaben grundsätzlich klar und verteilt sind, fehlt eine zentrale koordinierende Hand, bei der alle Fäden zusammenlaufen - hier kommen wir ins Spiel.
 
 ## Projektaufgaben
@@ -135,22 +129,45 @@ Bitte bewerbt Euch bis **Sonntag, 08.10.2023 12:00** bei mir und Alexander Böhl
 - Deine zeitliche Verfügbarkeit bis Ende Januar''',
       ),
       Project(
-        illustration: UnDrawIllustration.web_development,
+        illustration: UnDrawIllustration.static_website,
+        imageUrl:
+            'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2426&q=80',
         title: 'Website Relaunch',
         subtitle: 'Die fuks Website wird neu gestaltet',
         managerName: 'Leon Kitzmann',
         managerEmail: 'leon.kitzmann@fuks.org',
         managerImageUrl: _leonImage,
-        details: '',
+        details: 'Coming soon',
       ),
       Project(
-        illustration: UnDrawIllustration.mobile_development,
-        title: 'App Development',
-        subtitle: 'Das fuks App team braucht deine Unterstützung!',
-        managerName: 'Patrick Zierahn',
-        managerEmail: 'patrick.zierahn@fuks.org',
-        managerImageUrl: _patrickImage,
-        details: '',
+          illustration: UnDrawIllustration.mobile_development,
+          imageUrl:
+              'https://images.unsplash.com/photo-1537884944318-390069bb8665?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80',
+          title: 'App Development',
+          subtitle: 'Das fuks App team braucht deine Unterstützung!',
+          managerName: 'Patrick Zierahn',
+          managerEmail: 'patrick.zierahn@fuks.org',
+          managerImageUrl: _patrickImage,
+          details: '## Was wir machen\n'
+              'Wir sind ein Team von 5 Leuten, die sich mit der Entwicklung einer App für die fuks beschäftigen. Die App soll es den Mitgliedern ermöglichen, sich über aktuelle Projekte und Events zu informieren und sich dafür anzumelden. Außerdem soll es möglich sein, sich mit anderen Mitgliedern zu vernetzen und sich über die fuks auszutauschen.\n'
+              '## Techstack\n'
+              '- Flutter\n'
+              '- Dart\n'
+              '- Firebase\n'
+              '- Git\n'
+              '- GitHub Actions\n'
+              '- GitHub Projects\n'
+              '- GO\n'),
+      Project(
+        illustration: UnDrawIllustration.interior_design,
+        imageUrl:
+            'https://plus.unsplash.com/premium_photo-1663091832341-cdd716557fa0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80',
+        title: 'Keller Neugestaltung',
+        subtitle: 'Wird neu gestaltet',
+        managerName: 'Konstantin Kuch',
+        managerEmail: 'konstantin.kuch@fuks.org',
+        managerImageUrl: _konstantinImage,
+        details: 'Commig soon',
       ),
     ]);
   }

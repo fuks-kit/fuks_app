@@ -38,13 +38,41 @@ class _ProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(),
       body: ConstrainedListView(
         padding: EdgeInsets.zero,
         children: [
-          Padding(
+          Container(
             padding: const EdgeInsets.all(16),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              project.title,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(project.managerImageUrl!),
+            ),
+            title: Text(
+              project.managerName,
+              style: textTheme.titleMedium,
+            ),
+            subtitle: Text(
+              project.managerEmail,
+              style: textTheme.bodySmall?.copyWith(
+                color: colorScheme.primary,
+              ),
+            ),
+            onTap: () => launchUrlString('mailto:${project.managerEmail}'),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            width: double.infinity,
             child: MarkdownBody(
               onTapLink: (text, href, title) {
                 if (href != null) launchUrlString(href);

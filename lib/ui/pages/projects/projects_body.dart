@@ -3,6 +3,7 @@ import 'package:fuks_app/services/fuks.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
+import 'package:undraw/undraw.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({super.key});
@@ -83,22 +84,24 @@ class ProjectsBody extends StatelessWidget {
                       const SizedBox(width: double.infinity),
                       // if (project.imageUrl != null)
                       //   Container(
-                      //     width: 150,
+                      //     padding: const EdgeInsets.only(bottom: 16),
+                      //     height: 150,
+                      //     width: double.infinity,
                       //     alignment: Alignment.center,
-                      //     child: Image.network(
-                      //       project.imageUrl!,
-                      //       color: colorScheme.primary,
+                      //     child: ClipRRect(
+                      //       borderRadius: BorderRadius.circular(8.0),
+                      //       child: Image.network(project.imageUrl!),
                       //     ),
                       //   ),
-                      // if (project.illustration != null)
-                      //   Align(
-                      //     alignment: Alignment.center,
-                      //     child: UnDraw(
-                      //       width: 150,
-                      //       illustration: project.illustration!,
-                      //       color: colorScheme.primary,
-                      //     ),
-                      //   ),
+                      if (project.illustration != null)
+                        Align(
+                          alignment: Alignment.center,
+                          child: UnDraw(
+                            width: 150,
+                            illustration: project.illustration!,
+                            color: colorScheme.primary,
+                          ),
+                        ),
                       if (project.label != null)
                         Text(
                           project.label!,
