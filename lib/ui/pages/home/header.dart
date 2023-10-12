@@ -32,14 +32,14 @@ class HeaderWithIllustration extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: textTheme.displayMedium?.copyWith(
+                style: textTheme.displaySmall?.copyWith(
                   fontWeight: FontWeight.w700,
                   // color: colorScheme.primary,
                 ),
               ),
               Text(
                 subtitle,
-                style: textTheme.bodyLarge,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),
