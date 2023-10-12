@@ -138,15 +138,17 @@ class EventsBody extends StatelessWidget {
                       launchUrlString('mailto:${event.contactEMail}');
                     },
                   ),
-                  if (event.signUpUrl != null) const Divider(height: 1),
-                  if (event.signUpUrl != null)
+                  if (event.url != null) const Divider(height: 1),
+                  if (event.url != null)
                     ListTile(
                       minLeadingWidth: 32,
                       leading: const Icon(Icons.favorite_outline),
                       title: const Text('Jetzt Anmelden!'),
                       iconColor: colorScheme.primary,
                       textColor: colorScheme.primary,
-                      onTap: () {},
+                      onTap: () {
+                        launchUrlString(event.url!);
+                      },
                       // tileColor: colorScheme.surfaceVariant,
                     ),
                 ],

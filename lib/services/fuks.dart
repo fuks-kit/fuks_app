@@ -52,7 +52,7 @@ class FuksService {
         contactImageUrl: _ninaImage,
         date: DateTime(2023, 11, 06, 20, 00),
         location: 'Waldhornstraße 27, 76131 Karlsruhe',
-        signUpUrl: 'https://fuks.org/',
+        url: 'https://fuks.org/',
       ),
       Event(
         label: 'Anmeldung ab 01.11.2023',
@@ -207,7 +207,7 @@ class Event {
     this.contactImageUrl,
     this.date,
     this.location,
-    this.signUpUrl,
+    this.url,
   });
 
   final String? label;
@@ -220,7 +220,7 @@ class Event {
   final DateTime? date;
   final String? location;
 
-  final String? signUpUrl;
+  final String? url;
 
   bool get hasContact => contactName != null && contactEMail != null;
 }
