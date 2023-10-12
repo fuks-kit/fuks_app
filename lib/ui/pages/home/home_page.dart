@@ -57,12 +57,14 @@ class _HomePageState extends State<HomePage> {
             dimension: 200,
           ),
           ListTile(
+            minLeadingWidth: 32,
             onTap: () => EventsPage.show(context),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            leading: const CircleAvatar(
-              child: Icon(Icons.event),
+            leading: Icon(
+              Icons.event_outlined,
+              color: colorScheme.primary,
             ),
             title: Text(
               'Events',
@@ -76,12 +78,14 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: 16),
           ListTile(
+            minLeadingWidth: 32,
             onTap: () => ProjectsPage.show(context),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            leading: const CircleAvatar(
-              child: Icon(Icons.work),
+            leading: Icon(
+              Icons.work_outline,
+              color: colorScheme.primary,
             ),
             title: Text(
               'Projekte',
@@ -95,12 +99,14 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: 16),
           ListTile(
+            minLeadingWidth: 32,
             onTap: () => KTPage.show(context),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            leading: const CircleAvatar(
-              child: Icon(Icons.newspaper),
+            leading: Icon(
+              Icons.newspaper_outlined,
+              color: colorScheme.primary,
             ),
             title: Text(
               'Karlsruhe Transfer',
