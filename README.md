@@ -21,8 +21,8 @@ lib                           # All dart source code
 2. Update version in `lib/ui/pages/settings/settings_page.dart`
 3. Update the changelog in `CHANGELOG.md`
 4. Create a new git tag:
-    1. `git tag -a v1.0.0 -m "Release v1.0.0"`
-    2. `git push origin v1.0.0`
+    1. `git tag -a vX.X.X -m "Release vX.X.X"`
+    2. `git push origin vX.X.X`
 5. Merge `main` branch into `release` branch
 
 ## Build a new Android release
