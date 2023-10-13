@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fuks_app/generated/doorman.pb.dart';
-import 'package:fuks_app/services/doorman.dart';
-import 'package:fuks_app/ui/pages/home/access.dart';
-import 'package:fuks_app/ui/pages/home/connection_status.dart';
-import 'package:fuks_app/ui/pages/home/no_access.dart';
+import 'package:fuks_app/ui/pages/events/events_page.dart';
+import 'package:fuks_app/ui/pages/home/header.dart';
+import 'package:fuks_app/ui/pages/kt/kt_page.dart';
+import 'package:fuks_app/ui/pages/projects/projects_body.dart';
+import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
-import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-import 'package:fuks_app/utils/error.dart';
+import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
+import 'package:fuks_app/ui/widgets/fuks_logo.dart';
+import 'package:undraw/illustrations.g.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,105 +19,108 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<OfficePermission> _request;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Debug stuff to test the UI
-    // final mockObj = OfficePermission();
-    // mockObj.hasAccess = false;
-    // mockObj.isFuksMember = true;
-    // mockObj.isActiveFuks = false;
-    //
-    // _request = Future(() => mockObj);
-    // _request = Future.error(const GrpcError.unavailable());
-
-    _request = doorman.checkPermissions();
-  }
-
-  Future<void> _refreshPermissions() async {
-    setState(() {
-      _request = doorman.checkPermissions();
-    });
-
-    await _request;
-  }
-
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
-    final actions = <Widget>[
-      IconButton(
-        icon: const Icon(Icons.settings),
-        tooltip: 'Settings',
-        onPressed: () {
-          SettingsPage.show(context);
-        },
-      ),
-    ];
+    final titleStyle = textTheme.titleMedium?.copyWith(
+      fontWeight: FontWeight.w600,
+    );
+    final subtitleStyle = textTheme.bodySmall?.copyWith(
+      color: colorScheme.outline,
+    );
 
-    return FutureBuilder<OfficePermission>(
-      future: _request,
-      builder: (context, snap) {
-        Widget body;
-
-        if (snap.hasError && ErrorUtils.isNotConnected(snap.error)) {
-          body = ConnectionStatus(
-            onRefreshPermissions: _refreshPermissions,
-            actions: actions,
-          );
-        } else if (snap.hasError) {
-          body = ErrorBody(
-            error: snap.error,
-          );
-        } else if (!snap.hasData) {
-          body = const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (snap.requireData.hasAccess) {
-          body = const AccessBody();
-        } else {
-          body = NoAccess(
-            permission: snap.requireData,
-            onRefresh: _refreshPermissions,
-          );
-        }
-
-        return Scaffold(
-          appBar: AppBar(
-            centerTitle: false,
-            title: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: SvgPicture.asset(
-                    "assets/fuks_logo.svg",
-                    colorFilter: ColorFilter.mode(
-                      colorScheme.onSurface,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                const Text(
-                  'fuks',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                // if (permission.isFuksMember)
-              ],
-            ),
-            actions: actions,
+    return Scaffold(
+      appBar: AppBar(
+        title: const FuksLogo(),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.key),
+            tooltip: 'Büro Zugang',
+            onPressed: () => OfficePage.show(context),
           ),
-          body: body,
-        );
-      },
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Einstellungen',
+            onPressed: () => SettingsPage.show(context),
+          ),
+        ],
+      ),
+      body: ConstrainedListView(
+        children: [
+          const HeaderWithIllustration(
+            title: 'Willkommen!',
+            subtitle:
+                'Wir sind studentische Unternehmensberatung fuks e.V. aus Karlsruhe',
+            illustration: UnDrawIllustration.positive_attitude,
+            dimension: 200,
+          ),
+          ListTile(
+            minLeadingWidth: 32,
+            onTap: () => EventsPage.show(context),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            leading: Icon(
+              Icons.event_outlined,
+              color: colorScheme.primary,
+            ),
+            title: Text(
+              'Events',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Nehm an unseren Events teil und lerne uns kennen',
+              style: subtitleStyle,
+            ),
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          const SizedBox(height: 16),
+          ListTile(
+            minLeadingWidth: 32,
+            onTap: () => ProjectsPage.show(context),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            leading: Icon(
+              Icons.work_outline,
+              color: colorScheme.primary,
+            ),
+            title: Text(
+              'Projekte',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Unsere Projekte sind vielfältig und spannend',
+              style: subtitleStyle,
+            ),
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          const SizedBox(height: 16),
+          ListTile(
+            minLeadingWidth: 32,
+            onTap: () => KTPage.show(context),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            leading: Icon(
+              Icons.newspaper_outlined,
+              color: colorScheme.primary,
+            ),
+            title: Text(
+              'Karlsruhe Transfer',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Der Karlsruhe Transfer ist ein Magazin für Studierende',
+              style: subtitleStyle,
+            ),
+            trailing: const Icon(Icons.navigate_next),
+          ),
+          const SizedBox(height: 16),
+        ],
+      ),
     );
   }
 }

@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_apple.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_button.dart';
 import 'package:fuks_app/ui/pages/sign_in/sign_in_google.dart';
 import 'package:fuks_app/ui/pages/sign_in/terms.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error.dart';
+import 'package:fuks_app/ui/widgets/fuks_logo.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -33,8 +33,6 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
-
     final buttons = <Widget>[
       if (!kIsWeb && (Platform.isIOS || Platform.isMacOS))
         ListTile(
@@ -67,18 +65,7 @@ class SignInPage extends StatelessWidget {
             shrinkWrap: true,
             primary: false,
             children: [
-              SizedBox(
-                width: 192,
-                height: 192,
-                child: SvgPicture.asset(
-                  "assets/fuks_logo.svg",
-                  theme: SvgTheme(currentColor: color.primary),
-                  colorFilter: ColorFilter.mode(
-                    color.onSurface,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
+              const FuksIcon(size: 192),
               const SizedBox(height: 60),
               Column(
                 mainAxisSize: MainAxisSize.min,

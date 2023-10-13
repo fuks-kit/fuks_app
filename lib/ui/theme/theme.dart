@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 const fuksColor = Color(0xffEB5E28);
-// const _seedColor = fuksColor;
 const _seedColor = Colors.blue;
-// const _seedColor = Colors.green;
 
 final _colorsLight = ColorScheme.fromSeed(
   brightness: Brightness.light,
@@ -13,13 +11,17 @@ final _colorsLight = ColorScheme.fromSeed(
   surface: Colors.white,
   onSurface: Colors.black,
   surfaceTint: Colors.white,
-  // secondary: const Color(0xFF4CAF50),
-  // onSecondary: const Color(0xFF2C2C2C),
 );
 
 final _colorsDark = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   seedColor: _seedColor,
+);
+
+const _listTileTheme = ListTileThemeData(
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+  ),
 );
 
 final fuksThemeLight = ThemeData(
@@ -29,18 +31,19 @@ final fuksThemeLight = ThemeData(
   appBarTheme: AppBarTheme(
     elevation: 0,
     scrolledUnderElevation: 2,
-    shadowColor: _colorsLight.onSurface,
-    // centerTitle: false,
-    // titleTextStyle: TextStyle(
-    //   fontWeight: FontWeight.w500,
-    //   color: _colorsLight.onSurface,
-    //   // fontSize: 20,
-    // ),
+    shadowColor: _colorsLight.shadow,
   ),
+  listTileTheme: _listTileTheme,
 );
 
 final fuksThemeDark = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
   colorScheme: _colorsDark,
+  appBarTheme: AppBarTheme(
+    elevation: 0,
+    scrolledUnderElevation: 2,
+    shadowColor: _colorsLight.shadow,
+  ),
+  listTileTheme: _listTileTheme,
 );

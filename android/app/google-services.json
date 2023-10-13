@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "350005315493-9fe0qq8e2b51hv19kl3o0aisfpt6anue.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.fuks.app",
+            "certificate_hash": "2a2c385d6159c83b96095c1ee02d72d390d63c3d"
+          }
+        },
+        {
           "client_id": "350005315493-oikuc3397ksmn07psbr76kjp77flfous.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
