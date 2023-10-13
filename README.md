@@ -28,11 +28,27 @@ lib                           # All dart source code
 ## Build a new Android release
 
 ```shell
+# Make sure you are on the release branch
 git checkout release
 
+# Reset the branch to the latest commit
+git reset --hard
+
+# Pull the latest changes
+git pull
+
+# Build the app bundle
 flutter build appbundle
 
 # Upload the generated app bundle to the Play Console
+# https://play.google.com/console/
+
+# Clean up the build files
+flutter clean
+
+# Go back to main branch after the release is done
+git checkout main
+
 ```
 
 ## Build a new iOS release
