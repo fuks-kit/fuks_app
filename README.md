@@ -15,7 +15,9 @@ lib                           # All dart source code
 └── utils                     # Helper functions that are used across components
 ```
 
-## Prepare a new release
+## Deploy a new release
+
+Prepare a new release by following these steps:
 
 1. Update the version and build number in `pubspec.yaml`
 2. Update version in `lib/ui/pages/settings/settings_page.dart`
@@ -25,7 +27,7 @@ lib                           # All dart source code
     2. `git push origin vX.X.X`
 5. Merge `main` branch into `release` branch
 
-## Build a new Android release
+### Deploy a new Android release
 
 ```shell
 # Make sure you are on the release branch
@@ -51,7 +53,7 @@ git checkout main
 
 ```
 
-## Build a new iOS release
+### Deploy a new iOS release
 
 A new release is automatically created when the `main` and `release` branches are merged. XCode
 Cloud will automatically create a new release and upload the app to the App Store.
