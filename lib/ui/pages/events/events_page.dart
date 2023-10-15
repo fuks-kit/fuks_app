@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fuks_app/generated/google/protobuf/empty.pb.dart';
+import 'package:fuks_app/generated/services.pb.dart';
 import 'package:fuks_app/services/fcs.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
@@ -43,7 +45,7 @@ class EventsBody extends StatelessWidget {
     );
 
     return FutureBuilder<Events>(
-      future: fuksCloud.getEvents(),
+      future: fuksCloud.getEvents(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);
@@ -79,23 +81,9 @@ class EventsBody extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (event.label != null)
-                          Text(
-                            event.label!,
-                            style: textTheme.bodySmall?.copyWith(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: colorScheme.tertiary,
-                            ),
-                          ),
-                        Text(
-                          event.title,
-                          style: titleStyle,
-                        ),
-                      ],
+                    title: Text(
+                      event.title,
+                      style: titleStyle,
                     ),
                     subtitle: Text(
                       event.subtitle,
@@ -108,7 +96,7 @@ class EventsBody extends StatelessWidget {
                     leading: const Icon(Icons.event_outlined),
                     title: const Text('Date'),
                     subtitle: Text(
-                      _dateFormat.format(event.date!),
+                      _dateFormat.format(event.date.toDateTime()),
                       style: subtitleStyle,
                     ),
                   ),
@@ -117,7 +105,7 @@ class EventsBody extends StatelessWidget {
                     leading: const Icon(Icons.pin_drop_outlined),
                     title: const Text('Location'),
                     subtitle: Text(
-                      event.location!,
+                      event.location,
                       style: subtitleStyle,
                     ),
                     onTap: () {
@@ -131,26 +119,13 @@ class EventsBody extends StatelessWidget {
                     leading: const Icon(Icons.alternate_email_outlined),
                     title: const Text('Contact'),
                     subtitle: Text(
-                      '${event.contactName} <${event.contactEMail}>',
+                      '${event.contact.name}',
                       style: subtitleStyle,
                     ),
                     onTap: () {
-                      launchUrlString('mailto:${event.contactEMail}');
+                      launchUrlString('mailto:${event.contact.eMail}');
                     },
                   ),
-                  if (event.url != null) const Divider(height: 1),
-                  if (event.url != null)
-                    ListTile(
-                      minLeadingWidth: 32,
-                      leading: const Icon(Icons.favorite_outline),
-                      title: const Text('Jetzt Anmelden!'),
-                      iconColor: colorScheme.primary,
-                      textColor: colorScheme.primary,
-                      onTap: () {
-                        launchUrlString(event.url!);
-                      },
-                      // tileColor: colorScheme.surfaceVariant,
-                    ),
                 ],
               ),
             );
