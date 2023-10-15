@@ -41,7 +41,7 @@ class ProjectsBody extends StatelessWidget {
     );
 
     return FutureBuilder<Projects>(
-      future: fuks.getProjects(),
+      future: fuksCloud.getProjects(),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);

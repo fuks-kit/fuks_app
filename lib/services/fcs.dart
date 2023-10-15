@@ -1,6 +1,6 @@
 import 'package:undraw/illustrations.g.dart';
 
-final fuks = FuksService();
+final fuksCloud = FuksService();
 
 const _patrickImage =
     'https://media.licdn.com/dms/image/D5603AQFN_mG7il0cLQ/profile-displayphoto-shrink_400_400/0/1661528784896?e=1701907200&v=beta&t=cHWdG-4Vy_any8hqdnwSrnuKuOpp9VpiDpeuz0uYDyE';

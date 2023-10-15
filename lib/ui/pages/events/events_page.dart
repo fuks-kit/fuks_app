@@ -43,7 +43,7 @@ class EventsBody extends StatelessWidget {
     );
 
     return FutureBuilder<Events>(
-      future: fuks.getEvents(),
+      future: fuksCloud.getEvents(),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);

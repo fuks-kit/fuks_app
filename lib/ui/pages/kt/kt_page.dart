@@ -40,7 +40,7 @@ class KTBody extends StatelessWidget {
     );
 
     return FutureBuilder<KarlsruherTransferEditions>(
-      future: fuks.getKarlsruherTransfers(),
+      future: fuksCloud.getKarlsruherTransfers(),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);
