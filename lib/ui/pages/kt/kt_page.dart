@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/services/fuks.dart';
+import 'package:fuks_app/services/fcs.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:url_launcher/url_launcher_string.dart';
