@@ -32,14 +32,14 @@ Prepare a new release by following these steps:
 ### Deploy a new Android release
 
 ```shell
+# Pull the latest changes
+git pull
+
 # Make sure you are on the release branch
 git checkout release
 
 # Reset the branch to the latest commit
 git reset --hard
-
-# Pull the latest changes
-git pull
 
 # Clean up the build files
 flutter clean
