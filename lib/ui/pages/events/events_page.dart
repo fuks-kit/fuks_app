@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:fuks_app/generated/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/services.pb.dart';
 import 'package:fuks_app/services/fuks_cloud.dart';
@@ -40,9 +41,11 @@ class EventsBody extends StatelessWidget {
     final titleStyle = textTheme.titleLarge?.copyWith(
       fontWeight: FontWeight.w600,
     );
-    final subtitleStyle = textTheme.bodySmall?.copyWith(
+    final dateStyle = textTheme.bodySmall?.copyWith(
       color: colorScheme.outline,
+      fontWeight: FontWeight.w600,
     );
+    final subtitleStyle = textTheme.bodyMedium;
 
     return FutureBuilder<Events>(
       future: fuksCloud.getEvents(Empty()),
@@ -71,6 +74,7 @@ class EventsBody extends StatelessWidget {
                 horizontal: 16,
                 vertical: 16,
               ),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: colorScheme.outlineVariant,
@@ -79,52 +83,52 @@ class EventsBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  ListTile(
-                    title: Text(
-                      event.title,
-                      style: titleStyle,
-                    ),
-                    subtitle: Text(
-                      event.subtitle,
-                      style: subtitleStyle,
-                    ),
+                  Text(
+                    event.title,
+                    style: titleStyle,
                   ),
-                  const Divider(height: 1),
-                  ListTile(
-                    minLeadingWidth: 32,
-                    leading: const Icon(Icons.event_outlined),
-                    title: const Text('Date'),
-                    subtitle: Text(
-                      _dateFormat.format(event.date.toDateTime()),
-                      style: subtitleStyle,
-                    ),
+                  const SizedBox(height: 4),
+                  Text(
+                    _dateFormat.format(event.date.toDateTime()),
+                    style: dateStyle,
                   ),
-                  ListTile(
-                    minLeadingWidth: 32,
-                    leading: const Icon(Icons.pin_drop_outlined),
-                    title: const Text('Location'),
-                    subtitle: Text(
-                      event.location,
-                      style: subtitleStyle,
-                    ),
-                    onTap: () {
-                      launchUrlString(
-                        'https://www.google.com/maps/place/${event.location}',
-                      );
-                    },
+                  const SizedBox(height: 16),
+                  Wrap(
+                    alignment: WrapAlignment.start,
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      ActionChip(
+                        label: Text(event.contact.name),
+                        onPressed: () {
+                          launchUrlString('mailto:${event.contact.eMail}');
+                        },
+                        avatar: CircleAvatar(
+                          backgroundImage: NetworkImage(event.contact.imageUrl),
+                        ),
+                      ),
+                      ActionChip(
+                        label: const Text('Location'),
+                        onPressed: () {
+                          launchUrlString(
+                            'https://www.google.com/maps/place/${event.location}',
+                          );
+                        },
+                        avatar: const Icon(Icons.pin_drop_outlined),
+                      ),
+                    ],
                   ),
-                  ListTile(
-                    minLeadingWidth: 32,
-                    leading: const Icon(Icons.alternate_email_outlined),
-                    title: const Text('Contact'),
-                    subtitle: Text(
-                      '${event.contact.name}',
-                      style: subtitleStyle,
+                  const SizedBox(height: 16),
+                  MarkdownBody(
+                    data: event.subtitle,
+                    styleSheet: MarkdownStyleSheet(
+                      p: subtitleStyle,
+                      listBullet: subtitleStyle,
+                      listIndent: 16,
                     ),
-                    onTap: () {
-                      launchUrlString('mailto:${event.contact.eMail}');
-                    },
                   ),
                 ],
               ),
