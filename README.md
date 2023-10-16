@@ -19,14 +19,15 @@ lib                           # All dart source code
 
 Prepare a new release by following these steps:
 
-1. Update the version and build number in `pubspec.yaml`
-2. Update version in `lib/ui/pages/settings/settings_page.dart`
-3. Update dependencies with `fullter pub upgrade`
-4. Update the changelog in `CHANGELOG.md`
-5. Create a new git tag:
+1. Push all changes to `main` branch with `git push`
+2. Update the version and build number in `pubspec.yaml`
+3. Update version in `lib/ui/pages/settings/settings_page.dart`
+4. Update dependencies with `fullter pub upgrade`
+5. Update the changelog in `CHANGELOG.md`
+6. Create a new git tag:
     1. `git tag -a vX.X.X -m "Release vX.X.X"`
     2. `git push origin vX.X.X`
-6. Merge `main` branch into `release` branch
+7. Merge `main` branch into `release` branch
 
 ### Deploy a new Android release
 
