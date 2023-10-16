@@ -92,11 +92,7 @@ class EventsBody extends StatelessWidget {
                 children: [
                   Text(
                     event.title,
-                    style: titleStyle?.copyWith(
-                      decoration: event.date.toDateTime().isBefore(now)
-                          ? TextDecoration.lineThrough
-                          : null,
-                    ),
+                    style: titleStyle,
                   ),
                   const SizedBox(height: 4),
                   Text(
