@@ -34,6 +34,20 @@ final fuksThemeLight = ThemeData(
     shadowColor: _colorsLight.shadow,
   ),
   listTileTheme: _listTileTheme,
+  chipTheme: ChipThemeData(
+    backgroundColor: _colorsLight.surfaceVariant,
+    iconTheme: IconThemeData(
+      size: 16,
+      color: _colorsLight.onSurfaceVariant,
+    ),
+    labelStyle: TextStyle(
+      color: _colorsLight.onSurfaceVariant,
+      fontWeight: FontWeight.w500,
+    ),
+    side: const BorderSide(
+      style: BorderStyle.none,
+    ),
+  ),
 );
 
 final fuksThemeDark = ThemeData(
@@ -46,4 +60,18 @@ final fuksThemeDark = ThemeData(
     shadowColor: _colorsLight.shadow,
   ),
   listTileTheme: _listTileTheme,
+  chipTheme: ChipThemeData(
+    backgroundColor: _colorsDark.surfaceVariant,
+    iconTheme: IconThemeData(
+      size: 16,
+      color: _colorsDark.onSurfaceVariant,
+    ),
+    labelStyle: TextStyle(
+      color: _colorsDark.onSurfaceVariant,
+      fontWeight: FontWeight.w500,
+    ),
+    side: const BorderSide(
+      style: BorderStyle.none,
+    ),
+  ),
 );
