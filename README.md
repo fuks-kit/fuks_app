@@ -41,6 +41,9 @@ git reset --hard
 # Pull the latest changes
 git pull
 
+# Clean up the build files
+flutter clean
+
 # Build the app bundle
 flutter build appbundle
 
