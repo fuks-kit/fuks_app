@@ -135,7 +135,7 @@ class EventsBody extends StatelessWidget {
                     styleSheet: MarkdownStyleSheet(
                       p: subtitleStyle,
                       listBullet: subtitleStyle,
-                      listIndent: 16,
+                      listIndent: 20,
                     ),
                   ),
                 ],
