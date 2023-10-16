@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/services.pb.dart';
-import 'package:fuks_app/services/fcs.dart';
+import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
