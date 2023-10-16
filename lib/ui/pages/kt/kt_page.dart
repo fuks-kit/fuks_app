@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/services/fuks.dart';
+import 'package:fuks_app/generated/app_services/google/protobuf/empty.pb.dart';
+import 'package:fuks_app/generated/app_services/services.pb.dart';
+import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -39,8 +41,8 @@ class KTBody extends StatelessWidget {
       color: colorScheme.outline,
     );
 
-    return FutureBuilder<KarlsruherTransferEditions>(
-      future: fuks.getKarlsruherTransfers(),
+    return FutureBuilder<KarlsruherTransfers>(
+      future: fuksCloud.getKarlsruherTransfers(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);
@@ -50,7 +52,7 @@ class KTBody extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        final data = snap.data?.items ?? <KarlsruherTransferEdition>[];
+        final data = snap.data?.items ?? <KarlsruherTransfer>[];
 
         if (data.isEmpty) {
           return const Text('No data');

@@ -8,7 +8,7 @@ import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/utils/authenticate.dart';
 import 'package:fuks_app/utils/terms_and_privacy.dart';
 
-const _version = '1.1.0';
+const _version = '1.2.0';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

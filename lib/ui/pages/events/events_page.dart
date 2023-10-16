@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/services/fuks.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:fuks_app/generated/app_services/google/protobuf/empty.pb.dart';
+import 'package:fuks_app/generated/app_services/services.pb.dart';
+import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-final _dateFormat = DateFormat('dd-MM-yyyy kk:mm');
+final _dateFormat = DateFormat('dd.MM.yyyy kk:mm');
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -38,12 +41,16 @@ class EventsBody extends StatelessWidget {
     final titleStyle = textTheme.titleLarge?.copyWith(
       fontWeight: FontWeight.w600,
     );
-    final subtitleStyle = textTheme.bodySmall?.copyWith(
+    final dateStyle = textTheme.bodySmall?.copyWith(
       color: colorScheme.outline,
+      fontWeight: FontWeight.w600,
     );
+    final subtitleStyle = textTheme.bodyMedium;
+
+    final now = DateTime.now().add(const Duration(hours: 1));
 
     return FutureBuilder<Events>(
-      future: fuks.getEvents(),
+      future: fuksCloud.getEvents(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);
@@ -56,7 +63,9 @@ class EventsBody extends StatelessWidget {
         final data = snap.data?.items ?? <Event>[];
 
         if (data.isEmpty) {
-          return const Text('No data');
+          return const Center(
+            child: Text('No data'),
+          );
         }
 
         return ConstrainedListViewBuilder(
@@ -69,6 +78,7 @@ class EventsBody extends StatelessWidget {
                 horizontal: 16,
                 vertical: 16,
               ),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: colorScheme.outlineVariant,
@@ -77,80 +87,57 @@ class EventsBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  ListTile(
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (event.label != null)
-                          Text(
-                            event.label!,
-                            style: textTheme.bodySmall?.copyWith(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: colorScheme.tertiary,
-                            ),
-                          ),
-                        Text(
-                          event.title,
-                          style: titleStyle,
+                  Text(
+                    event.title,
+                    style: titleStyle,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    _dateFormat.format(event.date.toDateTime()),
+                    style: dateStyle?.copyWith(
+                      decoration: event.date.toDateTime().isBefore(now)
+                          ? TextDecoration.lineThrough
+                          : null,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Wrap(
+                    alignment: WrapAlignment.start,
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      ActionChip(
+                        label: Text(event.contact.name),
+                        onPressed: () {
+                          launchUrlString('mailto:${event.contact.eMail}');
+                        },
+                        avatar: CircleAvatar(
+                          backgroundImage: NetworkImage(event.contact.imageUrl),
                         ),
-                      ],
-                    ),
-                    subtitle: Text(
-                      event.subtitle,
-                      style: subtitleStyle,
+                      ),
+                      ActionChip(
+                        label: const Text('Location'),
+                        onPressed: () {
+                          launchUrlString(
+                            'https://www.google.com/maps/place/${event.location}',
+                          );
+                        },
+                        avatar: const Icon(Icons.pin_drop_outlined),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  MarkdownBody(
+                    data: event.subtitle,
+                    styleSheet: MarkdownStyleSheet(
+                      p: subtitleStyle,
+                      listBullet: subtitleStyle,
+                      listIndent: 20,
                     ),
                   ),
-                  const Divider(height: 1),
-                  ListTile(
-                    minLeadingWidth: 32,
-                    leading: const Icon(Icons.event_outlined),
-                    title: const Text('Date'),
-                    subtitle: Text(
-                      _dateFormat.format(event.date!),
-                      style: subtitleStyle,
-                    ),
-                  ),
-                  ListTile(
-                    minLeadingWidth: 32,
-                    leading: const Icon(Icons.pin_drop_outlined),
-                    title: const Text('Location'),
-                    subtitle: Text(
-                      event.location!,
-                      style: subtitleStyle,
-                    ),
-                    onTap: () {
-                      launchUrlString(
-                        'https://www.google.com/maps/place/${event.location}',
-                      );
-                    },
-                  ),
-                  ListTile(
-                    minLeadingWidth: 32,
-                    leading: const Icon(Icons.alternate_email_outlined),
-                    title: const Text('Contact'),
-                    subtitle: Text(
-                      '${event.contactName} <${event.contactEMail}>',
-                      style: subtitleStyle,
-                    ),
-                    onTap: () {
-                      launchUrlString('mailto:${event.contactEMail}');
-                    },
-                  ),
-                  if (event.url != null) const Divider(height: 1),
-                  if (event.url != null)
-                    ListTile(
-                      minLeadingWidth: 32,
-                      leading: const Icon(Icons.favorite_outline),
-                      title: const Text('Jetzt Anmelden!'),
-                      iconColor: colorScheme.primary,
-                      textColor: colorScheme.primary,
-                      onTap: () {
-                        launchUrlString(event.url!);
-                      },
-                      // tileColor: colorScheme.surfaceVariant,
-                    ),
                 ],
               ),
             );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:fuks_app/services/fuks.dart';
+import 'package:fuks_app/generated/app_services/services.pb.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -56,19 +56,19 @@ class _ProjectPage extends StatelessWidget {
           ),
           ListTile(
             leading: CircleAvatar(
-              backgroundImage: NetworkImage(project.managerImageUrl!),
+              backgroundImage: NetworkImage(project.manager.imageUrl),
             ),
             title: Text(
-              project.managerName,
+              project.manager.name,
               style: textTheme.titleMedium,
             ),
             subtitle: Text(
-              project.managerEmail,
+              project.manager.eMail,
               style: textTheme.bodySmall?.copyWith(
                 color: colorScheme.primary,
               ),
             ),
-            onTap: () => launchUrlString('mailto:${project.managerEmail}'),
+            onTap: () => launchUrlString('mailto:${project.manager.eMail}'),
           ),
           Container(
             padding: const EdgeInsets.all(16),

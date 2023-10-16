@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/generated/doorman.pb.dart';
+import 'package:fuks_app/generated/doorman/doorman.pb.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/pages/office/access.dart';
 import 'package:fuks_app/ui/pages/office/connection_status.dart';

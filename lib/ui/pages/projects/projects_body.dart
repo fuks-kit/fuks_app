@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/services/fuks.dart';
+import 'package:fuks_app/generated/app_services/google/protobuf/empty.pb.dart';
+import 'package:fuks_app/generated/app_services/services.pb.dart';
+import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-import 'package:undraw/undraw.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({super.key});
@@ -41,7 +42,7 @@ class ProjectsBody extends StatelessWidget {
     );
 
     return FutureBuilder<Projects>(
-      future: fuks.getProjects(),
+      future: fuksCloud.getProjects(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);
@@ -82,29 +83,18 @@ class ProjectsBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(width: double.infinity),
-                      // if (project.imageUrl != null)
-                      //   Container(
-                      //     padding: const EdgeInsets.only(bottom: 16),
-                      //     height: 150,
-                      //     width: double.infinity,
+                      // if (project.illustration != null)
+                      //   Align(
                       //     alignment: Alignment.center,
-                      //     child: ClipRRect(
-                      //       borderRadius: BorderRadius.circular(8.0),
-                      //       child: Image.network(project.imageUrl!),
+                      //     child: UnDraw(
+                      //       width: 150,
+                      //       illustration: project.illustration!,
+                      //       color: colorScheme.primary,
                       //     ),
                       //   ),
-                      if (project.illustration != null)
-                        Align(
-                          alignment: Alignment.center,
-                          child: UnDraw(
-                            width: 150,
-                            illustration: project.illustration!,
-                            color: colorScheme.primary,
-                          ),
-                        ),
-                      if (project.label != null)
+                      if (project.label.isNotEmpty)
                         Text(
-                          project.label!,
+                          project.label,
                           style: textTheme.bodySmall?.copyWith(
                             color: colorScheme.primary,
                             fontWeight: FontWeight.bold,
