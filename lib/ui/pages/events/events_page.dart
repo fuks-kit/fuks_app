@@ -8,7 +8,7 @@ import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-final _dateFormat = DateFormat('dd-MM-yyyy kk:mm');
+final _dateFormat = DateFormat('dd.MM.yyyy kk:mm');
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -47,6 +47,8 @@ class EventsBody extends StatelessWidget {
     );
     final subtitleStyle = textTheme.bodyMedium;
 
+    final now = DateTime.now().add(const Duration(hours: 1));
+
     return FutureBuilder<Events>(
       future: fuksCloud.getEvents(Empty()),
       builder: (context, snap) {
@@ -61,7 +63,9 @@ class EventsBody extends StatelessWidget {
         final data = snap.data?.items ?? <Event>[];
 
         if (data.isEmpty) {
-          return const Text('No data');
+          return const Center(
+            child: Text('No data'),
+          );
         }
 
         return ConstrainedListViewBuilder(
@@ -88,12 +92,20 @@ class EventsBody extends StatelessWidget {
                 children: [
                   Text(
                     event.title,
-                    style: titleStyle,
+                    style: titleStyle?.copyWith(
+                      decoration: event.date.toDateTime().isBefore(now)
+                          ? TextDecoration.lineThrough
+                          : null,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     _dateFormat.format(event.date.toDateTime()),
-                    style: dateStyle,
+                    style: dateStyle?.copyWith(
+                      decoration: event.date.toDateTime().isBefore(now)
+                          ? TextDecoration.lineThrough
+                          : null,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   Wrap(
