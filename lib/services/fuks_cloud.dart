@@ -1,4 +1,4 @@
-import 'package:fuks_app/generated/services.pbgrpc.dart';
+import 'package:fuks_app/generated/app_services/services.pbgrpc.dart';
 import 'package:grpc/grpc.dart';
 
 final _channel = ClientChannel(

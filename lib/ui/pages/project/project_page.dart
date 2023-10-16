@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:fuks_app/generated/services.pb.dart';
+import 'package:fuks_app/generated/app_services/services.pb.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:url_launcher/url_launcher_string.dart';

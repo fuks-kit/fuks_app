@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fuks_app/generated/doorman.pb.dart';
+import 'package:fuks_app/generated/doorman/doorman.pb.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:undraw/undraw.dart';
 
