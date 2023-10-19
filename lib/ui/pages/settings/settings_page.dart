@@ -7,6 +7,7 @@ import 'package:fuks_app/ui/pages/settings/account_avatar.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/utils/authenticate.dart';
 import 'package:fuks_app/utils/terms_and_privacy.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 const _version = '1.2.0';
 
@@ -156,6 +157,19 @@ class SettingsPage extends StatelessWidget {
           ),
           ListTile(
             minLeadingWidth: 32,
+            leading: const Icon(Icons.email),
+            title: Text(
+              'Kontakt',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'kontakt@fuks.org',
+              style: subtitleStyle,
+            ),
+            onTap: () => launchUrlString('mailto:kontakt@fuks.org'),
+          ),
+          ListTile(
+            minLeadingWidth: 32,
             leading: const Icon(Icons.policy),
             title: Text(
               'Terms and Conditions',
@@ -166,11 +180,6 @@ class SettingsPage extends StatelessWidget {
               style: subtitleStyle,
             ),
             onTap: () => showTermsAndConditions(),
-            // trailing: Icon(
-            //   Icons.open_in_browser,
-            //   // size: 12,
-            //   color: color.outline,
-            // ),
           ),
           ListTile(
             minLeadingWidth: 32,
@@ -184,11 +193,6 @@ class SettingsPage extends StatelessWidget {
               style: subtitleStyle,
             ),
             onTap: () => showPrivacyPolicy(),
-            // trailing: Icon(
-            //   Icons.open_in_browser,
-            //   // size: 12,
-            //   color: color.outline,
-            // ),
           ),
           ListTile(
             minLeadingWidth: 32,
