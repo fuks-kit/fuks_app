@@ -7,6 +7,7 @@ import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/fuks_logo.dart';
 import 'package:fuks_app/ui/widgets/outlined_card.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:undraw/undraw.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,11 +26,12 @@ class _HomePageState extends State<HomePage> {
     final textTheme = Theme.of(context).textTheme;
 
     final titleStyle = textTheme.titleLarge?.copyWith(
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w700,
     );
-    final subtitleStyle = textTheme.bodyMedium?.copyWith(
+    final subtitleStyle =
+        textTheme.bodyMedium?.merge(GoogleFonts.robotoCondensed(
       color: colorScheme.outline,
-    );
+    ));
 
     return Scaffold(
       appBar: AppBar(
@@ -49,26 +51,25 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ConstrainedListView(
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.all(16),
-          //   child: Column(
-          //     crossAxisAlignment: CrossAxisAlignment.stretch,
-          //     children: [
-          //       Text(
-          //         'Willkommen!',
-          //         style: textTheme.titleLarge?.copyWith(
-          //           fontWeight: FontWeight.w700,
-          //           fontSize: 30,
-          //         ),
-          //       ),
-          //       Text(
-          //         'Wir sind fuks e.V., eine studentische Unternehmensberatung am KIT, die dir Praxiserfahrung in Beratungsprojekten mit namhaften Unternehmen ermöglicht und die Chance bietet, Erfahrung, Expertise, Netzwerke und Führungserfahrung zu gewinnen',
-          //         style: subtitleStyle,
-          //       ),
-          //     ],
-          //   ),
-          // ),
           OutlinedCard(
+            borderColor: colorScheme.primary,
+            margin: const EdgeInsets.all(8),
+            child: ListTile(
+              onTap: () {},
+              title: Text(
+                'Mehr über uns',
+                style: textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+              ),
+            ),
+          ),
+          OutlinedCard(
+            borderColor: colorScheme.outlineVariant,
             margin: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () => EventsPage.show(context),
@@ -90,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                       width: 150,
                       height: 150,
                       illustration: UnDrawIllustration.events,
-                      color: colorScheme.secondary,
+                      color: colorScheme.primary,
                     ),
                   ],
                 ),
@@ -98,6 +99,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           OutlinedCard(
+            borderColor: colorScheme.outlineVariant,
             margin: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () => ProjectsPage.show(context),
@@ -119,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                       width: 150,
                       height: 150,
                       illustration: UnDrawIllustration.scrum_board,
-                      color: colorScheme.secondary,
+                      color: colorScheme.primary,
                     ),
                   ],
                 ),
@@ -127,6 +129,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           OutlinedCard(
+            borderColor: colorScheme.outlineVariant,
             margin: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () => KTPage.show(context),
@@ -148,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                       width: 150,
                       height: 150,
                       illustration: UnDrawIllustration.reading,
-                      color: colorScheme.secondary,
+                      color: colorScheme.primary,
                     ),
                   ],
                 ),
