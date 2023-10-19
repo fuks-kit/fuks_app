@@ -5,6 +5,7 @@ import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
+import 'package:fuks_app/ui/widgets/fuks_logo.dart';
 import 'package:fuks_app/ui/widgets/outlined_card.dart';
 import 'package:undraw/undraw.dart';
 
@@ -32,13 +33,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Willkommen!',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 24,
-          ),
-        ),
+        title: const FuksLogo(),
         actions: [
           IconButton(
             icon: const Icon(Icons.key),
