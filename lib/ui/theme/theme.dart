@@ -35,13 +35,13 @@ final fuksThemeLight = ThemeData(
   ),
   listTileTheme: _listTileTheme,
   chipTheme: ChipThemeData(
-    backgroundColor: _colorsLight.surfaceVariant,
+    backgroundColor: _colorsLight.primaryContainer,
     iconTheme: IconThemeData(
       size: 16,
-      color: _colorsLight.onSurfaceVariant,
+      color: _colorsLight.onPrimaryContainer,
     ),
     labelStyle: TextStyle(
-      color: _colorsLight.onSurfaceVariant,
+      color: _colorsLight.onPrimaryContainer,
       fontWeight: FontWeight.w500,
     ),
     side: const BorderSide(
@@ -61,13 +61,13 @@ final fuksThemeDark = ThemeData(
   ),
   listTileTheme: _listTileTheme,
   chipTheme: ChipThemeData(
-    backgroundColor: _colorsDark.surfaceVariant,
+    backgroundColor: _colorsDark.primaryContainer,
     iconTheme: IconThemeData(
       size: 16,
-      color: _colorsDark.onSurfaceVariant,
+      color: _colorsDark.onPrimaryContainer,
     ),
     labelStyle: TextStyle(
-      color: _colorsDark.onSurfaceVariant,
+      color: _colorsDark.onPrimaryContainer,
       fontWeight: FontWeight.w500,
     ),
     side: const BorderSide(
