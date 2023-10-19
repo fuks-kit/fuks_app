@@ -104,10 +104,11 @@ class ProjectsBody extends StatelessWidget {
                         project.title,
                         style: titleStyle,
                       ),
-                      Text(
-                        project.subtitle,
-                        style: subtitleStyle,
-                      ),
+                      if (project.subtitle.isNotEmpty)
+                        Text(
+                          project.subtitle,
+                          style: subtitleStyle,
+                        ),
                     ],
                   ),
                 ),
