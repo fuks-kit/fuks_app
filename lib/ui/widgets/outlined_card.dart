@@ -7,12 +7,14 @@ class OutlinedCard extends StatelessWidget {
     this.padding,
     this.margin,
     this.borderColor,
+    this.backgroundColor,
   });
 
   final Widget child;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final Color? borderColor;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class OutlinedCard extends StatelessWidget {
           width: 1,
         ),
         borderRadius: BorderRadius.circular(8),
+        color: backgroundColor,
       ),
       padding: padding,
       margin: margin,
