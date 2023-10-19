@@ -5,7 +5,6 @@ import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
-import 'package:fuks_app/ui/widgets/fuks_logo.dart';
 import 'package:fuks_app/ui/widgets/outlined_card.dart';
 import 'package:undraw/undraw.dart';
 
@@ -24,24 +23,22 @@ class _HomePageState extends State<HomePage> {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final titleStyle = textTheme.titleMedium?.copyWith(
+    final titleStyle = textTheme.titleLarge?.copyWith(
       fontWeight: FontWeight.w600,
     );
-    final subtitleStyle = textTheme.bodySmall?.copyWith(
+    final subtitleStyle = textTheme.bodyMedium?.copyWith(
       color: colorScheme.outline,
     );
 
     return Scaffold(
       appBar: AppBar(
-        // title: const FuksIcon(),
-        title: const FuksLogo(),
-        // title: const Text(
-        //   'Willkommen!',
-        //   style: TextStyle(
-        //     fontWeight: FontWeight.w700,
-        //     fontSize: 24,
-        //   ),
-        // ),
+        title: const Text(
+          'Willkommen!',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 24,
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.key),
@@ -57,25 +54,25 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ConstrainedListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  'Willkommen!',
-                  style: textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 30,
-                  ),
-                ),
-                Text(
-                  'Wir sind fuks e.V., eine studentische Unternehmensberatung am KIT, die dir Praxiserfahrung in Beratungsprojekten mit namhaften Unternehmen ermöglicht und die Chance bietet, Erfahrung, Expertise, Netzwerke und Führungserfahrung zu gewinnen',
-                  style: subtitleStyle,
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(16),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.stretch,
+          //     children: [
+          //       Text(
+          //         'Willkommen!',
+          //         style: textTheme.titleLarge?.copyWith(
+          //           fontWeight: FontWeight.w700,
+          //           fontSize: 30,
+          //         ),
+          //       ),
+          //       Text(
+          //         'Wir sind fuks e.V., eine studentische Unternehmensberatung am KIT, die dir Praxiserfahrung in Beratungsprojekten mit namhaften Unternehmen ermöglicht und die Chance bietet, Erfahrung, Expertise, Netzwerke und Führungserfahrung zu gewinnen',
+          //         style: subtitleStyle,
+          //       ),
+          //     ],
+          //   ),
+          // ),
           OutlinedCard(
             margin: const EdgeInsets.all(8),
             child: InkWell(
