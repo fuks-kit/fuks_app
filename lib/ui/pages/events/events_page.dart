@@ -90,6 +90,14 @@ class EventsBody extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  if (event.label.isNotEmpty)
+                    Text(
+                      event.label,
+                      style: textTheme.bodySmall?.copyWith(
+                        color: colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   Text(
                     event.title,
                     style: titleStyle,
