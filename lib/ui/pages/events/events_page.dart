@@ -146,15 +146,16 @@ class EventsBody extends StatelessWidget {
                         ),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  MarkdownBody(
-                    data: event.subtitle,
-                    styleSheet: MarkdownStyleSheet(
-                      p: subtitleStyle,
-                      listBullet: subtitleStyle,
-                      listIndent: 20,
+                  if (event.subtitle.isNotEmpty) const SizedBox(height: 16),
+                  if (event.subtitle.isNotEmpty)
+                    MarkdownBody(
+                      data: event.subtitle,
+                      styleSheet: MarkdownStyleSheet(
+                        p: subtitleStyle,
+                        listBullet: subtitleStyle,
+                        listIndent: 20,
+                      ),
                     ),
-                  ),
                 ],
               ),
             );
