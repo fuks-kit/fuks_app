@@ -58,7 +58,7 @@ class _FuksAppState extends State<FuksApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: _navigator,
-      title: 'fuks App',
+      title: 'fuks',
       themeMode: ThemeMode.system,
       theme: fuksThemeLight,
       darkTheme: fuksThemeDark,
