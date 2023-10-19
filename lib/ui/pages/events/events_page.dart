@@ -126,15 +126,16 @@ class EventsBody extends StatelessWidget {
                           backgroundImage: NetworkImage(event.contact.imageUrl),
                         ),
                       ),
-                      ActionChip(
-                        label: const Text('Location'),
-                        onPressed: () {
-                          launchUrlString(
-                            'https://www.google.com/maps/place/${event.location}',
-                          );
-                        },
-                        avatar: const Icon(Icons.pin_drop_outlined),
-                      ),
+                      if (event.location.isNotEmpty)
+                        ActionChip(
+                          label: const Text('Location'),
+                          onPressed: () {
+                            launchUrlString(
+                              'https://www.google.com/maps/place/${event.location}',
+                            );
+                          },
+                          avatar: const Icon(Icons.pin_drop_outlined),
+                        ),
                       if (event.buttonText.isNotEmpty)
                         ActionChip(
                           label: Text(event.buttonText),
