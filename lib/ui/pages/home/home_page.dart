@@ -54,7 +54,6 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ConstrainedListView(
         children: [
-          // const HeaderWithIllustration(),
           OutlinedCard(
             margin: const EdgeInsets.all(8),
             child: InkWell(
