@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/ui/pages/about/abouts_page.dart';
 import 'package:fuks_app/ui/pages/events/events_page.dart';
+import 'package:fuks_app/ui/pages/kt/kt_page.dart';
 import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
@@ -144,7 +145,7 @@ class _HomePageState extends State<HomePage> {
           OutlinedCard(
             margin: const EdgeInsets.all(8),
             child: InkWell(
-              onTap: () => ProjectsPage.show(context),
+              onTap: () => KTPage.show(context),
               borderRadius: BorderRadius.circular(8),
               child: Padding(
                 padding: const EdgeInsets.all(16),
