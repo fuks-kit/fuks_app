@@ -73,6 +73,15 @@ class EventsBody extends StatelessWidget {
           itemBuilder: (context, index) {
             final event = data[index];
 
+            Widget contactAvatar;
+            if (event.contact.imageUrl.isNotEmpty) {
+              contactAvatar = CircleAvatar(
+                backgroundImage: NetworkImage(event.contact.imageUrl),
+              );
+            } else {
+              contactAvatar = const Icon(Icons.alternate_email_outlined);
+            }
+
             return Container(
               margin: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -122,9 +131,7 @@ class EventsBody extends StatelessWidget {
                         onPressed: () {
                           launchUrlString('mailto:${event.contact.eMail}');
                         },
-                        avatar: CircleAvatar(
-                          backgroundImage: NetworkImage(event.contact.imageUrl),
-                        ),
+                        avatar: contactAvatar,
                       ),
                       if (event.location.isNotEmpty)
                         ActionChip(
