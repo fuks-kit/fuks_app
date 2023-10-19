@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fuks_app/ui/pages/about/abouts_page.dart';
 import 'package:fuks_app/ui/pages/events/events_page.dart';
-import 'package:fuks_app/ui/pages/home/header.dart';
-import 'package:fuks_app/ui/pages/kt/kt_page.dart';
 import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
-import 'package:fuks_app/ui/widgets/fuks_logo.dart';
-import 'package:undraw/illustrations.g.dart';
+import 'package:fuks_app/ui/widgets/outlined_card.dart';
+import 'package:undraw/undraw.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,7 +32,13 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const FuksLogo(),
+        title: const Text(
+          'Willkommen!',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 24,
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.key),
@@ -49,76 +54,123 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ConstrainedListView(
         children: [
-          const HeaderWithIllustration(
-            title: 'Willkommen!',
-            subtitle:
-                'Wir sind studentische Unternehmensberatung fuks e.V. aus Karlsruhe',
-            illustration: UnDrawIllustration.positive_attitude,
-            dimension: 200,
-          ),
-          ListTile(
-            minLeadingWidth: 32,
-            onTap: () => EventsPage.show(context),
-            shape: RoundedRectangleBorder(
+          // const HeaderWithIllustration(),
+          OutlinedCard(
+            margin: const EdgeInsets.all(8),
+            child: InkWell(
+              onTap: () => AboutPage.show(context),
               borderRadius: BorderRadius.circular(8),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Wer sind wir?',
+                      style: titleStyle,
+                    ),
+                    Text(
+                      'fuks e.V. ist eine studentische Unternehmensberatung aus Karlsruhe',
+                      style: subtitleStyle,
+                    ),
+                    UnDraw(
+                      width: 150,
+                      height: 150,
+                      illustration: UnDrawIllustration.together,
+                      color: colorScheme.secondary,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            leading: Icon(
-              Icons.event_outlined,
-              color: colorScheme.primary,
-            ),
-            title: Text(
-              'Events',
-              style: titleStyle,
-            ),
-            subtitle: Text(
-              'Nehm an unseren Events teil und lerne uns kennen',
-              style: subtitleStyle,
-            ),
-            trailing: const Icon(Icons.navigate_next),
           ),
-          const SizedBox(height: 16),
-          ListTile(
-            minLeadingWidth: 32,
-            onTap: () => ProjectsPage.show(context),
-            shape: RoundedRectangleBorder(
+          OutlinedCard(
+            margin: const EdgeInsets.all(8),
+            child: InkWell(
+              onTap: () => EventsPage.show(context),
               borderRadius: BorderRadius.circular(8),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Events',
+                      style: titleStyle,
+                    ),
+                    Text(
+                      'Nehm an unseren Events teil und lerne uns kennen',
+                      style: subtitleStyle,
+                    ),
+                    UnDraw(
+                      width: 150,
+                      height: 150,
+                      illustration: UnDrawIllustration.events,
+                      color: colorScheme.secondary,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            leading: Icon(
-              Icons.work_outline,
-              color: colorScheme.primary,
-            ),
-            title: Text(
-              'Projekte',
-              style: titleStyle,
-            ),
-            subtitle: Text(
-              'Unsere Projekte sind vielfältig und spannend',
-              style: subtitleStyle,
-            ),
-            trailing: const Icon(Icons.navigate_next),
           ),
-          const SizedBox(height: 16),
-          ListTile(
-            minLeadingWidth: 32,
-            onTap: () => KTPage.show(context),
-            shape: RoundedRectangleBorder(
+          OutlinedCard(
+            margin: const EdgeInsets.all(8),
+            child: InkWell(
+              onTap: () => ProjectsPage.show(context),
               borderRadius: BorderRadius.circular(8),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Projekte',
+                      style: titleStyle,
+                    ),
+                    Text(
+                      'Unsere Projekte sind vielfältig und spannend',
+                      style: subtitleStyle,
+                    ),
+                    UnDraw(
+                      width: 150,
+                      height: 150,
+                      illustration: UnDrawIllustration.scrum_board,
+                      color: colorScheme.secondary,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            leading: Icon(
-              Icons.newspaper_outlined,
-              color: colorScheme.primary,
-            ),
-            title: Text(
-              'Karlsruhe Transfer',
-              style: titleStyle,
-            ),
-            subtitle: Text(
-              'Der Karlsruhe Transfer ist ein Magazin für Studierende',
-              style: subtitleStyle,
-            ),
-            trailing: const Icon(Icons.navigate_next),
           ),
-          const SizedBox(height: 16),
+          OutlinedCard(
+            margin: const EdgeInsets.all(8),
+            child: InkWell(
+              onTap: () => ProjectsPage.show(context),
+              borderRadius: BorderRadius.circular(8),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Karlsruhe Transfer',
+                      style: titleStyle,
+                    ),
+                    Text(
+                      'Der Karlsruhe Transfer ist ein Magazin für Studierende',
+                      style: subtitleStyle,
+                    ),
+                    UnDraw(
+                      width: 150,
+                      height: 150,
+                      illustration: UnDrawIllustration.reading,
+                      color: colorScheme.secondary,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
