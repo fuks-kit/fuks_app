@@ -27,6 +27,9 @@ class Event extends $pb.GeneratedMessage {
     ..aOM<$2.Timestamp>(3, _omitFieldNames ? '' : 'date', subBuilder: $2.Timestamp.create)
     ..aOS(4, _omitFieldNames ? '' : 'location')
     ..aOM<Contact>(5, _omitFieldNames ? '' : 'contact', subBuilder: Contact.create)
+    ..aOS(6, _omitFieldNames ? '' : 'label')
+    ..aOS(7, _omitFieldNames ? '' : 'buttonText', protoName: 'buttonText')
+    ..aOS(8, _omitFieldNames ? '' : 'buttonHref', protoName: 'buttonHref')
     ..hasRequiredFields = false
   ;
 
@@ -99,6 +102,33 @@ class Event extends $pb.GeneratedMessage {
   void clearContact() => clearField(5);
   @$pb.TagNumber(5)
   Contact ensureContact() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $core.String get label => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set label($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasLabel() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearLabel() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get buttonText => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set buttonText($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasButtonText() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearButtonText() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get buttonHref => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set buttonHref($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasButtonHref() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearButtonHref() => clearField(8);
 }
 
 class Events extends $pb.GeneratedMessage {
