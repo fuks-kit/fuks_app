@@ -83,10 +83,7 @@ class EventsBody extends StatelessWidget {
             }
 
             return Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 16,
-              ),
+              margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 border: Border.all(
