@@ -135,6 +135,14 @@ class EventsBody extends StatelessWidget {
                         },
                         avatar: const Icon(Icons.pin_drop_outlined),
                       ),
+                      if (event.buttonText.isNotEmpty)
+                        ActionChip(
+                          label: Text(event.buttonText),
+                          onPressed: event.buttonHref.isNotEmpty
+                              ? () => launchUrlString(event.buttonHref)
+                              : null,
+                          avatar: const Icon(Icons.link_outlined),
+                        ),
                     ],
                   ),
                   const SizedBox(height: 16),
