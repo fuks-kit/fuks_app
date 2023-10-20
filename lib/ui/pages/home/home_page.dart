@@ -7,8 +7,8 @@ import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/fuks_logo.dart';
 import 'package:fuks_app/ui/widgets/outlined_card.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:undraw/undraw.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,11 +25,10 @@ class _HomePageState extends State<HomePage> {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final titleStyle = textTheme.titleLarge?.copyWith(
+    final titleStyle = textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.w700,
     );
-    final subtitleStyle =
-        textTheme.bodyMedium?.merge(GoogleFonts.robotoCondensed(
+    final subtitleStyle = textTheme.bodySmall?.merge(TextStyle(
       color: colorScheme.outline,
     ));
 
@@ -55,9 +54,9 @@ class _HomePageState extends State<HomePage> {
             borderColor: colorScheme.primary,
             margin: const EdgeInsets.all(8),
             child: ListTile(
-              onTap: () {},
+              onTap: () => launchUrlString('https://fuks.org'),
               title: Text(
-                'Mehr über uns',
+                'Mehr über fuks',
                 style: textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
