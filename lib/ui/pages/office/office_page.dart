@@ -49,16 +49,6 @@ class _OfficePageState extends State<OfficePage> {
 
   @override
   Widget build(BuildContext context) {
-    final actions = <Widget>[
-      // IconButton(
-      //   icon: const Icon(Icons.settings),
-      //   tooltip: 'Settings',
-      //   onPressed: () {
-      //     SettingsPage.show(context);
-      //   },
-      // ),
-    ];
-
     return FutureBuilder<OfficePermission>(
       future: _request,
       builder: (context, snap) {
@@ -88,7 +78,6 @@ class _OfficePageState extends State<OfficePage> {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Office Access'),
-            actions: actions,
           ),
           body: body,
         );
