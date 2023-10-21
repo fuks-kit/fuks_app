@@ -5,7 +5,9 @@ import 'package:fuks_app/generated/app_services/services.pb.dart';
 import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
+import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:intl/intl.dart';
+import 'package:undraw/illustrations.g.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 final _dateFormat = DateFormat('dd.MM.yyyy kk:mm');
@@ -64,7 +66,10 @@ class EventsBody extends StatelessWidget {
 
         if (data.isEmpty) {
           return const Center(
-            child: Text('No data'),
+            child: TextIllustration(
+              illustration: UnDrawIllustration.void_,
+              text: 'No events',
+            ),
           );
         }
 
