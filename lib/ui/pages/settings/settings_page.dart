@@ -23,8 +23,8 @@ class SettingsPage extends StatelessWidget {
 
   void _onSignOut(BuildContext context) => ConfirmDialog.show(
         context,
-        title: 'Sign out',
-        content: 'Are you sure you want to sign out?',
+        title: 'Abmelden',
+        content: 'Bist du sicher, dass du dich abmelden möchten?',
         onConfirm: () {
           if (_auth.currentUser?.isAnonymous ?? true) {
             _auth.currentUser?.delete();
@@ -36,8 +36,8 @@ class SettingsPage extends StatelessWidget {
 
   void _onDeleteAccount(BuildContext context) => ConfirmDialog.show(
         context,
-        title: 'Delete account',
-        content: 'Are you sure you want to delete your account?',
+        title: 'Account löschen',
+        content: 'Bist du sicher, dass du dein Konto löschen möchten?',
         onConfirm: () async {
           final user = FirebaseAuth.instance.currentUser;
           if (user == null) {
@@ -77,7 +77,7 @@ class SettingsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: const Text('Einstellungen'),
       ),
       body: ConstrainedListView(
         maxWidth: 600,
@@ -97,7 +97,7 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const AccountAvatar(),
             title: Text(
-              'User ID',
+              'Benutzer-ID',
               style: titleStyle,
             ),
             subtitle: Text(
@@ -112,7 +112,7 @@ class SettingsPage extends StatelessWidget {
 
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('User ID copied to clipboard'),
+                  content: Text('Benutzer-ID kopiert'),
                 ),
               );
             },
@@ -122,12 +122,8 @@ class SettingsPage extends StatelessWidget {
               minLeadingWidth: 32,
               leading: const Icon(Icons.logout),
               title: Text(
-                'Sign out',
+                'Abmelden',
                 style: titleStyle,
-              ),
-              subtitle: Text(
-                'Sign out from your account',
-                style: subtitleStyle,
               ),
               onTap: () => _onSignOut(context),
             ),
@@ -135,12 +131,8 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const Icon(Icons.delete),
             title: Text(
-              'Delete Account',
+              'Account löschen',
               style: titleStyle,
-            ),
-            subtitle: Text(
-              'This action is irreversible',
-              style: subtitleStyle,
             ),
             onTap: () => _onDeleteAccount(context),
           ),
@@ -172,12 +164,8 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const Icon(Icons.policy),
             title: Text(
-              'Terms and Conditions',
+              'Nutzungsbedingungen',
               style: titleStyle,
-            ),
-            subtitle: Text(
-              'Read our terms of service',
-              style: subtitleStyle,
             ),
             onTap: () => showTermsAndConditions(),
           ),
@@ -185,12 +173,8 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const Icon(Icons.privacy_tip),
             title: Text(
-              'Privacy Policy',
+              'Datenschutzrichtlinie',
               style: titleStyle,
-            ),
-            subtitle: Text(
-              'Read our privacy policy',
-              style: subtitleStyle,
             ),
             onTap: () => showPrivacyPolicy(),
           ),
@@ -198,12 +182,8 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const Icon(Icons.code),
             title: Text(
-              'Licenses',
+              'Lizenzen',
               style: titleStyle,
-            ),
-            subtitle: Text(
-              'View open source licenses',
-              style: subtitleStyle,
             ),
             onTap: () => showLicensePage(
               context: context,
