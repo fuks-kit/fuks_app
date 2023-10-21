@@ -68,7 +68,7 @@ class EventsBody extends StatelessWidget {
           return const Center(
             child: TextIllustration(
               illustration: UnDrawIllustration.void_,
-              text: 'No events',
+              text: 'Gerade sind keine Events vorhanden',
             ),
           );
         }
