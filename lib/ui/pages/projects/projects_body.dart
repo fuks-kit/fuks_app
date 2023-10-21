@@ -5,6 +5,8 @@ import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
+import 'package:fuks_app/ui/widgets/illustration.dart';
+import 'package:undraw/undraw.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({super.key});
@@ -55,7 +57,12 @@ class ProjectsBody extends StatelessWidget {
         final data = snap.data?.items ?? <Project>[];
 
         if (data.isEmpty) {
-          return const Text('No data');
+          return const Center(
+            child: TextIllustration(
+              illustration: UnDrawIllustration.void_,
+              text: 'Gerade sind keine Projekte vorhanden',
+            ),
+          );
         }
 
         return ConstrainedListViewBuilder(
