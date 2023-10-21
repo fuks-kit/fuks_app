@@ -4,6 +4,8 @@ import 'package:fuks_app/generated/app_services/services.pb.dart';
 import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
+import 'package:fuks_app/ui/widgets/illustration.dart';
+import 'package:undraw/undraw.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class KTPage extends StatelessWidget {
@@ -55,7 +57,12 @@ class KTBody extends StatelessWidget {
         final data = snap.data?.items ?? <KarlsruherTransfer>[];
 
         if (data.isEmpty) {
-          return const Text('No data');
+          return const Center(
+            child: TextIllustration(
+              illustration: UnDrawIllustration.void_,
+              text: 'Gerade sind keine Karlsruher Transfers verfügbar',
+            ),
+          );
         }
 
         return ConstrainedListViewBuilder(
