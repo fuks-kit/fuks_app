@@ -42,7 +42,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
         ),
         const SizedBox(height: 60),
         Text(
-          'No connection',
+          'Keine Verbindung',
           textAlign: TextAlign.center,
           style: textStyle.headlineSmall?.merge(const TextStyle(
             fontWeight: FontWeight.w500,
@@ -56,16 +56,16 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
             )),
             children: const [
               TextSpan(
-                text: 'Connect to the ',
+                text: 'Verbinde dich mit dem ',
               ),
               TextSpan(
-                text: '"fuks" Wi-Fi',
+                text: '"fuks" WLAN',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               TextSpan(
-                text: ' to access the doorman system',
+                text: ' um Zugang zu erhalten',
               ),
             ],
           ),
@@ -87,7 +87,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
                   }
                 },
                 icon: const Icon(Icons.wifi),
-                label: const Text('Check Wi-Fi'),
+                label: const Text('WLAN Überprüfen'),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: colorScheme.secondary,
                 ),
@@ -114,7 +114,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
                       ),
                     )
                   : const Icon(Icons.refresh),
-              label: const Text('Try Again'),
+              label: const Text('Wiederholen'),
               style: TextButton.styleFrom(
                 foregroundColor: colorScheme.onSecondary,
                 backgroundColor: colorScheme.secondary,

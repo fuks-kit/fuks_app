@@ -48,7 +48,7 @@ class _AccessBodyState extends State<AccessBody> {
         ),
         const SizedBox(height: 60),
         Text(
-          'You can open the door!',
+          'Du kannst die Tür öffnen!',
           textAlign: TextAlign.center,
           style: textStyle.headlineSmall?.merge(const TextStyle(
             fontWeight: FontWeight.w500,
@@ -56,7 +56,7 @@ class _AccessBodyState extends State<AccessBody> {
         ),
         const SizedBox(height: 8),
         Text(
-          'You must be on the fuks WiFi network to open the door',
+          'Um die Tür zu öffnen, müssen du dich im Fuks-WLAN-Netzwerk befinden',
           textAlign: TextAlign.center,
           style: textStyle.bodyMedium?.merge(TextStyle(
             color: colorScheme.outline,

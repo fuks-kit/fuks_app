@@ -32,8 +32,8 @@ class _OfficePageState extends State<OfficePage> {
     // mockObj.hasAccess = false;
     // mockObj.isFuksMember = true;
     // mockObj.isActiveFuks = false;
-    //
     // _request = Future(() => mockObj);
+
     // _request = Future.error(const GrpcError.unavailable());
 
     _request = doorman.checkPermissions();
@@ -77,7 +77,7 @@ class _OfficePageState extends State<OfficePage> {
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Office Access'),
+            title: const Text('Büro Zugang'),
           ),
           body: body,
         );
