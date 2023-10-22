@@ -51,17 +51,15 @@ class _HomePageState extends State<HomePage> {
       body: ConstrainedListView(
         children: [
           OutlinedCard(
-            borderColor: colorScheme.outlineVariant,
+            borderColor: colorScheme.primary,
             margin: const EdgeInsets.all(8),
             child: ListTile(
               onTap: () => launchUrlString('https://fuks.org'),
               title: Text(
                 'Mehr über fuks',
-                style: titleStyle,
-              ),
-              subtitle: Text(
-                'fuks ist eine studentische Unternehmensberatung am KIT',
-                style: subtitleStyle,
+                style: textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
