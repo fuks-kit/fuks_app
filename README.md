@@ -33,7 +33,7 @@ Prepare a new release by following these steps:
 
 ```shell
 # Pull the latest changes
-git pull
+git pull origin release
 
 # Make sure you are on the release branch
 git checkout release
