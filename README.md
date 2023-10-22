@@ -20,7 +20,7 @@ lib                           # All dart source code
 Prepare a new release by following these steps:
 
 1. Update the changelog in `CHANGELOG.md`
-2. Update dependencies with `fullter pub upgrade`
+2. Update dependencies with `flutter pub upgrade`
 3. Update the version and build number in `pubspec.yaml`
 4. Update version in `lib/ui/pages/settings/settings_page.dart`
 5. Push all changes to `main` branch with `git push`
