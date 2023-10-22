@@ -87,3 +87,14 @@ git checkout main
 
 A new release is automatically created when the `main` and `release` branches are merged. XCode
 Cloud will automatically create a new release and upload the app to the App Store.
+
+## Terms and conditions
+
+The app's terms and conditions are located in the `terms_and_conditions` folder. These terms and
+conditions must be acknowledged and accepted by users prior to using the app. Similarly, users are
+also required to accept the app's privacy policy. Additionally, both the terms and conditions and
+the privacy policy are readily available through direct links in the App Store and Play Store.
+
+The `terms_and_conditions` folder contains a firebase web app that can publish the terms and privacy
+policy to the web. Updates the can be published by running `firebase deploy` in
+the `terms_and_conditions` folder.
