@@ -22,6 +22,9 @@ const Event$json = {
     {'1': 'date', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'date'},
     {'1': 'location', '3': 4, '4': 1, '5': 9, '10': 'location'},
     {'1': 'contact', '3': 5, '4': 1, '5': 11, '6': '.endpoints.fcs.v1.Contact', '10': 'contact'},
+    {'1': 'label', '3': 6, '4': 1, '5': 9, '10': 'label'},
+    {'1': 'buttonText', '3': 7, '4': 1, '5': 9, '10': 'buttonText'},
+    {'1': 'buttonHref', '3': 8, '4': 1, '5': 9, '10': 'buttonHref'},
   ],
 };
 
@@ -30,7 +33,8 @@ final $typed_data.Uint8List eventDescriptor = $convert.base64Decode(
     'CgVFdmVudBIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSGgoIc3VidGl0bGUYAiABKAlSCHN1YnRpdG'
     'xlEi4KBGRhdGUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgRkYXRlEhoKCGxv'
     'Y2F0aW9uGAQgASgJUghsb2NhdGlvbhIzCgdjb250YWN0GAUgASgLMhkuZW5kcG9pbnRzLmZjcy'
-    '52MS5Db250YWN0Ugdjb250YWN0');
+    '52MS5Db250YWN0Ugdjb250YWN0EhQKBWxhYmVsGAYgASgJUgVsYWJlbBIeCgpidXR0b25UZXh0'
+    'GAcgASgJUgpidXR0b25UZXh0Eh4KCmJ1dHRvbkhyZWYYCCABKAlSCmJ1dHRvbkhyZWY=');
 
 @$core.Deprecated('Use eventsDescriptor instead')
 const Events$json = {

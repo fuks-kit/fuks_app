@@ -7,8 +7,9 @@ import 'package:fuks_app/ui/pages/settings/account_avatar.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/utils/authenticate.dart';
 import 'package:fuks_app/utils/terms_and_privacy.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-const _version = '1.2.0';
+const _version = '1.2.1';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -22,8 +23,8 @@ class SettingsPage extends StatelessWidget {
 
   void _onSignOut(BuildContext context) => ConfirmDialog.show(
         context,
-        title: 'Sign out',
-        content: 'Are you sure you want to sign out?',
+        title: 'Abmelden',
+        content: 'Bist du sicher, dass du dich abmelden möchten?',
         onConfirm: () {
           if (_auth.currentUser?.isAnonymous ?? true) {
             _auth.currentUser?.delete();
@@ -35,8 +36,8 @@ class SettingsPage extends StatelessWidget {
 
   void _onDeleteAccount(BuildContext context) => ConfirmDialog.show(
         context,
-        title: 'Delete account',
-        content: 'Are you sure you want to delete your account?',
+        title: 'Account löschen',
+        content: 'Bist du sicher, dass du dein Konto löschen möchten?',
         onConfirm: () async {
           final user = FirebaseAuth.instance.currentUser;
           if (user == null) {
@@ -76,7 +77,7 @@ class SettingsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: const Text('Einstellungen'),
       ),
       body: ConstrainedListView(
         maxWidth: 600,
@@ -96,7 +97,7 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const AccountAvatar(),
             title: Text(
-              'User ID',
+              'Benutzer-ID',
               style: titleStyle,
             ),
             subtitle: Text(
@@ -111,7 +112,7 @@ class SettingsPage extends StatelessWidget {
 
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('User ID copied to clipboard'),
+                  content: Text('Benutzer-ID kopiert'),
                 ),
               );
             },
@@ -121,12 +122,8 @@ class SettingsPage extends StatelessWidget {
               minLeadingWidth: 32,
               leading: const Icon(Icons.logout),
               title: Text(
-                'Sign out',
+                'Abmelden',
                 style: titleStyle,
-              ),
-              subtitle: Text(
-                'Sign out from your account',
-                style: subtitleStyle,
               ),
               onTap: () => _onSignOut(context),
             ),
@@ -134,12 +131,8 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const Icon(Icons.delete),
             title: Text(
-              'Delete Account',
+              'Account löschen',
               style: titleStyle,
-            ),
-            subtitle: Text(
-              'This action is irreversible',
-              style: subtitleStyle,
             ),
             onTap: () => _onDeleteAccount(context),
           ),
@@ -156,50 +149,41 @@ class SettingsPage extends StatelessWidget {
           ),
           ListTile(
             minLeadingWidth: 32,
-            leading: const Icon(Icons.policy),
+            leading: const Icon(Icons.email),
             title: Text(
-              'Terms and Conditions',
+              'Kontakt',
               style: titleStyle,
             ),
             subtitle: Text(
-              'Read our terms of service',
+              'kontakt@fuks.org',
               style: subtitleStyle,
             ),
+            onTap: () => launchUrlString('mailto:kontakt@fuks.org'),
+          ),
+          ListTile(
+            minLeadingWidth: 32,
+            leading: const Icon(Icons.policy),
+            title: Text(
+              'Nutzungsbedingungen',
+              style: titleStyle,
+            ),
             onTap: () => showTermsAndConditions(),
-            // trailing: Icon(
-            //   Icons.open_in_browser,
-            //   // size: 12,
-            //   color: color.outline,
-            // ),
           ),
           ListTile(
             minLeadingWidth: 32,
             leading: const Icon(Icons.privacy_tip),
             title: Text(
-              'Privacy Policy',
+              'Datenschutzrichtlinie',
               style: titleStyle,
             ),
-            subtitle: Text(
-              'Read our privacy policy',
-              style: subtitleStyle,
-            ),
             onTap: () => showPrivacyPolicy(),
-            // trailing: Icon(
-            //   Icons.open_in_browser,
-            //   // size: 12,
-            //   color: color.outline,
-            // ),
           ),
           ListTile(
             minLeadingWidth: 32,
             leading: const Icon(Icons.code),
             title: Text(
-              'Licenses',
+              'Lizenzen',
               style: titleStyle,
-            ),
-            subtitle: Text(
-              'View open source licenses',
-              style: subtitleStyle,
             ),
             onTap: () => showLicensePage(
               context: context,

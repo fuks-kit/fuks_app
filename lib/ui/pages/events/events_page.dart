@@ -5,7 +5,9 @@ import 'package:fuks_app/generated/app_services/services.pb.dart';
 import 'package:fuks_app/services/fuks_cloud.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
+import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:intl/intl.dart';
+import 'package:undraw/illustrations.g.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 final _dateFormat = DateFormat('dd.MM.yyyy kk:mm');
@@ -64,7 +66,10 @@ class EventsBody extends StatelessWidget {
 
         if (data.isEmpty) {
           return const Center(
-            child: Text('No data'),
+            child: TextIllustration(
+              illustration: UnDrawIllustration.void_,
+              text: 'Gerade sind keine Events vorhanden',
+            ),
           );
         }
 
@@ -73,11 +78,17 @@ class EventsBody extends StatelessWidget {
           itemBuilder: (context, index) {
             final event = data[index];
 
+            Widget contactAvatar;
+            if (event.contact.imageUrl.isNotEmpty) {
+              contactAvatar = CircleAvatar(
+                backgroundImage: NetworkImage(event.contact.imageUrl),
+              );
+            } else {
+              contactAvatar = const Icon(Icons.alternate_email_outlined);
+            }
+
             return Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 16,
-              ),
+              margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 border: Border.all(
@@ -90,6 +101,14 @@ class EventsBody extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  if (event.label.isNotEmpty)
+                    Text(
+                      event.label,
+                      style: textTheme.bodySmall?.copyWith(
+                        color: colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   Text(
                     event.title,
                     style: titleStyle,
@@ -114,30 +133,38 @@ class EventsBody extends StatelessWidget {
                         onPressed: () {
                           launchUrlString('mailto:${event.contact.eMail}');
                         },
-                        avatar: CircleAvatar(
-                          backgroundImage: NetworkImage(event.contact.imageUrl),
+                        avatar: contactAvatar,
+                      ),
+                      if (event.location.isNotEmpty)
+                        ActionChip(
+                          label: const Text('Location'),
+                          onPressed: () {
+                            launchUrlString(
+                              'https://www.google.com/maps/place/${event.location}',
+                            );
+                          },
+                          avatar: const Icon(Icons.pin_drop_outlined),
                         ),
-                      ),
-                      ActionChip(
-                        label: const Text('Location'),
-                        onPressed: () {
-                          launchUrlString(
-                            'https://www.google.com/maps/place/${event.location}',
-                          );
-                        },
-                        avatar: const Icon(Icons.pin_drop_outlined),
-                      ),
+                      if (event.buttonText.isNotEmpty)
+                        ActionChip(
+                          label: Text(event.buttonText),
+                          onPressed: event.buttonHref.isNotEmpty
+                              ? () => launchUrlString(event.buttonHref)
+                              : null,
+                          avatar: const Icon(Icons.link_outlined),
+                        ),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  MarkdownBody(
-                    data: event.subtitle,
-                    styleSheet: MarkdownStyleSheet(
-                      p: subtitleStyle,
-                      listBullet: subtitleStyle,
-                      listIndent: 20,
+                  if (event.subtitle.isNotEmpty) const SizedBox(height: 16),
+                  if (event.subtitle.isNotEmpty)
+                    MarkdownBody(
+                      data: event.subtitle,
+                      styleSheet: MarkdownStyleSheet(
+                        p: subtitleStyle,
+                        listBullet: subtitleStyle,
+                        listIndent: 20,
+                      ),
                     ),
-                  ),
                 ],
               ),
             );

@@ -19,11 +19,11 @@ lib                           # All dart source code
 
 Prepare a new release by following these steps:
 
-1. Push all changes to `main` branch with `git push`
+1. Update the changelog in `CHANGELOG.md`
 2. Update the version and build number in `pubspec.yaml`
 3. Update version in `lib/ui/pages/settings/settings_page.dart`
-4. Update dependencies with `fullter pub upgrade`
-5. Update the changelog in `CHANGELOG.md`
+4. Update dependencies with `flutter pub upgrade`
+5. Push all changes to `main` branch with `git push`
 6. Create a new git tag:
     1. `git tag -a vX.X.X -m "Release vX.X.X"`
     2. `git push origin vX.X.X`
@@ -32,14 +32,14 @@ Prepare a new release by following these steps:
 ### Deploy a new Android release
 
 ```shell
+# Pull the latest changes
+git pull
+
 # Make sure you are on the release branch
 git checkout release
 
 # Reset the branch to the latest commit
 git reset --hard
-
-# Pull the latest changes
-git pull
 
 # Clean up the build files
 flutter clean

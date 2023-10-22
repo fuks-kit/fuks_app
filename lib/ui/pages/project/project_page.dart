@@ -41,6 +41,17 @@ class _ProjectPage extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
+    Widget managerAvatar;
+    if (project.manager.imageUrl.isNotEmpty) {
+      managerAvatar = CircleAvatar(
+        backgroundImage: NetworkImage(project.manager.imageUrl),
+      );
+    } else {
+      managerAvatar = const CircleAvatar(
+        child: Icon(Icons.person),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(),
       body: ConstrainedListView(
@@ -55,9 +66,7 @@ class _ProjectPage extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(project.manager.imageUrl),
-            ),
+            leading: managerAvatar,
             title: Text(
               project.manager.name,
               style: textTheme.titleMedium,

@@ -22,11 +22,10 @@ class NoAccess extends StatelessWidget {
 
     String message;
     if (permission.isFuksMember) {
-      message =
-          'Once you become an active member, signing in with your fuks account will grant you access to the office';
+      message = 'Sobald du aktives Mitglied wirst, erhältst du Zugang zum Büro';
     } else {
       message =
-          'If you are a VWI member, please give your board your User ID to get access to the office';
+          'Wenn du VWI-Mitglied bist, gib bitte deinem Vorstand deine Benutzer-ID, um Zugang zum Büro zu erhalten';
     }
 
     return ConstrainedListView(
@@ -43,7 +42,7 @@ class NoAccess extends StatelessWidget {
         ),
         const SizedBox(height: 60),
         Text(
-          'You don\'t have access!',
+          'Du hast keinen Zugang!',
           textAlign: TextAlign.center,
           style: textStyle.headlineSmall?.merge(const TextStyle(
             fontWeight: FontWeight.w500,
@@ -76,7 +75,7 @@ class NoAccess extends StatelessWidget {
                   // SnackBar to notify user
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('User ID copied to clipboard'),
+                      content: Text('Benutzer-ID wurde in die Zwischenablage kopiert'),
                     ),
                   );
                 },
@@ -84,7 +83,7 @@ class NoAccess extends StatelessWidget {
                   foregroundColor: colorScheme.secondary,
                 ),
                 icon: const Icon(Icons.copy),
-                label: const Text('User ID'),
+                label: const Text('Benutzer-ID'),
               ),
             FilledButton.icon(
               onPressed: () {
@@ -95,7 +94,7 @@ class NoAccess extends StatelessWidget {
                 backgroundColor: colorScheme.secondary,
               ),
               icon: const Icon(Icons.refresh),
-              label: const Text('Try Again'),
+              label: const Text('Wiederholen'),
             ),
           ],
         ),
