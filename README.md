@@ -48,7 +48,11 @@ Prepare a new release by following these steps:
 6. Create a new git tag:
     1. `git tag -a vX.X.X -m "Release vX.X.X"`
     2. `git push origin vX.X.X`
-7. Merge `main` branch into `release` branch
+7. Merge `main` branch into `release` branch on GitHub:
+    1. Go to https://github.com/fuks-kit/fuks_app/tree/release
+    2. Click on `This branch is ..., X commits behind main`
+    3. Click on `Create pull request`
+    4. Click on `Merge pull request`
 
 ### Deploy a new Android release
 
