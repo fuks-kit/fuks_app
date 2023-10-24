@@ -32,6 +32,21 @@ e.V.
 
 ```
 
+## Services
+
+This app uses various services to provide data to the UI components. The services are located in
+the `lib/services` folder. The services using [gRPC](https://grpc.io/) to communicate with the
+backend. The gRPC services are generated automatically and can be found in the `lib/generated`.
+**When the backend proto definitions changes, the gRPC services must be regenerated.** To regenerate
+the gRPC services, please take a look at the specific repository of the backend service.
+
+The backend implementation of these services can be found here:
+
+* **[App Services](https://github.com/fuks-kit/app_services):** The app services fetch data from
+  Google Workspace and provide it to the app.
+* **[Doorman](https://github.com/fuks-kit/doorman)**: The doorman service connects the door system
+  in the fuks office to open the door.
+
 ## Deploy a new release
 
 To deploy a new release you need access to App Store Connect and Google Play Console. Patrick
