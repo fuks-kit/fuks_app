@@ -74,7 +74,11 @@ flutter clean
 flutter build appbundle
 
 # Upload the generated app bundle to the Play Console
-# https://play.google.com/console/
+# 1. Go to https://play.google.com/console/
+# 2. Select fuks app
+# 3. Go to Release > App bundle explorer
+# 4. Click on "Upload new version"
+# 5. Select the generated app bundle
 
 # Clean up the build files
 flutter clean
