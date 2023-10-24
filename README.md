@@ -34,6 +34,11 @@ e.V.
 
 ## Deploy a new release
 
+To deploy a new release you need access to App Store Connect and Google Play Console. Patrick
+Zierahn (patrick.zierahn@fuks.org) can grant you access to both.
+
+### Prepare a new release
+
 Prepare a new release by following these steps:
 
 1. Update flutter version to the newest version: `flutter upgrade`
@@ -110,9 +115,6 @@ create a new release, follow these steps:
 
 After theses steps are completed, the new version will be available in the App Store within a few
 hours.
-
-> Note: If you don't have access to App Store Connect, conntact patrick.zierahn@fuks or
-> joris.briegel@fuks.org.
 
 ## Terms and conditions
 
