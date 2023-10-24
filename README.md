@@ -55,7 +55,7 @@ Prepare a new release by following these steps:
     3. Click on `Create pull request`
     4. Click on `Merge pull request`
 
-### Deploy a new Android release
+### Upload a new Android release to the Play Store
 
 ```shell
 # Pull the latest changes of the release branch
@@ -84,10 +84,31 @@ git checkout main
 
 ```
 
-### Deploy a new iOS release
+### Upload a new iOS release to the App Store
 
 A new release is automatically created when the `main` and `release` branches are merged. XCode
 Cloud will automatically create a new release and upload the app to the App Store.
+
+### Release a new iOS version
+
+All iOS releases are managed through [App Store Connect](https://appstoreconnect.apple.com/). To
+create a new release, follow these steps:
+
+1. Check if the latest version build was successfully
+    1. Go to Apps > fuks > Xcode Cloud
+    2. Check if latest build was successful
+2. To release the newest version to the public:
+    1. Go to App Store > iOS Version
+    2. Update version name
+    3. (Optional) Update text and screenshots
+    4. Scroll to Build and replace old version with new version
+    5. Save and submit for review
+
+After theses steps are completed, the new version will be available in the App Store within a few
+hours.
+
+> Note: If you don't have access to App Store Connect, conntact patrick.zierahn@fuks or
+> joris.briegel@fuks.org.
 
 ## Terms and conditions
 
