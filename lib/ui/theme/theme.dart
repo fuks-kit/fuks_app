@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const fuksColor = Color(0xffEB5E28);
-const _seedColor = Colors.blue;
+const _seedColor = fuksColor;
 
 final _colorsLight = ColorScheme.fromSeed(
   brightness: Brightness.light,
@@ -11,11 +12,19 @@ final _colorsLight = ColorScheme.fromSeed(
   surface: Colors.white,
   onSurface: Colors.black,
   surfaceTint: Colors.white,
+  primary: fuksColor,
+  outline: Colors.grey[700],
+  outlineVariant: Colors.grey[400],
+  secondary: fuksColor,
 );
 
 final _colorsDark = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   seedColor: _seedColor,
+  primary: fuksColor,
+  onPrimary: Colors.white,
+  secondary: fuksColor,
+  onSecondary: Colors.white,
 );
 
 const _listTileTheme = ListTileThemeData(
@@ -48,6 +57,7 @@ final fuksThemeLight = ThemeData(
       style: BorderStyle.none,
     ),
   ),
+  textTheme: GoogleFonts.montserratTextTheme(),
 );
 
 final fuksThemeDark = ThemeData(
@@ -74,4 +84,21 @@ final fuksThemeDark = ThemeData(
       style: BorderStyle.none,
     ),
   ),
+  textTheme: GoogleFonts.montserratTextTheme(TextTheme(
+    displayLarge: TextStyle(color: _colorsDark.onBackground),
+    displayMedium: TextStyle(color: _colorsDark.onBackground),
+    displaySmall: TextStyle(color: _colorsDark.onBackground),
+    headlineLarge: TextStyle(color: _colorsDark.onBackground),
+    headlineMedium: TextStyle(color: _colorsDark.onBackground),
+    headlineSmall: TextStyle(color: _colorsDark.onBackground),
+    titleLarge: TextStyle(color: _colorsDark.onBackground),
+    titleMedium: TextStyle(color: _colorsDark.onBackground),
+    titleSmall: TextStyle(color: _colorsDark.onBackground),
+    bodyLarge: TextStyle(color: _colorsDark.onBackground),
+    bodyMedium: TextStyle(color: _colorsDark.onBackground),
+    bodySmall: TextStyle(color: _colorsDark.onBackground),
+    labelLarge: TextStyle(color: _colorsDark.onBackground),
+    labelMedium: TextStyle(color: _colorsDark.onBackground),
+    labelSmall: TextStyle(color: _colorsDark.onBackground),
+  )),
 );
