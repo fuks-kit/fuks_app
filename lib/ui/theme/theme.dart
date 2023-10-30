@@ -42,6 +42,11 @@ final fuksThemeLight = ThemeData(
     scrolledUnderElevation: 2,
     shadowColor: _colorsLight.shadow,
   ),
+  iconButtonTheme: IconButtonThemeData(
+    style: IconButton.styleFrom(
+      foregroundColor: _colorsLight.onBackground,
+    ),
+  ),
   listTileTheme: _listTileTheme,
   chipTheme: ChipThemeData(
     backgroundColor: _colorsLight.primaryContainer,
