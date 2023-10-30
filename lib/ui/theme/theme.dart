@@ -62,7 +62,34 @@ final fuksThemeLight = ThemeData(
       style: BorderStyle.none,
     ),
   ),
-  textTheme: GoogleFonts.montserratTextTheme(),
+  textTheme: GoogleFonts.montserratTextTheme(
+    TextTheme(
+      displayLarge: TextStyle(color: _colorsLight.onBackground),
+      displayMedium: TextStyle(color: _colorsLight.onBackground),
+      displaySmall: TextStyle(color: _colorsLight.onBackground),
+      headlineLarge: TextStyle(color: _colorsLight.onBackground),
+      headlineMedium: TextStyle(color: _colorsLight.onBackground),
+      headlineSmall: TextStyle(color: _colorsLight.onBackground),
+      titleLarge: TextStyle(
+        color: _colorsLight.onBackground,
+        fontWeight: FontWeight.w600,
+      ),
+      titleMedium: TextStyle(
+        color: _colorsLight.onBackground,
+        fontWeight: FontWeight.w600,
+      ),
+      titleSmall: TextStyle(
+        color: _colorsLight.onBackground,
+        fontWeight: FontWeight.w600,
+      ),
+      bodyLarge: TextStyle(color: _colorsLight.onBackground),
+      bodyMedium: TextStyle(color: _colorsLight.onBackground),
+      bodySmall: TextStyle(color: _colorsLight.onBackground),
+      labelLarge: TextStyle(color: _colorsLight.onBackground),
+      labelMedium: TextStyle(color: _colorsLight.onBackground),
+      labelSmall: TextStyle(color: _colorsLight.onBackground),
+    ),
+  ),
 );
 
 final fuksThemeDark = ThemeData(
@@ -89,21 +116,32 @@ final fuksThemeDark = ThemeData(
       style: BorderStyle.none,
     ),
   ),
-  textTheme: GoogleFonts.montserratTextTheme(TextTheme(
-    displayLarge: TextStyle(color: _colorsDark.onBackground),
-    displayMedium: TextStyle(color: _colorsDark.onBackground),
-    displaySmall: TextStyle(color: _colorsDark.onBackground),
-    headlineLarge: TextStyle(color: _colorsDark.onBackground),
-    headlineMedium: TextStyle(color: _colorsDark.onBackground),
-    headlineSmall: TextStyle(color: _colorsDark.onBackground),
-    titleLarge: TextStyle(color: _colorsDark.onBackground),
-    titleMedium: TextStyle(color: _colorsDark.onBackground),
-    titleSmall: TextStyle(color: _colorsDark.onBackground),
-    bodyLarge: TextStyle(color: _colorsDark.onBackground),
-    bodyMedium: TextStyle(color: _colorsDark.onBackground),
-    bodySmall: TextStyle(color: _colorsDark.onBackground),
-    labelLarge: TextStyle(color: _colorsDark.onBackground),
-    labelMedium: TextStyle(color: _colorsDark.onBackground),
-    labelSmall: TextStyle(color: _colorsDark.onBackground),
-  )),
+  textTheme: GoogleFonts.montserratTextTheme(
+    TextTheme(
+      displayLarge: TextStyle(color: _colorsDark.onBackground),
+      displayMedium: TextStyle(color: _colorsDark.onBackground),
+      displaySmall: TextStyle(color: _colorsDark.onBackground),
+      headlineLarge: TextStyle(color: _colorsDark.onBackground),
+      headlineMedium: TextStyle(color: _colorsDark.onBackground),
+      headlineSmall: TextStyle(color: _colorsDark.onBackground),
+      titleLarge: TextStyle(
+        color: _colorsDark.onBackground,
+        fontWeight: FontWeight.w600,
+      ),
+      titleMedium: TextStyle(
+        color: _colorsDark.onBackground,
+        fontWeight: FontWeight.w600,
+      ),
+      titleSmall: TextStyle(
+        color: _colorsDark.onBackground,
+        fontWeight: FontWeight.w600,
+      ),
+      bodyLarge: TextStyle(color: _colorsDark.onBackground),
+      bodyMedium: TextStyle(color: _colorsDark.onBackground),
+      bodySmall: TextStyle(color: _colorsDark.onBackground),
+      labelLarge: TextStyle(color: _colorsDark.onBackground),
+      labelMedium: TextStyle(color: _colorsDark.onBackground),
+      labelSmall: TextStyle(color: _colorsDark.onBackground),
+    ),
+  ),
 );
