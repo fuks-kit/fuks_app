@@ -125,6 +125,7 @@ class EventsBody extends StatelessWidget {
                   const SizedBox(height: 16),
                   Wrap(
                     alignment: WrapAlignment.start,
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     spacing: 8,
                     runSpacing: 8,
                     children: [
@@ -147,12 +148,11 @@ class EventsBody extends StatelessWidget {
                           icon: const Icon(Icons.pin_drop_outlined),
                         ),
                       if (event.buttonText.isNotEmpty)
-                        IconButton.filledTonal(
-                          tooltip: event.buttonText,
+                        FilledButton.tonal(
                           onPressed: event.buttonHref.isNotEmpty
                               ? () => launchUrlString(event.buttonHref)
                               : null,
-                          icon: const Icon(Icons.link_outlined),
+                          child: Text(event.buttonText),
                         ),
                     ],
                   ),
