@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fix
+
+- Increase timeout for doorman connection
+
 ### Added
 
 - Added fuks colors and fonts
