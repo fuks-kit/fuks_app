@@ -40,7 +40,7 @@ class DoormanServiceWithToken {
     }
 
     return CallOptions(
-      timeout: const Duration(seconds: 4),
+      timeout: const Duration(seconds: 5),
       metadata: {
         "Authorization": "Bearer $token",
       },
