@@ -36,7 +36,7 @@ class KTBody extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final titleStyle = textTheme.titleSmall?.copyWith(
+    final titleStyle = textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.w600,
     );
     final subtitleStyle = textTheme.bodySmall;

@@ -37,7 +37,7 @@ class ProjectsBody extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     final titleStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w600,
     );
 
     return FutureBuilder<Projects>(

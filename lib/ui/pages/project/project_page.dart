@@ -69,7 +69,9 @@ class _ProjectPage extends StatelessWidget {
             leading: managerAvatar,
             title: Text(
               project.manager.name,
-              style: textTheme.titleSmall,
+              style: textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
             subtitle: Text(
               project.manager.eMail,
