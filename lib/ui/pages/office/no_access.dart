@@ -81,9 +81,6 @@ class NoAccess extends StatelessWidget {
                     ),
                   );
                 },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: colorScheme.secondary,
-                ),
                 icon: const Icon(Icons.copy),
                 label: const Text('Benutzer-ID'),
               ),

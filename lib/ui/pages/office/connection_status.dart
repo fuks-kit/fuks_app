@@ -78,7 +78,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
           alignment: WrapAlignment.center,
           children: [
             if (Platform.isAndroid)
-              OutlinedButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   if (Platform.isAndroid) {
                     AppSettings.openAppSettings(
@@ -88,9 +88,6 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
                 },
                 icon: const Icon(Icons.wifi),
                 label: const Text('WLAN Überprüfen'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: colorScheme.secondary,
-                ),
               ),
             FilledButton.icon(
               onPressed: !_isRefreshing
