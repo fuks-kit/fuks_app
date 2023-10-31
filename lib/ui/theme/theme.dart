@@ -21,10 +21,15 @@ final _colorsLight = ColorScheme.fromSeed(
 final _colorsDark = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   seedColor: _seedColor,
+  background: Colors.grey[900],
+  onBackground: Colors.white,
+  surface: Colors.grey[900],
+  onSurface: Colors.white,
+  surfaceTint: Colors.black,
   primary: fuksColor,
-  onPrimary: Colors.white,
+  outline: Colors.grey[600],
+  outlineVariant: Colors.grey[800],
   secondary: fuksColor,
-  onSecondary: Colors.white,
 );
 
 const _listTileTheme = ListTileThemeData(
@@ -41,11 +46,6 @@ final fuksThemeLight = ThemeData(
     elevation: 0,
     scrolledUnderElevation: 2,
     shadowColor: _colorsLight.shadow,
-  ),
-  iconButtonTheme: IconButtonThemeData(
-    style: IconButton.styleFrom(
-      foregroundColor: _colorsLight.onBackground,
-    ),
   ),
   listTileTheme: _listTileTheme,
   chipTheme: ChipThemeData(
@@ -89,6 +89,21 @@ final fuksThemeLight = ThemeData(
       labelMedium: TextStyle(color: _colorsLight.onBackground),
       labelSmall: TextStyle(color: _colorsLight.onBackground),
     ),
+  ),
+  navigationBarTheme: NavigationBarThemeData(
+    iconTheme: MaterialStateProperty.all(IconThemeData(
+      color: _colorsLight.onSurface,
+    )),
+    indicatorColor: _colorsLight.outlineVariant.withOpacity(0.5),
+    // indicatorColor: _colorsDark.primary,
+  ),
+  iconButtonTheme: IconButtonThemeData(
+    style: IconButton.styleFrom(
+      foregroundColor: _colorsLight.onSurface,
+    ),
+  ),
+  iconTheme: IconThemeData(
+    color: _colorsLight.onSurface,
   ),
 );
 
@@ -143,5 +158,20 @@ final fuksThemeDark = ThemeData(
       labelMedium: TextStyle(color: _colorsDark.onBackground),
       labelSmall: TextStyle(color: _colorsDark.onBackground),
     ),
+  ),
+  navigationBarTheme: NavigationBarThemeData(
+    iconTheme: MaterialStateProperty.all(IconThemeData(
+      color: _colorsDark.onSurface,
+    )),
+    indicatorColor: _colorsDark.outlineVariant.withOpacity(0.5),
+    // indicatorColor: _colorsDark.primary,
+  ),
+  iconButtonTheme: IconButtonThemeData(
+    style: IconButton.styleFrom(
+      foregroundColor: _colorsDark.onSurface,
+    ),
+  ),
+  iconTheme: IconThemeData(
+    color: _colorsDark.onSurface,
   ),
 );

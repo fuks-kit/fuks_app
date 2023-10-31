@@ -44,8 +44,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -75,7 +73,6 @@ class _HomePageState extends State<HomePage> {
             elevation: 2,
             selectedIndex: _selectedIndex,
             height: 56,
-            indicatorColor: colorScheme.outlineVariant.withOpacity(0.5),
             labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
             onDestinationSelected: (index) =>
                 setState(() => _selectedIndex = index),
