@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added fuks colors and fonts
 
+### Changed
+
+- Update home screen
+- Update events screen
+
 ## [1.2.1] - 2023-10-22
 
 ### Changed
