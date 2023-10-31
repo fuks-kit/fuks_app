@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
             elevation: 2,
             selectedIndex: _selectedIndex,
             height: 56,
-            indicatorColor: colorScheme.outlineVariant,
+            indicatorColor: colorScheme.outlineVariant.withOpacity(0.5),
             labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
             onDestinationSelected: (index) =>
                 setState(() => _selectedIndex = index),
