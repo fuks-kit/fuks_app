@@ -40,7 +40,7 @@ class EventsBody extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final titleStyle = textTheme.titleLarge?.copyWith(
+    final titleStyle = textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.w600,
     );
     final dateStyle = textTheme.bodySmall?.copyWith(
@@ -137,7 +137,7 @@ class EventsBody extends StatelessWidget {
                       ),
                       if (event.location.isNotEmpty)
                         ActionChip(
-                          label: const Text('Location'),
+                          label: const Text('Ort'),
                           onPressed: () {
                             launchUrlString(
                               'https://www.google.com/maps/place/${event.location}',
