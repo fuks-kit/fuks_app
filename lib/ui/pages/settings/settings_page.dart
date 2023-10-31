@@ -131,7 +131,7 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const Icon(Icons.delete),
             title: Text(
-              'Account löschen',
+              'Account Löschen',
               style: titleStyle,
             ),
             onTap: () => _onDeleteAccount(context),
