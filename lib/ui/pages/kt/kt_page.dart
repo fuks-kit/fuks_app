@@ -84,6 +84,7 @@ class KTBody extends StatelessWidget {
               subtitle: Text(
                 kt.subtitle,
                 style: subtitleStyle,
+                maxLines: 3,
               ),
               onTap: () => launchUrlString(kt.pdfUrl),
               trailing: Image.network(kt.imageUrl),
