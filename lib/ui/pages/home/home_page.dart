@@ -18,14 +18,42 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
+  static const _destinations = [
+    NavigationDestination(
+      icon: Icon(Icons.calendar_month_outlined),
+      selectedIcon: Icon(Icons.calendar_month),
+      label: 'Events',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.lightbulb_outline),
+      selectedIcon: Icon(Icons.lightbulb),
+      label: 'Projekte',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.newspaper_outlined),
+      selectedIcon: Icon(Icons.newspaper),
+      label: 'Karlsruher Transfer',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.key_outlined),
+      selectedIcon: Icon(Icons.key),
+      label: 'Büro',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
-        title: const FuksLogo(),
-        centerTitle: false,
+        title: Text(_destinations[_selectedIndex].label),
+        flexibleSpace: Container(
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.only(left: 16),
+          child: const FuksIcon(),
+        ),
+        // centerTitle: false,
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -46,28 +74,7 @@ class _HomePageState extends State<HomePage> {
             labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
             onDestinationSelected: (index) =>
                 setState(() => _selectedIndex = index),
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(Icons.calendar_month_outlined),
-                selectedIcon: Icon(Icons.calendar_month),
-                label: 'Events',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.lightbulb_outline),
-                selectedIcon: Icon(Icons.lightbulb),
-                label: 'Projekte',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.newspaper_outlined),
-                selectedIcon: Icon(Icons.newspaper),
-                label: 'Karlsruher Transfer',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.key_outlined),
-                selectedIcon: Icon(Icons.key),
-                label: 'Büro',
-              ),
-            ],
+            destinations: _destinations,
           ),
         ],
       ),
