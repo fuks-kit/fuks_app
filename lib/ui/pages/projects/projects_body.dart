@@ -100,6 +100,7 @@ class ProjectsBody extends StatelessWidget {
                   ? Text(
                       project.subtitle,
                       maxLines: 2,
+                      style: textTheme.bodySmall,
                     )
                   : null,
               onTap: () {

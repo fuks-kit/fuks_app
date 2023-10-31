@@ -36,12 +36,10 @@ class KTBody extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final titleStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.bold,
+    final titleStyle = textTheme.titleSmall?.copyWith(
+      fontWeight: FontWeight.w600,
     );
-    final subtitleStyle = textTheme.bodySmall?.copyWith(
-      color: colorScheme.outline,
-    );
+    final subtitleStyle = textTheme.bodySmall;
 
     return FutureBuilder<KarlsruherTransfers>(
       future: fuksCloud.getKarlsruherTransfers(Empty()),
