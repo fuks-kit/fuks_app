@@ -107,7 +107,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
                       height: 16,
                       child: CircularProgressIndicator(
                         strokeWidth: 2,
-                        color: colorScheme.onSecondary,
+                        color: colorScheme.onPrimaryContainer,
                       ),
                     )
                   : const Icon(Icons.refresh),
