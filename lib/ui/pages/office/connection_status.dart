@@ -89,7 +89,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
                 icon: const Icon(Icons.wifi),
                 label: const Text('WLAN Überprüfen'),
               ),
-            FilledButton.icon(
+            FilledButton.tonalIcon(
               onPressed: !_isRefreshing
                   ? () {
                       setState(() => _isRefreshing = true);
@@ -112,10 +112,6 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
                     )
                   : const Icon(Icons.refresh),
               label: const Text('Wiederholen'),
-              style: TextButton.styleFrom(
-                foregroundColor: colorScheme.onSecondary,
-                backgroundColor: colorScheme.secondary,
-              ),
             ),
           ],
         ),

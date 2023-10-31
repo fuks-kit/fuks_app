@@ -63,7 +63,7 @@ class _AccessBodyState extends State<AccessBody> {
           )),
         ),
         const SizedBox(height: 60),
-        FilledButton.icon(
+        FilledButton.tonalIcon(
           onPressed: () {
             setState(() {
               _loading = true;

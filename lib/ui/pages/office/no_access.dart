@@ -84,14 +84,10 @@ class NoAccess extends StatelessWidget {
                 icon: const Icon(Icons.copy),
                 label: const Text('Benutzer-ID'),
               ),
-            FilledButton.icon(
+            FilledButton.tonalIcon(
               onPressed: () {
                 onRefresh?.call();
               },
-              style: FilledButton.styleFrom(
-                foregroundColor: colorScheme.onSecondary,
-                backgroundColor: colorScheme.secondary,
-              ),
               icon: const Icon(Icons.refresh),
               label: const Text('Wiederholen'),
             ),
