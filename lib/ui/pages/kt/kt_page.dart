@@ -69,6 +69,7 @@ class KTBody extends StatelessWidget {
           divider: Divider(
             indent: 16,
             endIndent: 16,
+            thickness: 0.5,
             color: colorScheme.outlineVariant,
           ),
           itemCount: data.length,
