@@ -7,7 +7,7 @@ import 'package:fuks_app/ui/pages/office/no_access.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:fuks_app/utils/error.dart';
 
-class OfficePage extends StatefulWidget {
+class OfficePage extends StatelessWidget {
   const OfficePage({super.key});
 
   static const String route = 'office';
@@ -17,10 +17,24 @@ class OfficePage extends StatefulWidget {
   }
 
   @override
-  State<StatefulWidget> createState() => _OfficePageState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Büro Zugang'),
+      ),
+      body: const OfficeBody(),
+    );
+  }
 }
 
-class _OfficePageState extends State<OfficePage> {
+class OfficeBody extends StatefulWidget {
+  const OfficeBody({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _OfficeBodyState();
+}
+
+class _OfficeBodyState extends State<OfficeBody> {
   late Future<OfficePermission> _request;
 
   @override
@@ -75,12 +89,7 @@ class _OfficePageState extends State<OfficePage> {
           );
         }
 
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Büro Zugang'),
-          ),
-          body: body,
-        );
+        return body;
       },
     );
   }
