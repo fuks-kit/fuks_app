@@ -5,6 +5,7 @@ import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/fuks_logo.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,10 +52,10 @@ class _HomePageState extends State<HomePage> {
           _destinations[_selectedIndex].label,
           style: const TextStyle(fontSize: 20),
         ),
-        flexibleSpace: Container(
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.only(left: 16),
-          child: const FuksIcon(),
+        leading: IconButton(
+          icon: const FuksIcon(),
+          tooltip: 'fuks',
+          onPressed: () => launchUrlString('https://fuks.org'),
         ),
         // title: const FuksLogo(),
         // centerTitle: false,
