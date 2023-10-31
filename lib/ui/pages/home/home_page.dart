@@ -47,12 +47,16 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_destinations[_selectedIndex].label),
+        title: Text(
+          _destinations[_selectedIndex].label,
+          style: const TextStyle(fontSize: 20),
+        ),
         flexibleSpace: Container(
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 16),
           child: const FuksIcon(),
         ),
+        // title: const FuksLogo(),
         // centerTitle: false,
         actions: [
           IconButton(
