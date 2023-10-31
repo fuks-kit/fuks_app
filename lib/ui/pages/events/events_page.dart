@@ -128,30 +128,31 @@ class EventsBody extends StatelessWidget {
                     spacing: 8,
                     runSpacing: 8,
                     children: [
-                      ActionChip(
-                        label: Text(event.contact.name),
+                      IconButton.filledTonal(
+                        tooltip: 'E-Mail an ${event.contact.name}',
                         onPressed: () {
                           launchUrlString('mailto:${event.contact.eMail}');
                         },
-                        avatar: contactAvatar,
+                        padding: const EdgeInsets.all(0),
+                        icon: contactAvatar,
                       ),
                       if (event.location.isNotEmpty)
-                        ActionChip(
-                          label: const Text('Ort'),
+                        IconButton.filledTonal(
+                          tooltip: 'Ort',
                           onPressed: () {
                             launchUrlString(
                               'https://www.google.com/maps/place/${event.location}',
                             );
                           },
-                          avatar: const Icon(Icons.pin_drop_outlined),
+                          icon: const Icon(Icons.pin_drop_outlined),
                         ),
                       if (event.buttonText.isNotEmpty)
-                        ActionChip(
-                          label: Text(event.buttonText),
+                        IconButton.filledTonal(
+                          tooltip: event.buttonText,
                           onPressed: event.buttonHref.isNotEmpty
                               ? () => launchUrlString(event.buttonHref)
                               : null,
-                          avatar: const Icon(Icons.link_outlined),
+                          icon: const Icon(Icons.link_outlined),
                         ),
                     ],
                   ),
