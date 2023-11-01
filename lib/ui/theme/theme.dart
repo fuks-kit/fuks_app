@@ -62,33 +62,31 @@ final fuksThemeLight = ThemeData(
       style: BorderStyle.none,
     ),
   ),
-  textTheme: GoogleFonts.montserratTextTheme(
-    TextTheme(
-      displayLarge: TextStyle(color: _colorsLight.onBackground),
-      displayMedium: TextStyle(color: _colorsLight.onBackground),
-      displaySmall: TextStyle(color: _colorsLight.onBackground),
-      headlineLarge: TextStyle(color: _colorsLight.onBackground),
-      headlineMedium: TextStyle(color: _colorsLight.onBackground),
-      headlineSmall: TextStyle(color: _colorsLight.onBackground),
-      titleLarge: TextStyle(
-        color: _colorsLight.onBackground,
-        fontWeight: FontWeight.w600,
-      ),
-      titleMedium: TextStyle(
-        color: _colorsLight.onBackground,
-        fontWeight: FontWeight.w600,
-      ),
-      titleSmall: TextStyle(
-        color: _colorsLight.onBackground,
-        fontWeight: FontWeight.w600,
-      ),
-      bodyLarge: TextStyle(color: _colorsLight.onBackground),
-      bodyMedium: TextStyle(color: _colorsLight.onBackground),
-      bodySmall: TextStyle(color: _colorsLight.onBackground),
-      labelLarge: TextStyle(color: _colorsLight.onBackground),
-      labelMedium: TextStyle(color: _colorsLight.onBackground),
-      labelSmall: TextStyle(color: _colorsLight.onBackground),
+  textTheme: TextTheme(
+    displayLarge: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    displayMedium: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    displaySmall: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    headlineLarge: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    headlineMedium: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    headlineSmall: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    titleLarge: GoogleFonts.raleway(
+      color: _colorsLight.onBackground,
+      fontWeight: FontWeight.w600,
     ),
+    titleMedium: GoogleFonts.raleway(
+      color: _colorsLight.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    titleSmall: GoogleFonts.raleway(
+      color: _colorsLight.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    bodyLarge: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
+    bodyMedium: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
+    bodySmall: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
+    labelLarge: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    labelMedium: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    labelSmall: GoogleFonts.raleway(color: _colorsLight.onBackground),
   ),
   navigationBarTheme: NavigationBarThemeData(
     iconTheme: MaterialStateProperty.all(IconThemeData(
@@ -131,33 +129,31 @@ final fuksThemeDark = ThemeData(
       style: BorderStyle.none,
     ),
   ),
-  textTheme: GoogleFonts.montserratTextTheme(
-    TextTheme(
-      displayLarge: TextStyle(color: _colorsDark.onBackground),
-      displayMedium: TextStyle(color: _colorsDark.onBackground),
-      displaySmall: TextStyle(color: _colorsDark.onBackground),
-      headlineLarge: TextStyle(color: _colorsDark.onBackground),
-      headlineMedium: TextStyle(color: _colorsDark.onBackground),
-      headlineSmall: TextStyle(color: _colorsDark.onBackground),
-      titleLarge: TextStyle(
-        color: _colorsDark.onBackground,
-        fontWeight: FontWeight.w600,
-      ),
-      titleMedium: TextStyle(
-        color: _colorsDark.onBackground,
-        fontWeight: FontWeight.w600,
-      ),
-      titleSmall: TextStyle(
-        color: _colorsDark.onBackground,
-        fontWeight: FontWeight.w600,
-      ),
-      bodyLarge: TextStyle(color: _colorsDark.onBackground),
-      bodyMedium: TextStyle(color: _colorsDark.onBackground),
-      bodySmall: TextStyle(color: _colorsDark.onBackground),
-      labelLarge: TextStyle(color: _colorsDark.onBackground),
-      labelMedium: TextStyle(color: _colorsDark.onBackground),
-      labelSmall: TextStyle(color: _colorsDark.onBackground),
+  textTheme: TextTheme(
+    displayLarge: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    displayMedium: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    displaySmall: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    headlineLarge: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    headlineMedium: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    headlineSmall: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    titleLarge: GoogleFonts.raleway(
+      color: _colorsDark.onBackground,
+      fontWeight: FontWeight.w600,
     ),
+    titleMedium: GoogleFonts.raleway(
+      color: _colorsDark.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    titleSmall: GoogleFonts.raleway(
+      color: _colorsDark.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    bodyLarge: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
+    bodyMedium: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
+    bodySmall: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
+    labelLarge: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    labelMedium: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    labelSmall: GoogleFonts.raleway(color: _colorsDark.onBackground),
   ),
   navigationBarTheme: NavigationBarThemeData(
     iconTheme: MaterialStateProperty.all(IconThemeData(
