@@ -16,6 +16,8 @@ final _colorsLight = ColorScheme.fromSeed(
   outline: Colors.grey[700],
   outlineVariant: Colors.grey[400],
   secondary: fuksColor,
+  surfaceVariant: Colors.grey[200],
+  onSurfaceVariant: Colors.grey[800],
 );
 
 final _colorsDark = ColorScheme.fromSeed(
@@ -30,6 +32,8 @@ final _colorsDark = ColorScheme.fromSeed(
   outline: Colors.grey[600],
   outlineVariant: Colors.grey[800],
   secondary: fuksColor,
+  surfaceVariant: Colors.grey[800],
+  onSurfaceVariant: Colors.grey[200],
 );
 
 const _listTileTheme = ListTileThemeData(
