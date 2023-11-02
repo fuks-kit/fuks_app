@@ -63,7 +63,7 @@ class _AccessBodyState extends State<AccessBody> {
           )),
         ),
         const SizedBox(height: 60),
-        FilledButton.icon(
+        FilledButton.tonalIcon(
           onPressed: () {
             setState(() {
               _loading = true;
@@ -81,7 +81,7 @@ class _AccessBodyState extends State<AccessBody> {
                   width: 24,
                   height: 24,
                   child: CircularProgressIndicator(
-                    color: colorScheme.onPrimary,
+                    color: colorScheme.onPrimaryContainer,
                   ),
                 )
               : const Icon(Icons.key),

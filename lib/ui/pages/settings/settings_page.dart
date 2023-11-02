@@ -9,7 +9,7 @@ import 'package:fuks_app/utils/authenticate.dart';
 import 'package:fuks_app/utils/terms_and_privacy.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-const _version = '1.2.1';
+const _version = '1.2.2';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -131,7 +131,7 @@ class SettingsPage extends StatelessWidget {
             minLeadingWidth: 32,
             leading: const Icon(Icons.delete),
             title: Text(
-              'Account löschen',
+              'Account Löschen',
               style: titleStyle,
             ),
             onTap: () => _onDeleteAccount(context),

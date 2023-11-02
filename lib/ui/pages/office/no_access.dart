@@ -63,7 +63,7 @@ class NoAccess extends StatelessWidget {
           alignment: WrapAlignment.center,
           children: [
             if (!permission.isFuksMember)
-              OutlinedButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   // Copy user id to clipboard
                   final auth = FirebaseAuth.instance;
@@ -75,24 +75,19 @@ class NoAccess extends StatelessWidget {
                   // SnackBar to notify user
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Benutzer-ID wurde in die Zwischenablage kopiert'),
+                      content: Text(
+                        'Benutzer-ID wurde in die Zwischenablage kopiert',
+                      ),
                     ),
                   );
                 },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: colorScheme.secondary,
-                ),
                 icon: const Icon(Icons.copy),
                 label: const Text('Benutzer-ID'),
               ),
-            FilledButton.icon(
+            FilledButton.tonalIcon(
               onPressed: () {
                 onRefresh?.call();
               },
-              style: FilledButton.styleFrom(
-                foregroundColor: colorScheme.onSecondary,
-                backgroundColor: colorScheme.secondary,
-              ),
               icon: const Icon(Icons.refresh),
               label: const Text('Wiederholen'),
             ),

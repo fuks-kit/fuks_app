@@ -37,10 +37,7 @@ class ProjectsBody extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     final titleStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.bold,
-    );
-    final subtitleStyle = textTheme.bodySmall?.copyWith(
-      color: colorScheme.outline,
+      fontWeight: FontWeight.w600,
     );
 
     return FutureBuilder<Projects>(
@@ -66,60 +63,49 @@ class ProjectsBody extends StatelessWidget {
         }
 
         return ConstrainedListViewBuilder(
+          divider: Divider(
+            height: 24,
+            indent: 16,
+            endIndent: 16,
+            thickness: 0.5,
+            color: colorScheme.outlineVariant,
+          ),
           itemCount: data.length,
           itemBuilder: (context, index) {
             final project = data[index];
 
-            return Container(
-              margin: const EdgeInsets.all(8),
-              // padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: colorScheme.outlineVariant,
-                  width: 1,
-                ),
+            return ListTile(
+              trailing: CircleAvatar(
+                backgroundImage: NetworkImage(project.manager.imageUrl),
               ),
-              child: InkWell(
-                onTap: () {
-                  ProjectPage.open(context, project);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(width: double.infinity),
-                      // if (project.illustration != null)
-                      //   Align(
-                      //     alignment: Alignment.center,
-                      //     child: UnDraw(
-                      //       width: 150,
-                      //       illustration: project.illustration!,
-                      //       color: colorScheme.primary,
-                      //     ),
-                      //   ),
-                      if (project.label.isNotEmpty)
-                        Text(
-                          project.label,
-                          style: textTheme.bodySmall?.copyWith(
-                            color: colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      Text(
-                        project.title,
-                        style: titleStyle,
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(width: double.infinity),
+                  if (project.label.isNotEmpty)
+                    Text(
+                      project.label,
+                      style: textTheme.bodySmall?.copyWith(
+                        color: colorScheme.primary,
+                        fontWeight: FontWeight.bold,
                       ),
-                      if (project.subtitle.isNotEmpty)
-                        Text(
-                          project.subtitle,
-                          style: subtitleStyle,
-                        ),
-                    ],
+                    ),
+                  Text(
+                    project.title,
+                    style: titleStyle,
                   ),
-                ),
+                ],
               ),
+              subtitle: project.subtitle.isNotEmpty
+                  ? Text(
+                      project.subtitle,
+                      maxLines: 2,
+                      style: textTheme.bodySmall,
+                    )
+                  : null,
+              onTap: () {
+                ProjectPage.open(context, project);
+              },
             );
           },
         );

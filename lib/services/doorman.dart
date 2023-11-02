@@ -5,7 +5,6 @@ import 'package:fuks_app/generated/doorman/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/doorman/doorman.pbgrpc.dart';
 import 'package:fuks_app/services/doorman_cert.dart';
 import 'package:grpc/grpc.dart';
-import 'package:grpc/grpc_or_grpcweb.dart';
 
 // final _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
 //   host: '192.168.0.152',
@@ -41,7 +40,7 @@ class DoormanServiceWithToken {
     }
 
     return CallOptions(
-      timeout: const Duration(seconds: 2),
+      timeout: const Duration(seconds: 6),
       metadata: {
         "Authorization": "Bearer $token",
       },

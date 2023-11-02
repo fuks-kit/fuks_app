@@ -38,7 +38,6 @@ class _ProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     Widget managerAvatar;
@@ -53,32 +52,12 @@ class _ProjectPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(project.title),
+      ),
       body: ConstrainedListView(
         padding: EdgeInsets.zero,
         children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              project.title,
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
-          ),
-          ListTile(
-            leading: managerAvatar,
-            title: Text(
-              project.manager.name,
-              style: textTheme.titleMedium,
-            ),
-            subtitle: Text(
-              project.manager.eMail,
-              style: textTheme.bodySmall?.copyWith(
-                color: colorScheme.primary,
-              ),
-            ),
-            onTap: () => launchUrlString('mailto:${project.manager.eMail}'),
-          ),
           Container(
             padding: const EdgeInsets.all(16),
             width: double.infinity,
@@ -89,6 +68,22 @@ class _ProjectPage extends StatelessWidget {
               data: project.details,
             ),
           ),
+          const Divider(),
+          ListTile(
+            leading: managerAvatar,
+            title: Text(
+              project.manager.name,
+              style: textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            subtitle: Text(
+              project.manager.eMail,
+              style: textTheme.bodySmall,
+            ),
+            onTap: () => launchUrlString('mailto:${project.manager.eMail}'),
+          ),
+          const SizedBox(height: 24),
         ],
       ),
     );

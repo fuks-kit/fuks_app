@@ -37,11 +37,9 @@ class KTBody extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     final titleStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w600,
     );
-    final subtitleStyle = textTheme.bodySmall?.copyWith(
-      color: colorScheme.outline,
-    );
+    final subtitleStyle = textTheme.bodySmall;
 
     return FutureBuilder<KarlsruherTransfers>(
       future: fuksCloud.getKarlsruherTransfers(Empty()),
@@ -69,6 +67,7 @@ class KTBody extends StatelessWidget {
           divider: Divider(
             indent: 16,
             endIndent: 16,
+            thickness: 0.5,
             color: colorScheme.outlineVariant,
           ),
           itemCount: data.length,
@@ -83,6 +82,7 @@ class KTBody extends StatelessWidget {
               subtitle: Text(
                 kt.subtitle,
                 style: subtitleStyle,
+                maxLines: 3,
               ),
               onTap: () => launchUrlString(kt.pdfUrl),
               trailing: Image.network(kt.imageUrl),

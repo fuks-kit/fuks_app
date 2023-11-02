@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:fuks_app/generated/app_services/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/app_services/services.pb.dart';
 import 'package:fuks_app/services/fuks_cloud.dart';
+import 'package:fuks_app/ui/pages/event/event_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:fuks_app/ui/widgets/illustration.dart';
-import 'package:intl/intl.dart';
+import 'package:fuks_app/utils/date.dart';
 import 'package:undraw/illustrations.g.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
-final _dateFormat = DateFormat('dd.MM.yyyy kk:mm');
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -40,14 +37,13 @@ class EventsBody extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final titleStyle = textTheme.titleLarge?.copyWith(
+    final titleStyle = textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.w600,
     );
     final dateStyle = textTheme.bodySmall?.copyWith(
       color: colorScheme.outline,
       fontWeight: FontWeight.w600,
     );
-    final subtitleStyle = textTheme.bodyMedium;
 
     final now = DateTime.now().add(const Duration(hours: 1));
 
@@ -75,6 +71,13 @@ class EventsBody extends StatelessWidget {
 
         return ConstrainedListViewBuilder(
           itemCount: data.length,
+          divider: Divider(
+            height: 24,
+            indent: 16,
+            endIndent: 16,
+            thickness: 0.5,
+            color: colorScheme.outlineVariant,
+          ),
           itemBuilder: (context, index) {
             final event = data[index];
 
@@ -87,17 +90,8 @@ class EventsBody extends StatelessWidget {
               contactAvatar = const Icon(Icons.alternate_email_outlined);
             }
 
-            return Container(
-              margin: const EdgeInsets.all(8),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: colorScheme.outlineVariant,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
+            return ListTile(
+              title: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -113,60 +107,18 @@ class EventsBody extends StatelessWidget {
                     event.title,
                     style: titleStyle,
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    _dateFormat.format(event.date.toDateTime()),
-                    style: dateStyle?.copyWith(
-                      decoration: event.date.toDateTime().isBefore(now)
-                          ? TextDecoration.lineThrough
-                          : null,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Wrap(
-                    alignment: WrapAlignment.start,
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      ActionChip(
-                        label: Text(event.contact.name),
-                        onPressed: () {
-                          launchUrlString('mailto:${event.contact.eMail}');
-                        },
-                        avatar: contactAvatar,
-                      ),
-                      if (event.location.isNotEmpty)
-                        ActionChip(
-                          label: const Text('Location'),
-                          onPressed: () {
-                            launchUrlString(
-                              'https://www.google.com/maps/place/${event.location}',
-                            );
-                          },
-                          avatar: const Icon(Icons.pin_drop_outlined),
-                        ),
-                      if (event.buttonText.isNotEmpty)
-                        ActionChip(
-                          label: Text(event.buttonText),
-                          onPressed: event.buttonHref.isNotEmpty
-                              ? () => launchUrlString(event.buttonHref)
-                              : null,
-                          avatar: const Icon(Icons.link_outlined),
-                        ),
-                    ],
-                  ),
-                  if (event.subtitle.isNotEmpty) const SizedBox(height: 16),
-                  if (event.subtitle.isNotEmpty)
-                    MarkdownBody(
-                      data: event.subtitle,
-                      styleSheet: MarkdownStyleSheet(
-                        p: subtitleStyle,
-                        listBullet: subtitleStyle,
-                        listIndent: 20,
-                      ),
-                    ),
                 ],
               ),
+              subtitle: Text(
+                GermanDateUtils.format(event.date),
+                style: dateStyle?.copyWith(
+                  decoration: event.date.toDateTime().isBefore(now)
+                      ? TextDecoration.lineThrough
+                      : null,
+                ),
+              ),
+              trailing: contactAvatar,
+              onTap: () => EventPage.open(context, event),
             );
           },
         );
