@@ -1,6 +1,14 @@
 import 'package:fuks_app/generated/app_services/services.pbgrpc.dart';
 import 'package:grpc/grpc.dart';
 
+// final _channel = ClientChannel(
+//   'localhost',
+//   port: 30336,
+//   options: const ChannelOptions(
+//     credentials: ChannelCredentials.insecure(),
+//   ),
+// );
+
 final _channel = ClientChannel(
   'app-services-befklaxdqa-ey.a.run.app',
   port: 443,
