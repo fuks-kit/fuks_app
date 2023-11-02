@@ -63,13 +63,13 @@ android {
     signingConfigs {
         release {
             keyAlias keystoreProperties['uploadAlias']
-            keyPassword keystoreProperties['uploadPassword']
+            keyPassword keystoreProperties['storePassword']
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
         }
         debug {
             keyAlias keystoreProperties['debugAlias']
-            keyPassword keystoreProperties['debugPassword']
+            keyPassword keystoreProperties['storePassword']
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
         }
