@@ -65,6 +65,7 @@ Prepare a new release by following these steps:
     2. Update iOS dependencies: `cd ios && pod update && cd ..`
     3. Update Android dependencies: `cd android && ./gradlew app:dependencies && cd ..`
     4. Update MacOS dependencies: `cd macos && pod update && cd ..`
+    5. Commit and push all changes: `git commit -am "Update dependencies"; git push`
 6. Push all changes to `main` branch with `git push`
 7. Create a new git tag:
     1. `git tag -a vX.X.X -m "Release vX.X.X"`
