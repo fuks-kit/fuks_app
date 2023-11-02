@@ -130,7 +130,7 @@ class EventsBody extends StatelessWidget {
                     runSpacing: 8,
                     children: [
                       IconButton.filledTonal(
-                        tooltip: 'E-Mail an ${event.contact.name}',
+                        tooltip: 'E-Mail ${event.contact.name}',
                         onPressed: () {
                           launchUrlString('mailto:${event.contact.eMail}');
                         },
