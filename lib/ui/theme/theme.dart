@@ -84,9 +84,18 @@ final fuksThemeLight = ThemeData(
     bodyLarge: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
     bodyMedium: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
     bodySmall: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
-    labelLarge: GoogleFonts.raleway(color: _colorsLight.onBackground),
-    labelMedium: GoogleFonts.raleway(color: _colorsLight.onBackground),
-    labelSmall: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    labelLarge: GoogleFonts.raleway(
+      color: _colorsLight.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    labelMedium: GoogleFonts.raleway(
+      color: _colorsLight.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    labelSmall: GoogleFonts.raleway(
+      color: _colorsLight.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
   ),
   navigationBarTheme: NavigationBarThemeData(
     iconTheme: MaterialStateProperty.all(IconThemeData(
@@ -151,9 +160,18 @@ final fuksThemeDark = ThemeData(
     bodyLarge: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
     bodyMedium: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
     bodySmall: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
-    labelLarge: GoogleFonts.raleway(color: _colorsDark.onBackground),
-    labelMedium: GoogleFonts.raleway(color: _colorsDark.onBackground),
-    labelSmall: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    labelLarge: GoogleFonts.raleway(
+      color: _colorsDark.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    labelMedium: GoogleFonts.raleway(
+      color: _colorsDark.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
+    labelSmall: GoogleFonts.raleway(
+      color: _colorsDark.onBackground,
+      fontWeight: FontWeight.w600,
+    ),
   ),
   navigationBarTheme: NavigationBarThemeData(
     iconTheme: MaterialStateProperty.all(IconThemeData(
