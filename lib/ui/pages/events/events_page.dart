@@ -160,6 +160,11 @@ class EventsBody extends StatelessWidget {
                   if (event.subtitle.isNotEmpty)
                     MarkdownBody(
                       data: event.subtitle,
+                      onTapLink: (_, href, __) {
+                        if (href != null) {
+                          launchUrlString(href);
+                        }
+                      },
                       styleSheet: MarkdownStyleSheet(
                         p: subtitleStyle,
                         listBullet: subtitleStyle,
