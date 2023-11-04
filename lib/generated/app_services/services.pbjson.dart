@@ -18,7 +18,7 @@ const Event$json = {
   '1': 'Event',
   '2': [
     {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
-    {'1': 'subtitle', '3': 2, '4': 1, '5': 9, '10': 'subtitle'},
+    {'1': 'details', '3': 2, '4': 1, '5': 9, '10': 'details'},
     {'1': 'date', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'date'},
     {'1': 'location', '3': 4, '4': 1, '5': 9, '10': 'location'},
     {'1': 'contact', '3': 5, '4': 1, '5': 11, '6': '.endpoints.fcs.v1.Contact', '10': 'contact'},
@@ -30,11 +30,11 @@ const Event$json = {
 
 /// Descriptor for `Event`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List eventDescriptor = $convert.base64Decode(
-    'CgVFdmVudBIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSGgoIc3VidGl0bGUYAiABKAlSCHN1YnRpdG'
-    'xlEi4KBGRhdGUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgRkYXRlEhoKCGxv'
-    'Y2F0aW9uGAQgASgJUghsb2NhdGlvbhIzCgdjb250YWN0GAUgASgLMhkuZW5kcG9pbnRzLmZjcy'
-    '52MS5Db250YWN0Ugdjb250YWN0EhQKBWxhYmVsGAYgASgJUgVsYWJlbBIeCgpidXR0b25UZXh0'
-    'GAcgASgJUgpidXR0b25UZXh0Eh4KCmJ1dHRvbkhyZWYYCCABKAlSCmJ1dHRvbkhyZWY=');
+    'CgVFdmVudBIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSGAoHZGV0YWlscxgCIAEoCVIHZGV0YWlscx'
+    'IuCgRkYXRlGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIEZGF0ZRIaCghsb2Nh'
+    'dGlvbhgEIAEoCVIIbG9jYXRpb24SMwoHY29udGFjdBgFIAEoCzIZLmVuZHBvaW50cy5mY3Mudj'
+    'EuQ29udGFjdFIHY29udGFjdBIUCgVsYWJlbBgGIAEoCVIFbGFiZWwSHgoKYnV0dG9uVGV4dBgH'
+    'IAEoCVIKYnV0dG9uVGV4dBIeCgpidXR0b25IcmVmGAggASgJUgpidXR0b25IcmVm');
 
 @$core.Deprecated('Use eventsDescriptor instead')
 const Events$json = {

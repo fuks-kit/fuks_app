@@ -23,7 +23,7 @@ class Event extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Event', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.fcs.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'title')
-    ..aOS(2, _omitFieldNames ? '' : 'subtitle')
+    ..aOS(2, _omitFieldNames ? '' : 'details')
     ..aOM<$2.Timestamp>(3, _omitFieldNames ? '' : 'date', subBuilder: $2.Timestamp.create)
     ..aOS(4, _omitFieldNames ? '' : 'location')
     ..aOM<Contact>(5, _omitFieldNames ? '' : 'contact', subBuilder: Contact.create)
@@ -64,13 +64,13 @@ class Event extends $pb.GeneratedMessage {
   void clearTitle() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get subtitle => $_getSZ(1);
+  $core.String get details => $_getSZ(1);
   @$pb.TagNumber(2)
-  set subtitle($core.String v) { $_setString(1, v); }
+  set details($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSubtitle() => $_has(1);
+  $core.bool hasDetails() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSubtitle() => clearField(2);
+  void clearDetails() => clearField(2);
 
   @$pb.TagNumber(3)
   $2.Timestamp get date => $_getN(2);
