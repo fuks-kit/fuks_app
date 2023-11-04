@@ -22,11 +22,19 @@
           }
         },
         {
-          "client_id": "350005315493-oikuc3397ksmn07psbr76kjp77flfous.apps.googleusercontent.com",
+          "client_id": "350005315493-b6esc8g2ac6dol1ghgk0n8jj9a3123sl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "org.fuks.app",
-            "certificate_hash": "3620c2b19a93a489491e42efe5707a55397fcaf7"
+            "certificate_hash": "0be7d24eb4d73cb6239db22edd87cc63b5058c03"
+          }
+        },
+        {
+          "client_id": "350005315493-rtfi27sd1mi75attk8l8gk7f4kht4vl8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.fuks.app",
+            "certificate_hash": "024b443d1e12b56129fdcd7e1a006faca508a7c2"
           }
         },
         {

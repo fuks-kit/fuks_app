@@ -67,7 +67,7 @@ class _EventPage extends StatelessWidget {
               onTapLink: (text, href, title) {
                 if (href != null) launchUrlString(href);
               },
-              data: event.subtitle,
+              data: event.details,
             ),
           ),
           const Divider(height: 24),
