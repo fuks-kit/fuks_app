@@ -78,7 +78,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
           alignment: WrapAlignment.center,
           children: [
             if (Platform.isAndroid)
-              TextButton.icon(
+              FilledButton.tonalIcon(
                 onPressed: () {
                   if (Platform.isAndroid) {
                     AppSettings.openAppSettings(
