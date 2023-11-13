@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/doorman/doorman.pb.dart';
+import 'package:fuks_app/services/challenge.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/pages/office/access.dart';
 import 'package:fuks_app/ui/pages/office/connection_status.dart';
 import 'package:fuks_app/ui/pages/office/no_access.dart';
+import 'package:fuks_app/ui/pages/office/not_in_reach.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:fuks_app/utils/error.dart';
 
@@ -35,27 +39,40 @@ class OfficeBody extends StatefulWidget {
 }
 
 class _OfficeBodyState extends State<OfficeBody> {
-  late Future<OfficePermission> _request;
+  Future<OfficePermission>? _request;
+  String? _challenge;
+
+  StreamSubscription<String>? _challengeSubscription;
 
   @override
   void initState() {
     super.initState();
 
-    // Debug stuff to test the UI
-    // final mockObj = OfficePermission();
-    // mockObj.hasAccess = false;
-    // mockObj.isFuksMember = true;
-    // mockObj.isActiveFuks = false;
-    // _request = Future(() => mockObj);
+    _challengeSubscription = ChallengeService.stream().listen((challenge) {
+      setState(() {
+        _challenge = challenge;
+        _request = doorman.checkPermissions(
+          Challenge()..id = challenge,
+        );
+      });
+    });
+  }
 
-    // _request = Future.error(const GrpcError.unavailable());
-
-    _request = doorman.checkPermissions();
+  @override
+  void dispose() {
+    _challengeSubscription?.cancel();
+    super.dispose();
   }
 
   Future<void> _refreshPermissions() async {
+    if (_challenge == null) {
+      return;
+    }
+
     setState(() {
-      _request = doorman.checkPermissions();
+      _request = doorman.checkPermissions(
+        Challenge()..id = _challenge!,
+      );
     });
 
     await _request;
@@ -63,6 +80,10 @@ class _OfficeBodyState extends State<OfficeBody> {
 
   @override
   Widget build(BuildContext context) {
+    if (_challenge == null) {
+      return const NotInReach();
+    }
+
     return FutureBuilder<OfficePermission>(
       future: _request,
       builder: (context, snap) {
@@ -81,7 +102,9 @@ class _OfficeBodyState extends State<OfficeBody> {
             child: CircularProgressIndicator(),
           );
         } else if (snap.requireData.hasAccess) {
-          body = const AccessBody();
+          body = AccessBody(
+            challenge: _challenge!,
+          );
         } else {
           body = NoAccess(
             permission: snap.requireData,

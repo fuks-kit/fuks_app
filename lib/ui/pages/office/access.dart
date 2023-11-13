@@ -7,7 +7,12 @@ import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:undraw/undraw.dart';
 
 class AccessBody extends StatefulWidget {
-  const AccessBody({super.key});
+  const AccessBody({
+    super.key,
+    required this.challenge,
+  });
+
+  final String challenge;
 
   @override
   State createState() => _AccessBodyState();
@@ -69,7 +74,8 @@ class _AccessBodyState extends State<AccessBody> {
               _loading = true;
             });
 
-            doorman.openDoor().then(_onSuccess).catchError(
+            final req = Challenge()..id = widget.challenge;
+            doorman.openDoor(req).then(_onSuccess).catchError(
               (error, trace) {
                 setState(() => _loading = false);
                 showErrorInfo(context, error, trace);

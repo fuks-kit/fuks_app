@@ -2,29 +2,30 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fuks_app/generated/doorman/doorman.pbgrpc.dart';
-import 'package:fuks_app/services/doorman_cert.dart';
 import 'package:grpc/grpc.dart';
 
-// final _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
-//   host: '192.168.0.152',
-//   port: 50051,
-//   transportSecure: false,
-// );
-
 final _channel = ClientChannel(
-  'doorman.local',
+  'raspberry.local',
   port: 50051,
-  options: ChannelOptions(
-    credentials: ChannelCredentials.secure(
-      certificates: doormanCert.codeUnits,
-      onBadCertificate: (certificate, host) {
-        // debugPrint('certificate: ${certificate.issuer}');
-        // debugPrint('host: $host');
-        return host == 'doorman.local:50051';
-      },
-    ),
+  options: const ChannelOptions(
+    credentials: ChannelCredentials.insecure(),
   ),
 );
+
+// final _channel = ClientChannel(
+//   'doorman.local',
+//   port: 50051,
+//   options: ChannelOptions(
+//     credentials: ChannelCredentials.secure(
+//       certificates: doormanCert.codeUnits,
+//       onBadCertificate: (certificate, host) {
+//         // debugPrint('certificate: ${certificate.issuer}');
+//         // debugPrint('host: $host');
+//         return host == 'doorman.local:50051';
+//       },
+//     ),
+//   ),
+// );
 
 final doorman = DoormanServiceWithToken();
 
