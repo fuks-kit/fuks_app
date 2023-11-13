@@ -13,6 +13,18 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use challengeDescriptor instead')
+const Challenge$json = {
+  '1': 'Challenge',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `Challenge`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List challengeDescriptor = $convert.base64Decode(
+    'CglDaGFsbGVuZ2USDgoCaWQYASABKAlSAmlk');
+
 @$core.Deprecated('Use officePermissionDescriptor instead')
 const OfficePermission$json = {
   '1': 'OfficePermission',

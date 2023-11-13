@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fuks_app/generated/doorman/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/doorman/doorman.pbgrpc.dart';
 import 'package:fuks_app/services/doorman_cert.dart';
 import 'package:grpc/grpc.dart';
@@ -47,13 +46,13 @@ class DoormanServiceWithToken {
     );
   }
 
-  Future<OfficePermission> checkPermissions() async {
+  Future<OfficePermission> checkPermissions(Challenge request) async {
     final token = await user?.getIdToken();
-    return _client.checkPermissions(Empty(), options: _authOptions(token));
+    return _client.checkPermissions(request, options: _authOptions(token));
   }
 
-  Future<DoorState> openDoor() async {
+  Future<DoorState> openDoor(Challenge request) async {
     final token = await user?.getIdToken();
-    return _client.openDoor(Empty(), options: _authOptions(token));
+    return _client.openDoor(request, options: _authOptions(token));
   }
 }

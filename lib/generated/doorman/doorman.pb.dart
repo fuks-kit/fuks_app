@@ -13,7 +13,49 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/duration.pb.dart' as $2;
+import 'google/protobuf/duration.pb.dart' as $1;
+
+class Challenge extends $pb.GeneratedMessage {
+  factory Challenge() => create();
+  Challenge._() : super();
+  factory Challenge.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Challenge.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Challenge', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman.v2'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Challenge clone() => Challenge()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Challenge copyWith(void Function(Challenge) updates) => super.copyWith((message) => updates(message as Challenge)) as Challenge;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Challenge create() => Challenge._();
+  Challenge createEmptyInstance() => create();
+  static $pb.PbList<Challenge> createRepeated() => $pb.PbList<Challenge>();
+  @$core.pragma('dart2js:noInline')
+  static Challenge getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Challenge>(create);
+  static Challenge? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+}
 
 class OfficePermission extends $pb.GeneratedMessage {
   factory OfficePermission() => create();
@@ -21,7 +63,7 @@ class OfficePermission extends $pb.GeneratedMessage {
   factory OfficePermission.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory OfficePermission.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OfficePermission', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OfficePermission', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman.v2'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'hasAccess')
     ..aOB(2, _omitFieldNames ? '' : 'isFuksMember')
     ..aOB(3, _omitFieldNames ? '' : 'isActiveFuks')
@@ -83,9 +125,9 @@ class DoorState extends $pb.GeneratedMessage {
   factory DoorState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DoorState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DoorState', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DoorState', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman.v2'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'open')
-    ..aOM<$2.Duration>(2, _omitFieldNames ? '' : 'openDuration', subBuilder: $2.Duration.create)
+    ..aOM<$1.Duration>(2, _omitFieldNames ? '' : 'openDuration', subBuilder: $1.Duration.create)
     ..hasRequiredFields = false
   ;
 
@@ -120,15 +162,15 @@ class DoorState extends $pb.GeneratedMessage {
   void clearOpen() => clearField(1);
 
   @$pb.TagNumber(2)
-  $2.Duration get openDuration => $_getN(1);
+  $1.Duration get openDuration => $_getN(1);
   @$pb.TagNumber(2)
-  set openDuration($2.Duration v) { setField(2, v); }
+  set openDuration($1.Duration v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasOpenDuration() => $_has(1);
   @$pb.TagNumber(2)
   void clearOpenDuration() => clearField(2);
   @$pb.TagNumber(2)
-  $2.Duration ensureOpenDuration() => $_ensure(1);
+  $1.Duration ensureOpenDuration() => $_ensure(1);
 }
 
 
