@@ -24,20 +24,21 @@ class NotInReach extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         ListTile(
-            title: Text(
-              'Kein Doorman in Reichweite!',
-              textAlign: TextAlign.start,
-              style: textStyle.headlineSmall?.merge(const TextStyle(
-                fontWeight: FontWeight.w600,
-              )),
-            ),
-            subtitle: Text(
-              'Achte auf folgende Punkte:',
-              textAlign: TextAlign.start,
-              style: textStyle.bodySmall?.copyWith(
-                color: colorScheme.outline,
-              ),
+          title: Text(
+            'Kein Doorman in Reichweite!',
+            textAlign: TextAlign.start,
+            style: textStyle.headlineSmall?.merge(const TextStyle(
+              fontWeight: FontWeight.w600,
             )),
+          ),
+          subtitle: Text(
+            'Achte auf folgende Punkte:',
+            textAlign: TextAlign.start,
+            style: textStyle.bodySmall?.copyWith(
+              color: colorScheme.outline,
+            ),
+          ),
+        ),
         const SizedBox(height: 8),
         ListTile(
           leading: Icon(
