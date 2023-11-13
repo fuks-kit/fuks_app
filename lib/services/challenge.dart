@@ -60,7 +60,9 @@ class ChallengeService {
       },
     );
 
-    FlutterBluePlus.startScan();
+    FlutterBluePlus.startScan(
+      continuousDivisor: 1,
+    );
   }
 
   static Stream<String> stream() async* {
