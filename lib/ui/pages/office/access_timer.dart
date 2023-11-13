@@ -42,18 +42,19 @@ class _AccessTimerState extends State<AccessTimer> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Row(
       children: [
-        Text('Door is open for ${_leftTime.inSeconds} seconds'),
+        Text(
+          'Door is open for ${_leftTime.inSeconds} seconds',
+          style: const TextStyle(color: Colors.black),
+        ),
         const Spacer(),
         SizedBox(
           width: 24,
           height: 24,
           child: CircularProgressIndicator(
             value: _leftTime.inMilliseconds / widget.duration.inMilliseconds,
-            color: colorScheme.inversePrimary,
+            color: Colors.black,
           ),
         ),
       ],

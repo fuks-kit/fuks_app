@@ -19,8 +19,8 @@ class NotInReach extends StatelessWidget {
           width: 256,
           height: 256,
           padding: const EdgeInsets.all(8),
-          illustration: UnDrawIllustration.location_search,
-          color: colorScheme.error,
+          illustration: UnDrawIllustration.best_place,
+          color: colorScheme.primary,
         ),
         const SizedBox(height: 60),
         Text(
@@ -33,7 +33,7 @@ class NotInReach extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           "Du musst dich in der Näche des fuks Büros befinden und Bluetooth aktiviert haben, um die Tür zu öffnen. "
-          "Es kann einige Sekunden dauern, bis dein Gerät erkannt wird.",
+          "Es kann bis zu 30 Sekunden dauern, bis dein Gerät erkannt wird.",
           textAlign: TextAlign.center,
           style: textStyle.bodyMedium?.merge(TextStyle(
             color: colorScheme.outline,

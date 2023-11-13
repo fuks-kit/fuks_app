@@ -31,6 +31,7 @@ class _AccessBodyState extends State<AccessBody> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       duration: duration,
       content: AccessTimer(duration: duration),
+      backgroundColor: Colors.greenAccent,
     ));
   }
 
@@ -44,12 +45,12 @@ class _AccessBodyState extends State<AccessBody> {
       primary: false,
       maxWidth: 400,
       children: [
-        UnDraw(
+        const UnDraw(
           width: 288,
           height: 192,
-          padding: const EdgeInsets.all(8),
-          illustration: UnDrawIllustration.login,
-          color: colorScheme.primary,
+          padding: EdgeInsets.all(8),
+          illustration: UnDrawIllustration.security_on,
+          color: Colors.greenAccent,
         ),
         const SizedBox(height: 60),
         Text(
@@ -61,7 +62,7 @@ class _AccessBodyState extends State<AccessBody> {
         ),
         const SizedBox(height: 8),
         Text(
-          'Um die Tür zu öffnen, müssen du dich im Fuks-WLAN-Netzwerk befinden',
+          'Du hast Zugang zum Büro. Bitte achte darauf, dass du die Tür hinter dir schließt.',
           textAlign: TextAlign.center,
           style: textStyle.bodyMedium?.merge(TextStyle(
             color: colorScheme.outline,
@@ -83,15 +84,19 @@ class _AccessBodyState extends State<AccessBody> {
             );
           },
           icon: _loading
-              ? SizedBox(
+              ? const SizedBox(
                   width: 24,
                   height: 24,
                   child: CircularProgressIndicator(
-                    color: colorScheme.onPrimaryContainer,
+                    color: Colors.black,
                   ),
                 )
               : const Icon(Icons.key),
-          label: const Text('Open Door'),
+          label: const Text('Tür öffnen'),
+          style: FilledButton.styleFrom(
+            backgroundColor: Colors.greenAccent,
+            foregroundColor: Colors.black,
+          ),
         ),
       ],
     );
