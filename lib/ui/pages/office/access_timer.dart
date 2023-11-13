@@ -45,7 +45,7 @@ class _AccessTimerState extends State<AccessTimer> {
     return Row(
       children: [
         Text(
-          'Door is open for ${_leftTime.inSeconds} seconds',
+          'Tür ist für ${_leftTime.inSeconds} Sekunden offen',
           style: const TextStyle(color: Colors.black),
         ),
         const Spacer(),
