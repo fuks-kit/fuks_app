@@ -49,28 +49,67 @@ class _AccessBodyState extends State<AccessBody> {
           width: 288,
           height: 192,
           padding: EdgeInsets.all(8),
-          illustration: UnDrawIllustration.security_on,
+          illustration: UnDrawIllustration.fingerprint_login,
           color: Colors.greenAccent,
         ),
-        const SizedBox(height: 60),
-        Text(
-          'Du kannst die Tür öffnen!',
-          textAlign: TextAlign.center,
-          style: textStyle.headlineSmall?.merge(const TextStyle(
-            fontWeight: FontWeight.w600,
-          )),
+        const SizedBox(height: 24),
+        ListTile(
+          title: Text(
+            'Du hast Zugang zum Büro!',
+            textAlign: TextAlign.start,
+            style: textStyle.headlineSmall?.merge(const TextStyle(
+              fontWeight: FontWeight.w600,
+            )),
+          ),
+          subtitle: Text(
+            'Achte auf folgende Punkte:',
+            textAlign: TextAlign.start,
+            style: textStyle.bodySmall?.copyWith(
+              color: colorScheme.outline,
+            ),
+          ),
         ),
-        const SizedBox(height: 8),
-        Text(
-          'Du hast Zugang zum Büro. Bitte achte darauf, dass du die Tür hinter dir schließt.',
-          textAlign: TextAlign.center,
-          style: textStyle.bodyMedium?.merge(TextStyle(
-            color: colorScheme.outline,
-          )),
+        const ListTile(
+          leading: Icon(
+            Icons.meeting_room,
+            color: Colors.greenAccent,
+            // color: colorScheme.outline,
+          ),
+          title: Text('Schließe alle Türen und Fenster'),
         ),
-        const SizedBox(height: 60),
-        FilledButton.tonalIcon(
-          onPressed: () {
+        const ListTile(
+          leading: Icon(
+            Icons.delete,
+            color: Colors.greenAccent,
+          ),
+          title: Text('Entsorge deinen Müll'),
+        ),
+        const ListTile(
+          leading: Icon(
+            Icons.light,
+            color: Colors.greenAccent,
+          ),
+          title: Text('Schalte das Licht aus'),
+        ),
+        const SizedBox(height: 16),
+        ListTile(
+          leading: _loading
+              ? const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                )
+              : const Icon(Icons.key, color: Colors.black),
+          title: const Text(
+            'Tür öffnen',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+          tileColor: Colors.greenAccent,
+          onTap: () {
             setState(() {
               _loading = true;
             });
@@ -83,21 +122,37 @@ class _AccessBodyState extends State<AccessBody> {
               },
             );
           },
-          icon: _loading
-              ? const SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                  ),
-                )
-              : const Icon(Icons.key),
-          label: const Text('Tür öffnen'),
-          style: FilledButton.styleFrom(
-            backgroundColor: Colors.greenAccent,
-            foregroundColor: Colors.black,
-          ),
         ),
+        // const SizedBox(height: 60),
+        // FilledButton.tonalIcon(
+        //   onPressed: () {
+        //     setState(() {
+        //       _loading = true;
+        //     });
+        //
+        //     final req = Challenge()..id = widget.challenge;
+        //     doorman.openDoor(req).then(_onSuccess).catchError(
+        //       (error, trace) {
+        //         setState(() => _loading = false);
+        //         showErrorInfo(context, error, trace);
+        //       },
+        //     );
+        //   },
+        //   icon: _loading
+        //       ? const SizedBox(
+        //           width: 24,
+        //           height: 24,
+        //           child: CircularProgressIndicator(
+        //             color: Colors.black,
+        //           ),
+        //         )
+        //       : const Icon(Icons.key),
+        //   label: const Text('Tür öffnen'),
+        //   style: FilledButton.styleFrom(
+        //     backgroundColor: Colors.greenAccent,
+        //     foregroundColor: Colors.black,
+        //   ),
+        // ),
       ],
     );
   }
