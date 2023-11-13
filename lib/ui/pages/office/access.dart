@@ -57,7 +57,7 @@ class _AccessBodyState extends State<AccessBody> {
           'Du kannst die Tür öffnen!',
           textAlign: TextAlign.center,
           style: textStyle.headlineSmall?.merge(const TextStyle(
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           )),
         ),
         const SizedBox(height: 8),

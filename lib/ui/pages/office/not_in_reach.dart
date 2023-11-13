@@ -22,23 +22,48 @@ class NotInReach extends StatelessWidget {
           illustration: UnDrawIllustration.best_place,
           color: colorScheme.primary,
         ),
-        const SizedBox(height: 60),
-        Text(
-          'Kein Doorman in Reichweite!',
-          textAlign: TextAlign.center,
-          style: textStyle.headlineSmall?.merge(const TextStyle(
-            fontWeight: FontWeight.w500,
-          )),
-        ),
         const SizedBox(height: 8),
-        Text(
-          "Du musst dich in der Näche des fuks Büros befinden und Bluetooth aktiviert haben, um die Tür zu öffnen. "
-          "Es kann bis zu 30 Sekunden dauern, bis dein Gerät erkannt wird.",
-          textAlign: TextAlign.center,
-          style: textStyle.bodyMedium?.merge(TextStyle(
-            color: colorScheme.outline,
-          )),
+        ListTile(
+            title: Text(
+              'Kein Doorman in Reichweite!',
+              textAlign: TextAlign.start,
+              style: textStyle.headlineSmall?.merge(const TextStyle(
+                fontWeight: FontWeight.w600,
+              )),
+            ),
+            subtitle: Text(
+              'Achte auf folgende Punkte:',
+              textAlign: TextAlign.start,
+              style: textStyle.bodySmall?.copyWith(
+                color: colorScheme.outline,
+              ),
+            )),
+        const SizedBox(height: 8),
+        ListTile(
+          leading: Icon(
+            Icons.bluetooth,
+            color: colorScheme.primary,
+          ),
+          title: const Text('Dein Bluetooth ist muss aktiviert sein'),
         ),
+        ListTile(
+          leading: Icon(
+            Icons.location_on,
+            color: colorScheme.primary,
+          ),
+          title:
+              const Text('Du musst dich in der Nähe des fuks Büros befinden'),
+        ),
+        ListTile(
+          leading: Icon(
+            Icons.timer,
+            color: colorScheme.primary,
+          ),
+          title: const Text(
+            'Es kann bis zu 30 Sekunden dauern, bis dein Gerät erkannt wird',
+          ),
+        ),
+        // subtitle,
         const SizedBox(height: 60),
       ],
     );

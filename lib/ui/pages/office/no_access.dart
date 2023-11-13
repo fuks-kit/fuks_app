@@ -45,7 +45,7 @@ class NoAccess extends StatelessWidget {
           'Du hast keinen Zugang!',
           textAlign: TextAlign.center,
           style: textStyle.headlineSmall?.merge(const TextStyle(
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           )),
         ),
         const SizedBox(height: 8),

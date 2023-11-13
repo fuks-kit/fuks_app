@@ -37,7 +37,6 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
           height: 192,
           padding: const EdgeInsets.all(8),
           illustration: UnDrawIllustration.signal_searching,
-          // illustration: UnDrawIllustration.warning,
           color: colorScheme.secondary,
         ),
         const SizedBox(height: 60),
@@ -45,7 +44,7 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
           'Keine Verbindung',
           textAlign: TextAlign.center,
           style: textStyle.headlineSmall?.merge(const TextStyle(
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           )),
         ),
         const SizedBox(height: 8),
