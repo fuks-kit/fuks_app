@@ -39,7 +39,7 @@ class OfficeBody extends StatefulWidget {
 }
 
 class _OfficeBodyState extends State<OfficeBody> {
-  Future<OfficePermission>? _request;
+  Future<AccessCheckResponse>? _request;
   String? _challenge;
 
   StreamSubscription<String>? _challengeSubscription;
@@ -49,11 +49,12 @@ class _OfficeBodyState extends State<OfficeBody> {
     super.initState();
 
     _challengeSubscription = ChallengeService.stream().listen((challenge) {
+      final req = AccessCheckRequest();
+      req.challenge = challenge;
+
       setState(() {
         _challenge = challenge;
-        _request = doorman.checkPermissions(
-          Challenge()..id = challenge,
-        );
+        _request = doorman.checkAccess(req);
       });
     });
   }
@@ -70,8 +71,8 @@ class _OfficeBodyState extends State<OfficeBody> {
     }
 
     setState(() {
-      _request = doorman.checkPermissions(
-        Challenge()..id = _challenge!,
+      _request = doorman.checkAccess(
+        AccessCheckRequest()..challenge = _challenge!,
       );
     });
 
@@ -84,7 +85,7 @@ class _OfficeBodyState extends State<OfficeBody> {
       return const NotInReach();
     }
 
-    return FutureBuilder<OfficePermission>(
+    return FutureBuilder<AccessCheckResponse>(
       future: _request,
       builder: (context, snap) {
         Widget body;

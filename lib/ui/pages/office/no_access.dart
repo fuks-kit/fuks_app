@@ -12,7 +12,7 @@ class NoAccess extends StatelessWidget {
     required this.onRefresh,
   });
 
-  final OfficePermission permission;
+  final AccessCheckResponse permission;
   final VoidCallback? onRefresh;
 
   @override
@@ -21,7 +21,7 @@ class NoAccess extends StatelessWidget {
     final textStyle = Theme.of(context).textTheme;
 
     String message;
-    if (permission.isFuksMember) {
+    if (permission.isFuks) {
       message = 'Sobald du aktives Mitglied wirst, erhältst du Zugang zum Büro';
     } else {
       message =
@@ -62,7 +62,7 @@ class NoAccess extends StatelessWidget {
           runSpacing: 8,
           alignment: WrapAlignment.center,
           children: [
-            if (!permission.isFuksMember)
+            if (!permission.isFuks)
               FilledButton.tonalIcon(
                 onPressed: () {
                   // Copy user id to clipboard

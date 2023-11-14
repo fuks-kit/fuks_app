@@ -47,12 +47,12 @@ class DoormanServiceWithToken {
     );
   }
 
-  Future<OfficePermission> checkPermissions(Challenge request) async {
+  Future<AccessCheckResponse> checkAccess(AccessCheckRequest request) async {
     final token = await user?.getIdToken();
-    return _client.checkPermissions(request, options: _authOptions(token));
+    return _client.checkAccess(request, options: _authOptions(token));
   }
 
-  Future<DoorState> openDoor(Challenge request) async {
+  Future<DoorOpenResponse> openDoor(DoorOpenRequest request) async {
     final token = await user?.getIdToken();
     return _client.openDoor(request, options: _authOptions(token));
   }

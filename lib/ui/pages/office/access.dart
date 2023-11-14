@@ -21,7 +21,7 @@ class AccessBody extends StatefulWidget {
 class _AccessBodyState extends State<AccessBody> {
   bool _loading = false;
 
-  void _onSuccess(DoorState status) {
+  void _onSuccess(DoorOpenResponse status) {
     setState(() => _loading = false);
 
     final duration = Duration(
@@ -114,7 +114,9 @@ class _AccessBodyState extends State<AccessBody> {
               _loading = true;
             });
 
-            final req = Challenge()..id = widget.challenge;
+            final req = DoorOpenRequest();
+            req.challenge = widget.challenge;
+
             doorman.openDoor(req).then(_onSuccess).catchError(
               (error, trace) {
                 setState(() => _loading = false);
@@ -123,36 +125,6 @@ class _AccessBodyState extends State<AccessBody> {
             );
           },
         ),
-        // const SizedBox(height: 60),
-        // FilledButton.tonalIcon(
-        //   onPressed: () {
-        //     setState(() {
-        //       _loading = true;
-        //     });
-        //
-        //     final req = Challenge()..id = widget.challenge;
-        //     doorman.openDoor(req).then(_onSuccess).catchError(
-        //       (error, trace) {
-        //         setState(() => _loading = false);
-        //         showErrorInfo(context, error, trace);
-        //       },
-        //     );
-        //   },
-        //   icon: _loading
-        //       ? const SizedBox(
-        //           width: 24,
-        //           height: 24,
-        //           child: CircularProgressIndicator(
-        //             color: Colors.black,
-        //           ),
-        //         )
-        //       : const Icon(Icons.key),
-        //   label: const Text('Tür öffnen'),
-        //   style: FilledButton.styleFrom(
-        //     backgroundColor: Colors.greenAccent,
-        //     foregroundColor: Colors.black,
-        //   ),
-        // ),
       ],
     );
   }
