@@ -52,17 +52,27 @@ class _AccessTimerState extends State<AccessTimer> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          'Tür ist für ${_leftTime.inSeconds} Sekunden offen',
-          style: const TextStyle(color: Colors.black),
+        const Text(
+          'Tür ist offen',
+          style: TextStyle(color: Colors.black),
         ),
         const Spacer(),
         SizedBox(
           width: 24,
           height: 24,
-          child: CircularProgressIndicator(
-            value: _leftTime.inMilliseconds / widget.duration.inMilliseconds,
-            color: Colors.black,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              CircularProgressIndicator(
+                value:
+                    _leftTime.inMilliseconds / widget.duration.inMilliseconds,
+                color: Colors.black,
+              ),
+              Text(
+                '${_leftTime.inSeconds}',
+                style: const TextStyle(color: Colors.black),
+              ),
+            ],
           ),
         ),
       ],
