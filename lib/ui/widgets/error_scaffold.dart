@@ -64,9 +64,11 @@ class ErrorBody extends StatelessWidget {
   const ErrorBody({
     super.key,
     this.error,
+    this.onRefresh,
   });
 
   final Object? error;
+  final VoidCallback? onRefresh;
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +76,6 @@ class ErrorBody extends StatelessWidget {
 
     return SafeArea(
       child: ListView(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        // mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(
             width: double.infinity,
@@ -87,7 +86,7 @@ class ErrorBody extends StatelessWidget {
             height: 200,
             width: 200,
             child: UnDraw(
-              illustration: UnDrawIllustration.fixing_bugs,
+              illustration: UnDrawIllustration.warning,
               color: colorScheme.error,
             ),
           ),
@@ -99,6 +98,19 @@ class ErrorBody extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(ErrorUtils.toText(error)),
           ),
+          if (onRefresh != null)
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 26,
+              ),
+              alignment: Alignment.center,
+              child: FilledButton.tonalIcon(
+                onPressed: onRefresh,
+                icon: const Icon(Icons.refresh),
+                label: const Text('Erneut versuchen'),
+              ),
+            ),
         ],
       ),
     );
