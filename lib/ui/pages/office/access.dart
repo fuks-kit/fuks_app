@@ -28,11 +28,7 @@ class _AccessBodyState extends State<AccessBody> {
       seconds: status.openDuration.seconds.toInt(),
     );
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      duration: duration,
-      content: AccessTimer(duration: duration),
-      backgroundColor: Colors.greenAccent,
-    ));
+    AccessTimer.showSnackBar(context, duration);
   }
 
   void _onDoorOpen() {

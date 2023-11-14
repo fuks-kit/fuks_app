@@ -10,6 +10,14 @@ class AccessTimer extends StatefulWidget {
 
   final Duration duration;
 
+  static void showSnackBar(BuildContext context, Duration duration) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      duration: duration,
+      content: AccessTimer(duration: duration),
+      backgroundColor: Colors.greenAccent,
+    ));
+  }
+
   @override
   State createState() => _AccessTimerState();
 }
