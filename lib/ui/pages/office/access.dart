@@ -4,7 +4,6 @@ import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/widgets/error.dart';
 import 'package:fuks_app/ui/pages/office/access_timer.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
-import 'package:fuks_app/ui/widgets/outlined_card.dart';
 import 'package:undraw/undraw.dart';
 
 class AccessBody extends StatefulWidget {
@@ -54,6 +53,9 @@ class _AccessBodyState extends State<AccessBody> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final parentColor = Theme.of(context).colorScheme;
+
     return Theme(
       data: ThemeData(
         colorSchemeSeed: Colors.greenAccent,
@@ -76,62 +78,43 @@ class _AccessBodyState extends State<AccessBody> {
                 color: colorScheme.primary,
               ),
               const SizedBox(height: 24),
-              OutlinedCard(
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: Text(
-                        'Zugang gewährt',
-                        style: TextStyle(
-                          color: colorScheme.onPrimaryContainer,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      subtitle: Text(
-                        'Achte auf folgende Punkte:',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colorScheme.onPrimaryContainer,
-                        ),
-                      ),
-                      // tileColor: colorTheme.primaryContainer,
-                      tileColor: colorScheme.primaryContainer,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(8),
-                          topRight: Radius.circular(8),
-                        ),
-                      ),
-                    ),
-                    const Divider(
-                      height: 1,
-                      // height: 0.5,
-                      // thickness: 0.5,
-                    ),
-                    ListTile(
-                      leading: Icon(
-                        Icons.meeting_room,
-                        color: colorScheme.primary,
-                        // color: colorScheme.outline,
-                      ),
-                      title: const Text('Schließe alle Türen und Fenster'),
-                    ),
-                    ListTile(
-                      leading: Icon(
-                        Icons.delete,
-                        color: colorScheme.primary,
-                      ),
-                      title: const Text('Entsorge deinen Müll'),
-                    ),
-                    ListTile(
-                      leading: Icon(
-                        Icons.light,
-                        color: colorScheme.primary,
-                      ),
-                      title: const Text('Schalte das Licht aus'),
-                    ),
-                  ],
+              ListTile(
+                title: Text(
+                  'Zugang gewährt',
+                  textAlign: TextAlign.start,
+                  style: textTheme.displaySmall?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
+                subtitle: Text(
+                  'Achte auf folgende Punkte:',
+                  textAlign: TextAlign.start,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: parentColor.outline,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.meeting_room,
+                  color: colorScheme.primary,
+                  // color: colorScheme.outline,
+                ),
+                title: const Text('Schließe alle Türen und Fenster'),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.delete,
+                  color: colorScheme.primary,
+                ),
+                title: const Text('Entsorge deinen Müll'),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.light,
+                  color: colorScheme.primary,
+                ),
+                title: const Text('Schalte das Licht aus'),
               ),
               const SizedBox(height: 24),
               SizedBox(

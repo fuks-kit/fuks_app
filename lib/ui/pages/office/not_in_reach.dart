@@ -8,7 +8,7 @@ class NotInReach extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final textStyle = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return ConstrainedListView(
       shrinkWrap: true,
@@ -25,16 +25,16 @@ class NotInReach extends StatelessWidget {
         const SizedBox(height: 8),
         ListTile(
           title: Text(
-            'Kein Doorman in Reichweite!',
+            'Nicht in Reichweite',
             textAlign: TextAlign.start,
-            style: textStyle.headlineSmall?.merge(const TextStyle(
+            style: textTheme.displaySmall?.copyWith(
               fontWeight: FontWeight.w600,
-            )),
+            ),
           ),
           subtitle: Text(
             'Achte auf folgende Punkte:',
             textAlign: TextAlign.start,
-            style: textStyle.bodySmall?.copyWith(
+            style: textTheme.bodyMedium?.copyWith(
               color: colorScheme.outline,
             ),
           ),

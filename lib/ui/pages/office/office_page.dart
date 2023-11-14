@@ -5,11 +5,9 @@ import 'package:fuks_app/generated/doorman/doorman.pb.dart';
 import 'package:fuks_app/services/challenge.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/pages/office/access.dart';
-import 'package:fuks_app/ui/pages/office/connection_status.dart';
 import 'package:fuks_app/ui/pages/office/no_access.dart';
 import 'package:fuks_app/ui/pages/office/not_in_reach.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-import 'package:fuks_app/utils/error.dart';
 
 class OfficePage extends StatelessWidget {
   const OfficePage({super.key});
@@ -90,13 +88,10 @@ class _OfficeBodyState extends State<OfficeBody> {
       builder: (context, snap) {
         Widget body;
 
-        if (snap.hasError && ErrorUtils.isNotConnected(snap.error)) {
-          body = ConnectionStatus(
-            onRefreshPermissions: _refreshPermissions,
-          );
-        } else if (snap.hasError) {
+        if (snap.hasError) {
           body = ErrorBody(
             error: snap.error,
+            onRefresh: _refreshPermissions,
           );
         } else if (!snap.hasData) {
           body = const Center(
