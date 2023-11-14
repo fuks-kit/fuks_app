@@ -120,7 +120,7 @@ class NoAccess extends StatelessWidget {
             const SizedBox(height: 8),
             SizedBox(
               width: double.infinity,
-              child: FilledButton.icon(
+              child: FilledButton.tonalIcon(
                 onPressed: () {
                   onRefresh?.call();
                 },
