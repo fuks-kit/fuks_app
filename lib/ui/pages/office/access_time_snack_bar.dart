@@ -2,27 +2,27 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class AccessTimer extends StatefulWidget {
-  const AccessTimer({
+class AccessTimeSnackBar extends StatefulWidget {
+  const AccessTimeSnackBar({
     super.key,
     required this.duration,
   });
 
   final Duration duration;
 
-  static void showSnackBar(BuildContext context, Duration duration) {
+  static void show(BuildContext context, Duration duration) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       duration: duration,
-      content: AccessTimer(duration: duration),
+      content: AccessTimeSnackBar(duration: duration),
       backgroundColor: Colors.greenAccent,
     ));
   }
 
   @override
-  State createState() => _AccessTimerState();
+  State createState() => _AccessTimeSnackBarState();
 }
 
-class _AccessTimerState extends State<AccessTimer> {
+class _AccessTimeSnackBarState extends State<AccessTimeSnackBar> {
   late Timer _timer;
   late Duration _leftTime;
 

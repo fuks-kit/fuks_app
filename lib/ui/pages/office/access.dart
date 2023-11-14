@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/doorman/doorman.pb.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/widgets/error.dart';
-import 'package:fuks_app/ui/pages/office/access_timer.dart';
+import 'package:fuks_app/ui/pages/office/access_time_snack_bar.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:undraw/undraw.dart';
 
@@ -28,7 +28,7 @@ class _AccessBodyState extends State<AccessBody> {
       seconds: status.openDuration.seconds.toInt(),
     );
 
-    AccessTimer.showSnackBar(context, duration);
+    AccessTimeSnackBar.show(context, duration);
   }
 
   void _onDoorOpen() {
