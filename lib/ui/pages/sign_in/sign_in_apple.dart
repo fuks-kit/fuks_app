@@ -19,11 +19,11 @@ class AppleSignInButton extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SignInButton(
-      outlined: true,
+      outlined: false,
       leadingBottomPadding: (4 / 44),
       icon: CustomPaint(
         painter: AppleLogoPainter(
-          color: !isDark ? Colors.black : Colors.white,
+          color: isDark ? Colors.black : Colors.white,
         ),
       ),
       text: title,
