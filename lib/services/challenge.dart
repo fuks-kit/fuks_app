@@ -42,14 +42,14 @@ class ChallengeService {
           for (var uuid in result.advertisementData.serviceUuids) {
             // print("uuid: $uuid");
 
-            if (!uuid.uuid.startsWith(_challengeServiceUUIDPrefix)) {
+            if (!uuid.str.startsWith(_challengeServiceUUIDPrefix)) {
               continue;
             }
 
-            if (_challenge != uuid.uuid) {
+            if (_challenge != uuid.str) {
               print("*** Set challenge: ${DateTime.now()} $uuid");
-              _challenge = uuid.uuid;
-              _doormanChallengeStream.add(uuid.uuid);
+              _challenge = uuid.str;
+              _doormanChallengeStream.add(uuid.str);
             }
           }
         }
