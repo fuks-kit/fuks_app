@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 const _challengeServiceUUIDPrefix = "4deb699e";
@@ -26,11 +27,11 @@ class ChallengeService {
 
     final supported = await FlutterBluePlus.isSupported;
     if (!supported) {
-      print("BLE not supported");
+      debugPrint("BLE not supported");
       return;
     }
 
-    print("Init BLE challenge service ${DateTime.now()}");
+    debugPrint("Init BLE challenge service ${DateTime.now()}");
 
     _scanResultsSubscription = FlutterBluePlus.scanResults.listen(
       (results) async {
@@ -47,7 +48,7 @@ class ChallengeService {
             }
 
             if (_challenge != uuid.str) {
-              print("*** Set challenge: ${DateTime.now()} $uuid");
+              debugPrint("*** Set challenge: ${DateTime.now()} $uuid");
               _challenge = uuid.str;
               _doormanChallengeStream.add(uuid.str);
             }
@@ -55,7 +56,7 @@ class ChallengeService {
         }
       },
       onError: (err) {
-        print("err: $err");
+        debugPrint("err: $err");
         _doormanChallengeStream.addError(err);
       },
     );
