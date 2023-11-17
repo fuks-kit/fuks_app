@@ -81,13 +81,11 @@ class EventsBody extends StatelessWidget {
           itemBuilder: (context, index) {
             final event = data[index];
 
-            Widget contactAvatar;
+            Widget? contactAvatar;
             if (event.contact.imageUrl.isNotEmpty) {
               contactAvatar = CircleAvatar(
                 backgroundImage: NetworkImage(event.contact.imageUrl),
               );
-            } else {
-              contactAvatar = const Icon(Icons.alternate_email_outlined);
             }
 
             return ListTile(
