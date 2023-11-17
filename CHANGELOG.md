@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+### Changed
+
+- New doorman connection system that uses BLE instead of WiFi to proof proximity to the door
+
 ### Fixed
 
 - Fix stupid winter time bug
+- Fix image errors on events page
 
 ## [1.2.3] - 2023-11-04
 
