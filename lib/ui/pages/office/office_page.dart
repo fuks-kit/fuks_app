@@ -1,11 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/doorman/doorman.pb.dart';
+import 'package:fuks_app/services/challenge.dart';
 import 'package:fuks_app/services/doorman.dart';
 import 'package:fuks_app/ui/pages/office/access.dart';
-import 'package:fuks_app/ui/pages/office/connection_status.dart';
 import 'package:fuks_app/ui/pages/office/no_access.dart';
+import 'package:fuks_app/ui/pages/office/not_in_reach.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-import 'package:fuks_app/utils/error.dart';
 
 class OfficePage extends StatelessWidget {
   const OfficePage({super.key});
@@ -35,27 +37,41 @@ class OfficeBody extends StatefulWidget {
 }
 
 class _OfficeBodyState extends State<OfficeBody> {
-  late Future<OfficePermission> _request;
+  Future<AccessCheckResponse>? _request;
+  String? _challenge;
+
+  StreamSubscription<String>? _challengeSubscription;
 
   @override
   void initState() {
     super.initState();
 
-    // Debug stuff to test the UI
-    // final mockObj = OfficePermission();
-    // mockObj.hasAccess = false;
-    // mockObj.isFuksMember = true;
-    // mockObj.isActiveFuks = false;
-    // _request = Future(() => mockObj);
+    _challengeSubscription = ChallengeService.stream().listen((challenge) {
+      final req = AccessCheckRequest();
+      req.challenge = challenge;
 
-    // _request = Future.error(const GrpcError.unavailable());
+      setState(() {
+        _challenge = challenge;
+        _request = doorman.checkAccess(req);
+      });
+    });
+  }
 
-    _request = doorman.checkPermissions();
+  @override
+  void dispose() {
+    _challengeSubscription?.cancel();
+    super.dispose();
   }
 
   Future<void> _refreshPermissions() async {
+    if (_challenge == null) {
+      return;
+    }
+
     setState(() {
-      _request = doorman.checkPermissions();
+      _request = doorman.checkAccess(
+        AccessCheckRequest()..challenge = _challenge!,
+      );
     });
 
     await _request;
@@ -63,25 +79,28 @@ class _OfficeBodyState extends State<OfficeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<OfficePermission>(
+    if (_challenge == null) {
+      return const NotInReach();
+    }
+
+    return FutureBuilder<AccessCheckResponse>(
       future: _request,
       builder: (context, snap) {
         Widget body;
 
-        if (snap.hasError && ErrorUtils.isNotConnected(snap.error)) {
-          body = ConnectionStatus(
-            onRefreshPermissions: _refreshPermissions,
-          );
-        } else if (snap.hasError) {
+        if (snap.hasError) {
           body = ErrorBody(
             error: snap.error,
+            onRefresh: _refreshPermissions,
           );
         } else if (!snap.hasData) {
           body = const Center(
             child: CircularProgressIndicator(),
           );
         } else if (snap.requireData.hasAccess) {
-          body = const AccessBody();
+          body = AccessBody(
+            challenge: _challenge!,
+          );
         } else {
           body = NoAccess(
             permission: snap.requireData,

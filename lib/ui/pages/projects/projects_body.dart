@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/app_services/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/app_services/services.pb.dart';
-import 'package:fuks_app/services/fuks_cloud.dart';
+import 'package:fuks_app/services/app_services.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
@@ -75,9 +75,11 @@ class ProjectsBody extends StatelessWidget {
             final project = data[index];
 
             return ListTile(
-              trailing: CircleAvatar(
-                backgroundImage: NetworkImage(project.manager.imageUrl),
-              ),
+              trailing: project.manager.imageUrl.isNotEmpty
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(project.manager.imageUrl),
+                    )
+                  : null,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

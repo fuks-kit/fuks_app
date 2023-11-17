@@ -1,27 +1,30 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fuks_app/generated/doorman/google/protobuf/empty.pb.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fuks_app/generated/doorman/doorman.pbgrpc.dart';
 import 'package:fuks_app/services/doorman_cert.dart';
 import 'package:grpc/grpc.dart';
 
-// final _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
-//   host: '192.168.0.152',
-//   port: 50051,
-//   transportSecure: false,
+Uint8List _certificateBytes = utf8.encode(doormanCert);
+
+// final _channel = ClientChannel(
+//   'gateway.fuks.hsg.kit.edu',
+//   port: 44888,
+//   options: const ChannelOptions(
+//     credentials: ChannelCredentials.insecure(),
+//   ),
 // );
 
 final _channel = ClientChannel(
-  'doorman.local',
-  port: 50051,
+  'gateway.fuks.hsg.kit.edu',
+  port: 44888,
   options: ChannelOptions(
     credentials: ChannelCredentials.secure(
-      certificates: doormanCert.codeUnits,
+      certificates: _certificateBytes,
       onBadCertificate: (certificate, host) {
-        // debugPrint('certificate: ${certificate.issuer}');
-        // debugPrint('host: $host');
-        return host == 'doorman.local:50051';
+        return host == "gateway.fuks.hsg.kit.edu:44888";
       },
     ),
   ),
@@ -40,20 +43,19 @@ class DoormanServiceWithToken {
     }
 
     return CallOptions(
-      timeout: const Duration(seconds: 6),
       metadata: {
         "Authorization": "Bearer $token",
       },
     );
   }
 
-  Future<OfficePermission> checkPermissions() async {
+  Future<AccessCheckResponse> checkAccess(AccessCheckRequest request) async {
     final token = await user?.getIdToken();
-    return _client.checkPermissions(Empty(), options: _authOptions(token));
+    return _client.checkAccess(request, options: _authOptions(token));
   }
 
-  Future<DoorState> openDoor() async {
+  Future<DoorOpenResponse> openDoor(DoorOpenRequest request) async {
     final token = await user?.getIdToken();
-    return _client.openDoor(Empty(), options: _authOptions(token));
+    return _client.openDoor(request, options: _authOptions(token));
   }
 }

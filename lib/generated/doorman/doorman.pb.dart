@@ -13,17 +13,101 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/duration.pb.dart' as $2;
+import 'google/protobuf/duration.pb.dart' as $1;
 
-class OfficePermission extends $pb.GeneratedMessage {
-  factory OfficePermission() => create();
-  OfficePermission._() : super();
-  factory OfficePermission.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OfficePermission.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class AccessCheckRequest extends $pb.GeneratedMessage {
+  factory AccessCheckRequest() => create();
+  AccessCheckRequest._() : super();
+  factory AccessCheckRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AccessCheckRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OfficePermission', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AccessCheckRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman.v2'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'challenge')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AccessCheckRequest clone() => AccessCheckRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AccessCheckRequest copyWith(void Function(AccessCheckRequest) updates) => super.copyWith((message) => updates(message as AccessCheckRequest)) as AccessCheckRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static AccessCheckRequest create() => AccessCheckRequest._();
+  AccessCheckRequest createEmptyInstance() => create();
+  static $pb.PbList<AccessCheckRequest> createRepeated() => $pb.PbList<AccessCheckRequest>();
+  @$core.pragma('dart2js:noInline')
+  static AccessCheckRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AccessCheckRequest>(create);
+  static AccessCheckRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get challenge => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set challenge($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChallenge() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChallenge() => clearField(1);
+}
+
+class DoorOpenRequest extends $pb.GeneratedMessage {
+  factory DoorOpenRequest() => create();
+  DoorOpenRequest._() : super();
+  factory DoorOpenRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DoorOpenRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DoorOpenRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman.v2'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'challenge')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DoorOpenRequest clone() => DoorOpenRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DoorOpenRequest copyWith(void Function(DoorOpenRequest) updates) => super.copyWith((message) => updates(message as DoorOpenRequest)) as DoorOpenRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DoorOpenRequest create() => DoorOpenRequest._();
+  DoorOpenRequest createEmptyInstance() => create();
+  static $pb.PbList<DoorOpenRequest> createRepeated() => $pb.PbList<DoorOpenRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DoorOpenRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DoorOpenRequest>(create);
+  static DoorOpenRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get challenge => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set challenge($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChallenge() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChallenge() => clearField(1);
+}
+
+class AccessCheckResponse extends $pb.GeneratedMessage {
+  factory AccessCheckResponse() => create();
+  AccessCheckResponse._() : super();
+  factory AccessCheckResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AccessCheckResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AccessCheckResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman.v2'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'hasAccess')
-    ..aOB(2, _omitFieldNames ? '' : 'isFuksMember')
+    ..aOB(2, _omitFieldNames ? '' : 'isFuks')
     ..aOB(3, _omitFieldNames ? '' : 'isActiveFuks')
     ..hasRequiredFields = false
   ;
@@ -32,22 +116,22 @@ class OfficePermission extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  OfficePermission clone() => OfficePermission()..mergeFromMessage(this);
+  AccessCheckResponse clone() => AccessCheckResponse()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OfficePermission copyWith(void Function(OfficePermission) updates) => super.copyWith((message) => updates(message as OfficePermission)) as OfficePermission;
+  AccessCheckResponse copyWith(void Function(AccessCheckResponse) updates) => super.copyWith((message) => updates(message as AccessCheckResponse)) as AccessCheckResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static OfficePermission create() => OfficePermission._();
-  OfficePermission createEmptyInstance() => create();
-  static $pb.PbList<OfficePermission> createRepeated() => $pb.PbList<OfficePermission>();
+  static AccessCheckResponse create() => AccessCheckResponse._();
+  AccessCheckResponse createEmptyInstance() => create();
+  static $pb.PbList<AccessCheckResponse> createRepeated() => $pb.PbList<AccessCheckResponse>();
   @$core.pragma('dart2js:noInline')
-  static OfficePermission getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OfficePermission>(create);
-  static OfficePermission? _defaultInstance;
+  static AccessCheckResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AccessCheckResponse>(create);
+  static AccessCheckResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get hasAccess => $_getBF(0);
@@ -59,13 +143,13 @@ class OfficePermission extends $pb.GeneratedMessage {
   void clearHasAccess() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get isFuksMember => $_getBF(1);
+  $core.bool get isFuks => $_getBF(1);
   @$pb.TagNumber(2)
-  set isFuksMember($core.bool v) { $_setBool(1, v); }
+  set isFuks($core.bool v) { $_setBool(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasIsFuksMember() => $_has(1);
+  $core.bool hasIsFuks() => $_has(1);
   @$pb.TagNumber(2)
-  void clearIsFuksMember() => clearField(2);
+  void clearIsFuks() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.bool get isActiveFuks => $_getBF(2);
@@ -77,15 +161,15 @@ class OfficePermission extends $pb.GeneratedMessage {
   void clearIsActiveFuks() => clearField(3);
 }
 
-class DoorState extends $pb.GeneratedMessage {
-  factory DoorState() => create();
-  DoorState._() : super();
-  factory DoorState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DoorState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class DoorOpenResponse extends $pb.GeneratedMessage {
+  factory DoorOpenResponse() => create();
+  DoorOpenResponse._() : super();
+  factory DoorOpenResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DoorOpenResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DoorState', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DoorOpenResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.doorman.v2'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'open')
-    ..aOM<$2.Duration>(2, _omitFieldNames ? '' : 'openDuration', subBuilder: $2.Duration.create)
+    ..aOM<$1.Duration>(2, _omitFieldNames ? '' : 'openDuration', subBuilder: $1.Duration.create)
     ..hasRequiredFields = false
   ;
 
@@ -93,22 +177,22 @@ class DoorState extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  DoorState clone() => DoorState()..mergeFromMessage(this);
+  DoorOpenResponse clone() => DoorOpenResponse()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  DoorState copyWith(void Function(DoorState) updates) => super.copyWith((message) => updates(message as DoorState)) as DoorState;
+  DoorOpenResponse copyWith(void Function(DoorOpenResponse) updates) => super.copyWith((message) => updates(message as DoorOpenResponse)) as DoorOpenResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static DoorState create() => DoorState._();
-  DoorState createEmptyInstance() => create();
-  static $pb.PbList<DoorState> createRepeated() => $pb.PbList<DoorState>();
+  static DoorOpenResponse create() => DoorOpenResponse._();
+  DoorOpenResponse createEmptyInstance() => create();
+  static $pb.PbList<DoorOpenResponse> createRepeated() => $pb.PbList<DoorOpenResponse>();
   @$core.pragma('dart2js:noInline')
-  static DoorState getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DoorState>(create);
-  static DoorState? _defaultInstance;
+  static DoorOpenResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DoorOpenResponse>(create);
+  static DoorOpenResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get open => $_getBF(0);
@@ -120,15 +204,15 @@ class DoorState extends $pb.GeneratedMessage {
   void clearOpen() => clearField(1);
 
   @$pb.TagNumber(2)
-  $2.Duration get openDuration => $_getN(1);
+  $1.Duration get openDuration => $_getN(1);
   @$pb.TagNumber(2)
-  set openDuration($2.Duration v) { setField(2, v); }
+  set openDuration($1.Duration v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasOpenDuration() => $_has(1);
   @$pb.TagNumber(2)
   void clearOpenDuration() => clearField(2);
   @$pb.TagNumber(2)
-  $2.Duration ensureOpenDuration() => $_ensure(1);
+  $1.Duration ensureOpenDuration() => $_ensure(1);
 }
 
 

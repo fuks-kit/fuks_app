@@ -46,6 +46,7 @@ dependencies:
   flutter_markdown: ^0.6.18
   intl: ^0.18.1
   google_fonts: ^6.1.0
+  flutter_blue_plus: ^1.28.10
 
 dev_dependencies:
   flutter_test:

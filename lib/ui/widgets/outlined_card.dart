@@ -24,7 +24,7 @@ class OutlinedCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           color: borderColor ?? colorScheme.outlineVariant,
-          width: 0.5,
+          width: 1,
         ),
         borderRadius: BorderRadius.circular(8),
         color: backgroundColor,

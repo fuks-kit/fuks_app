@@ -33,6 +33,8 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     final buttons = <Widget>[
       if (!kIsWeb && (Platform.isIOS || Platform.isMacOS))
         ListTile(
@@ -52,32 +54,52 @@ class SignInPage extends StatelessWidget {
           title: SignInButton(
             text: 'Skip',
             onPressed: () => _signInAnonymously(context),
-            outlined: true,
           ),
         ),
     ];
 
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedListView(
-            maxWidth: 400,
-            shrinkWrap: true,
-            primary: false,
-            children: [
-              const FuksIcon(size: 192),
-              const SizedBox(height: 60),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: buttons,
-              ),
-              const SizedBox(height: 16),
-              const ListTile(
-                title: TermsAndConditions(),
-              ),
-            ],
+      body: Container(
+        // Gradient background
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.topLeft,
+        //     end: Alignment.bottomRight,
+        //     colors: [
+        //       colorScheme.surfaceVariant,
+        //       colorScheme.surface,
+        //     ],
+        //   ),
+        // ),
+        child: SafeArea(
+          child: Center(
+            child: ConstrainedListView(
+              maxWidth: 400,
+              shrinkWrap: true,
+              primary: false,
+              children: [
+                Text(
+                  'Sign in',
+                  textAlign: TextAlign.center,
+                  style: textTheme.displaySmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 54),
+                const FuksIcon(size: 128),
+                const SizedBox(height: 54),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: buttons,
+                ),
+                const SizedBox(height: 54),
+                const ListTile(
+                  title: TermsAndConditions(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
