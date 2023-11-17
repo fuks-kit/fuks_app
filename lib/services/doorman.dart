@@ -1,31 +1,31 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fuks_app/generated/doorman/doorman.pbgrpc.dart';
+import 'package:fuks_app/services/doorman_cert.dart';
 import 'package:grpc/grpc.dart';
 
-final _channel = ClientChannel(
-  'raspberry.local',
-  port: 50051,
-  options: const ChannelOptions(
-    credentials: ChannelCredentials.insecure(),
-  ),
-);
+Uint8List _certificateBytes = utf8.encode(doormanCert);
 
 // final _channel = ClientChannel(
-//   'doorman.local',
-//   port: 50051,
-//   options: ChannelOptions(
-//     credentials: ChannelCredentials.secure(
-//       certificates: doormanCert.codeUnits,
-//       onBadCertificate: (certificate, host) {
-//         // debugPrint('certificate: ${certificate.issuer}');
-//         // debugPrint('host: $host');
-//         return host == 'doorman.local:50051';
-//       },
-//     ),
+//   'gateway.fuks.hsg.kit.edu',
+//   port: 44888,
+//   options: const ChannelOptions(
+//     credentials: ChannelCredentials.insecure(),
 //   ),
 // );
+
+final _channel = ClientChannel(
+  'gateway.fuks.hsg.kit.edu',
+  port: 44888,
+  options: ChannelOptions(
+    credentials: ChannelCredentials.secure(
+      certificates: Uint8List.fromList(_certificateBytes),
+    ),
+  ),
+);
 
 final doorman = DoormanServiceWithToken();
 
@@ -40,7 +40,6 @@ class DoormanServiceWithToken {
     }
 
     return CallOptions(
-      timeout: const Duration(seconds: 6),
       metadata: {
         "Authorization": "Bearer $token",
       },
