@@ -58,7 +58,7 @@ Prepare a new release by following these steps:
 
 1. Update flutter version to the newest version: `flutter upgrade`
 2. Update the changelog in `CHANGELOG.md`
-3. Update the version and build number in `pubspec.yaml`
+3. Update the **version** and **build number** in `pubspec.yaml`
 4. Update version in `lib/ui/pages/settings/settings_page.dart`
 5. Update dependencies:
     1. Update flutter dependencies: `flutter pub upgrade`
@@ -95,10 +95,29 @@ Prepare a new release by following these steps:
 8. Clean up the build files: `flutter clean`
 9. Go back to main branch after the release is done: `git checkout main`
 
+### Release a new Android version
+
+All Android releases are managed through
+the [Google Play Console](https://play.google.com/console/).
+To create a new release, follow these steps:
+
+1. Check if the latest version build was successfully
+    1. Go to Release > App bundle explorer
+    2. Check if latest build was successful
+2. To release the newest version to the beta:
+    1. Go to Testing > Internal testing
+    2. Click on "Edit release"
+    3. Click on "Add from library"
+    4. Select the newest version
+    5. Update the release notes
+    6. Click on "Next" and "Save and Publish"
+
 ### Upload a new iOS release to the App Store
 
 A new release is automatically created when the `main` and `release` branches are merged. XCode
-Cloud will automatically create a new release and upload the app to the App Store.
+Cloud will automatically create a new release and upload the app to the App Store. Beta testers will
+receive an email with a link to the new version. The new version will be available in the App Store
+within a few hours.
 
 ### Release a new iOS version
 

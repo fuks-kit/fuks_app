@@ -5,6 +5,6 @@ final dateFormat = DateFormat('dd.MM.yyyy kk:mm');
 
 class GermanDateUtils {
   static String format(Timestamp stamp) => dateFormat.format(
-        stamp.toDateTime(),
+        stamp.toDateTime().toLocal(),
       );
 }
