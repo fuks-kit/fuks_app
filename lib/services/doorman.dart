@@ -22,7 +22,10 @@ final _channel = ClientChannel(
   port: 44888,
   options: ChannelOptions(
     credentials: ChannelCredentials.secure(
-      certificates: Uint8List.fromList(_certificateBytes),
+      certificates: _certificateBytes,
+      onBadCertificate: (certificate, host) {
+        return host == "gateway.fuks.hsg.kit.edu:44888";
+      },
     ),
   ),
 );
