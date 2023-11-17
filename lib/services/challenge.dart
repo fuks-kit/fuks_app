@@ -63,6 +63,7 @@ class ChallengeService {
 
     FlutterBluePlus.startScan(
       continuousDivisor: 1,
+      continuousUpdates: true,
     );
   }
 
