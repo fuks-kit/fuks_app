@@ -75,9 +75,11 @@ class ProjectsBody extends StatelessWidget {
             final project = data[index];
 
             return ListTile(
-              trailing: CircleAvatar(
-                backgroundImage: NetworkImage(project.manager.imageUrl),
-              ),
+              trailing: project.manager.imageUrl.isNotEmpty
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(project.manager.imageUrl),
+                    )
+                  : null,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
