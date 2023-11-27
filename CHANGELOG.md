@@ -18,13 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.3] - 2023-11-04
 
-### Fix
+### Fixed
 
 - App versioning
 
 ## [1.2.2] - 2023-11-02
 
-### Fix
+### Fixed
 
 - Increase timeout for doorman connection
 
