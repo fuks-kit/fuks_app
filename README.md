@@ -80,7 +80,7 @@ Prepare a new release by following these steps:
 
 1. Prepare android signing
     1. Download the `keystore.jks` and `key.properties` files from the fuks Google Drive
-    2. Copy the files to the `android/app` folder
+    2. Copy the files to the `android` folder
 2. Pull the latest changes: `git pull origin release`
 3. Make sure you are on the release branch: `git checkout release`
 4. Reset the branch to the latest commit: `git reset --hard`
