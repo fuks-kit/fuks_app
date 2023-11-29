@@ -53,6 +53,14 @@ class _EventPage extends StatelessWidget {
       );
     }
 
+    Widget linkIcon;
+
+    if (event.buttonHref.startsWith("https://chat.")) {
+      linkIcon = const Icon(Icons.chat_outlined);
+    } else {
+      linkIcon = const Icon(Icons.link);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(event.title),
@@ -127,7 +135,7 @@ class _EventPage extends StatelessWidget {
               leading: CircleAvatar(
                 foregroundColor: colorScheme.onSurfaceVariant,
                 backgroundColor: colorScheme.surfaceVariant,
-                child: const Icon(Icons.open_in_new),
+                child: linkIcon,
               ),
             ),
           const SizedBox(height: 24),
