@@ -53,7 +53,7 @@ class _EventPage extends StatelessWidget {
       managerAvatar = CircleAvatar(
         foregroundColor: colorScheme.onSurfaceVariant,
         backgroundColor: colorScheme.surfaceVariant,
-        child: const Icon(Icons.person),
+        child: const Icon(Icons.person_outline),
       );
     }
 
@@ -103,7 +103,7 @@ class _EventPage extends StatelessWidget {
             leading: CircleAvatar(
               foregroundColor: colorScheme.onSurfaceVariant,
               backgroundColor: colorScheme.surfaceVariant,
-              child: const Icon(Icons.event),
+              child: const Icon(Icons.event_outlined),
             ),
           ),
           if (event.location.isNotEmpty)
