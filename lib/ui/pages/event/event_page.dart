@@ -45,11 +45,15 @@ class _EventPage extends StatelessWidget {
     Widget managerAvatar;
     if (event.contact.imageUrl.isNotEmpty) {
       managerAvatar = CircleAvatar(
+        foregroundColor: colorScheme.onSurfaceVariant,
+        backgroundColor: colorScheme.surfaceVariant,
         backgroundImage: NetworkImage(event.contact.imageUrl),
       );
     } else {
-      managerAvatar = const CircleAvatar(
-        child: Icon(Icons.person),
+      managerAvatar = CircleAvatar(
+        foregroundColor: colorScheme.onSurfaceVariant,
+        backgroundColor: colorScheme.surfaceVariant,
+        child: const Icon(Icons.person),
       );
     }
 
