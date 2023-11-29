@@ -45,12 +45,24 @@ class _EventPage extends StatelessWidget {
     Widget managerAvatar;
     if (event.contact.imageUrl.isNotEmpty) {
       managerAvatar = CircleAvatar(
+        foregroundColor: colorScheme.onSurfaceVariant,
+        backgroundColor: colorScheme.surfaceVariant,
         backgroundImage: NetworkImage(event.contact.imageUrl),
       );
     } else {
-      managerAvatar = const CircleAvatar(
-        child: Icon(Icons.person),
+      managerAvatar = CircleAvatar(
+        foregroundColor: colorScheme.onSurfaceVariant,
+        backgroundColor: colorScheme.surfaceVariant,
+        child: const Icon(Icons.person_outline),
       );
+    }
+
+    Widget linkIcon;
+
+    if (event.buttonHref.startsWith("https://chat.")) {
+      linkIcon = const Icon(Icons.chat_outlined);
+    } else {
+      linkIcon = const Icon(Icons.link);
     }
 
     return Scaffold(
@@ -91,7 +103,7 @@ class _EventPage extends StatelessWidget {
             leading: CircleAvatar(
               foregroundColor: colorScheme.onSurfaceVariant,
               backgroundColor: colorScheme.surfaceVariant,
-              child: const Icon(Icons.event),
+              child: const Icon(Icons.event_outlined),
             ),
           ),
           if (event.location.isNotEmpty)
@@ -127,7 +139,7 @@ class _EventPage extends StatelessWidget {
               leading: CircleAvatar(
                 foregroundColor: colorScheme.onSurfaceVariant,
                 backgroundColor: colorScheme.surfaceVariant,
-                child: const Icon(Icons.open_in_new),
+                child: linkIcon,
               ),
             ),
           const SizedBox(height: 24),

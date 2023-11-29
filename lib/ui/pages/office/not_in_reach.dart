@@ -45,7 +45,7 @@ class NotInReach extends StatelessWidget {
             Icons.bluetooth,
             color: colorScheme.primary,
           ),
-          title: const Text('Dein Bluetooth ist muss aktiviert sein'),
+          title: const Text('Dein Bluetooth muss aktiviert sein'),
         ),
         ListTile(
           leading: Icon(
