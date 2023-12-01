@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/ui/pages/events/events_page.dart';
+import 'package:fuks_app/ui/pages/home/events_body.dart';
 import 'package:fuks_app/ui/pages/home/kt_body.dart';
 import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
