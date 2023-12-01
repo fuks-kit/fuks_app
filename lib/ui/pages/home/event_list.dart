@@ -9,8 +9,8 @@ import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:fuks_app/utils/date.dart';
 import 'package:undraw/illustrations.g.dart';
 
-class EventsBody extends StatelessWidget {
-  const EventsBody({super.key});
+class EventsList extends StatelessWidget {
+  const EventsList({super.key});
 
   @override
   Widget build(BuildContext context) {
