@@ -63,11 +63,11 @@ Prepare a new release by following these steps:
 5. Update dependencies:
     1. Update flutter dependencies: `flutter pub upgrade`
     2. Update iOS dependencies: `cd ios && pod update && cd ..`
-    3. Update Android dependencies: `cd android && ./gradle app:dependencies && cd ..`
-    4. Update MacOS dependencies: `cd macos && pod update && cd ..`
+    3. (Optional) Update Android dependencies: `cd android && ./gradlew app:dependencies && cd ..`
+    4. (Optional) Update MacOS dependencies: `cd macos && pod update && cd ..`
     5. Commit and push all changes: `git commit -am "Update dependencies"; git push`
 6. Push all changes to `main` branch with `git push`
-7. Create a new git tag:
+7. Create a new git tag (replace X.X.X with new version number):
     1. `git tag -a vX.X.X -m "Release vX.X.X"`
     2. `git push origin vX.X.X`
 8. Merge `main` branch into `release` branch on GitHub:
@@ -81,8 +81,8 @@ Prepare a new release by following these steps:
 1. Prepare android signing
     1. Download the `keystore.jks` and `key.properties` files from the fuks Google Drive
     2. Copy the files to the `android` folder
-2. Pull the latest changes: `git pull origin release`
-3. Make sure you are on the release branch: `git checkout release`
+2. Make sure you are on the release branch: `git checkout release`
+3. Pull the latest changes: `git pull`
 4. Reset the branch to the latest commit: `git reset --hard`
 5. Clean up the build files: `flutter clean`
 6. Build the app bundle: `flutter build appbundle`
@@ -99,18 +99,26 @@ Prepare a new release by following these steps:
 
 All Android releases are managed through
 the [Google Play Console](https://play.google.com/console/).
-To create a new release, follow these steps:
+To create a new test and production release, follow these steps:
 
-1. Check if the latest version build was successfully
-    1. Go to Release > App bundle explorer
-    2. Check if latest build was successful
-2. To release the newest version to the beta:
-    1. Go to Testing > Internal testing
-    2. Click on "Edit release"
-    3. Click on "Add from library"
-    4. Select the newest version
-    5. Update the release notes
-    6. Click on "Next" and "Save and Publish"
+**Release to Beta Testers**:
+
+1. Go to Release > Testing > Internal testing
+2. Click on "Edit release"
+3. Click on "Add from library"
+4. Select the newest version
+5. Update the release notes
+6. Click on "Next" and "Save and Publish"
+
+**Release to Production**:
+
+1. Go to Release > Production
+2. Click on "Create new release"
+3. Click on "Add from Library"
+4. Select the newest version
+5. Update the release notes
+6. Click on "Next", "Save" and "Go to Overview"
+7. Click on "Send 1 change for review"
 
 ### Upload a new iOS release to the App Store
 
@@ -122,16 +130,17 @@ within a few hours.
 ### Release a new iOS version
 
 All iOS releases are managed through [App Store Connect](https://appstoreconnect.apple.com/). To
-create a new release, follow these steps:
+create a new test and production release, follow these steps:
 
 1. Check if the latest version build was successfully
     1. Go to Apps > fuks > Xcode Cloud
     2. Check if latest build was successful
-2. To release the newest version to the public:
+2. The build workflow is configured to automatically release a new build to Beta Testers
+3. To release the newest version to the public:
     1. Go to App Store > iOS Version
     2. Update version name
     3. (Optional) Update text and screenshots
-    4. Scroll to Build and replace old version with new version
+    4. Scroll to Build section and replace old version with new version
     5. Save and submit for review
 
 After theses steps are completed, the new version will be available in the App Store within a few
