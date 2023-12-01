@@ -63,7 +63,7 @@ Prepare a new release by following these steps:
 5. Update dependencies:
     1. Update flutter dependencies: `flutter pub upgrade`
     2. Update iOS dependencies: `cd ios && pod update && cd ..`
-    3. Update Android dependencies: `cd android && ./gradlew app:dependencies && cd ..`
+    3. Update Android dependencies: `cd android && ./gradle app:dependencies && cd ..`
     4. Update MacOS dependencies: `cd macos && pod update && cd ..`
     5. Commit and push all changes: `git commit -am "Update dependencies"; git push`
 6. Push all changes to `main` branch with `git push`
