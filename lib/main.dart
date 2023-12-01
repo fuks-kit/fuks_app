@@ -7,7 +7,7 @@ import 'package:fuks_app/firebase_options.dart';
 import 'package:fuks_app/services/challenge.dart';
 import 'package:fuks_app/ui/pages/event/event_page.dart';
 import 'package:fuks_app/ui/pages/events/events_page.dart';
-import 'package:fuks_app/ui/pages/kt/kt_page.dart';
+import 'package:fuks_app/ui/pages/home/kt_body.dart';
 import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
@@ -85,7 +85,6 @@ class _FuksAppState extends State<FuksApp> {
         EventPage.route: (context) => const EventPage(),
         ProjectPage.route: (context) => const ProjectPage(),
         ProjectsPage.route: (context) => const ProjectsPage(),
-        KTPage.route: (context) => const KTPage(),
       },
     );
   }

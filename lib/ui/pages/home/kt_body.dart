@@ -8,26 +8,6 @@ import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:undraw/undraw.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class KTPage extends StatelessWidget {
-  const KTPage({super.key});
-
-  static const String route = 'karlsruher-transfer';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Karlsruher Transfer'),
-      ),
-      body: const KTBody(),
-    );
-  }
-
-  static void show(BuildContext context) {
-    Navigator.of(context).pushNamed(route);
-  }
-}
-
 class KTBody extends StatelessWidget {
   const KTBody({super.key});
 
