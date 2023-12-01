@@ -8,26 +8,6 @@ import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:undraw/undraw.dart';
 
-class ProjectsPage extends StatelessWidget {
-  const ProjectsPage({super.key});
-
-  static const String route = 'projects';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Projekte'),
-      ),
-      body: const ProjectsBody(),
-    );
-  }
-
-  static void show(BuildContext context) {
-    Navigator.of(context).pushNamed(route);
-  }
-}
-
 class ProjectsBody extends StatelessWidget {
   const ProjectsBody({super.key});
 
