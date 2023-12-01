@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/ui/pages/home/event_list.dart';
 import 'package:fuks_app/ui/pages/home/kt_body.dart';
-import 'package:fuks_app/ui/pages/home/office/office_page.dart';
+import 'package:fuks_app/ui/pages/home/office_access/office_body.dart';
 import 'package:fuks_app/ui/pages/projects/projects_body.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/fuks_logo.dart';

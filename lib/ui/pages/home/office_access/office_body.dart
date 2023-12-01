@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/doorman/doorman.pb.dart';
 import 'package:fuks_app/services/challenge.dart';
 import 'package:fuks_app/services/doorman.dart';
-import 'package:fuks_app/ui/pages/home/office/access.dart';
-import 'package:fuks_app/ui/pages/home/office/no_access.dart';
-import 'package:fuks_app/ui/pages/home/office/not_in_reach.dart';
+import 'package:fuks_app/ui/pages/home/office_access/access.dart';
+import 'package:fuks_app/ui/pages/home/office_access/no_access.dart';
+import 'package:fuks_app/ui/pages/home/office_access/not_in_reach.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 
 class OfficeBody extends StatefulWidget {
