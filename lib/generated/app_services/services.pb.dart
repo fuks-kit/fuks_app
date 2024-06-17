@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -15,8 +15,166 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/timestamp.pb.dart' as $2;
 
+class Link extends $pb.GeneratedMessage {
+  factory Link({
+    $core.String? title,
+    $core.String? description,
+    $core.String? url,
+  }) {
+    final $result = create();
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (url != null) {
+      $result.url = url;
+    }
+    return $result;
+  }
+  Link._() : super();
+  factory Link.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Link.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Link', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.fcs.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'title')
+    ..aOS(2, _omitFieldNames ? '' : 'description')
+    ..aOS(3, _omitFieldNames ? '' : 'url')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Link clone() => Link()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Link copyWith(void Function(Link) updates) => super.copyWith((message) => updates(message as Link)) as Link;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Link create() => Link._();
+  Link createEmptyInstance() => create();
+  static $pb.PbList<Link> createRepeated() => $pb.PbList<Link>();
+  @$core.pragma('dart2js:noInline')
+  static Link getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Link>(create);
+  static Link? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get title => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set title($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTitle() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTitle() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get description => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set description($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDescription() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDescription() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get url => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set url($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUrl() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUrl() => clearField(3);
+}
+
+class Links extends $pb.GeneratedMessage {
+  factory Links({
+    $core.Iterable<Link>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
+  Links._() : super();
+  factory Links.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Links.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Links', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoints.fcs.v1'), createEmptyInstance: create)
+    ..pc<Link>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Link.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Links clone() => Links()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Links copyWith(void Function(Links) updates) => super.copyWith((message) => updates(message as Links)) as Links;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Links create() => Links._();
+  Links createEmptyInstance() => create();
+  static $pb.PbList<Links> createRepeated() => $pb.PbList<Links>();
+  @$core.pragma('dart2js:noInline')
+  static Links getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Links>(create);
+  static Links? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Link> get items => $_getList(0);
+}
+
 class Event extends $pb.GeneratedMessage {
-  factory Event() => create();
+  factory Event({
+    $core.String? title,
+    $core.String? details,
+    $2.Timestamp? date,
+    $core.String? location,
+    Contact? contact,
+    $core.String? label,
+    $core.String? buttonText,
+    $core.String? buttonHref,
+  }) {
+    final $result = create();
+    if (title != null) {
+      $result.title = title;
+    }
+    if (details != null) {
+      $result.details = details;
+    }
+    if (date != null) {
+      $result.date = date;
+    }
+    if (location != null) {
+      $result.location = location;
+    }
+    if (contact != null) {
+      $result.contact = contact;
+    }
+    if (label != null) {
+      $result.label = label;
+    }
+    if (buttonText != null) {
+      $result.buttonText = buttonText;
+    }
+    if (buttonHref != null) {
+      $result.buttonHref = buttonHref;
+    }
+    return $result;
+  }
   Event._() : super();
   factory Event.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Event.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -132,7 +290,15 @@ class Event extends $pb.GeneratedMessage {
 }
 
 class Events extends $pb.GeneratedMessage {
-  factory Events() => create();
+  factory Events({
+    $core.Iterable<Event>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
   Events._() : super();
   factory Events.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Events.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -168,7 +334,23 @@ class Events extends $pb.GeneratedMessage {
 }
 
 class Contact extends $pb.GeneratedMessage {
-  factory Contact() => create();
+  factory Contact({
+    $core.String? name,
+    $core.String? eMail,
+    $core.String? imageUrl,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    if (eMail != null) {
+      $result.eMail = eMail;
+    }
+    if (imageUrl != null) {
+      $result.imageUrl = imageUrl;
+    }
+    return $result;
+  }
   Contact._() : super();
   factory Contact.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Contact.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -230,7 +412,31 @@ class Contact extends $pb.GeneratedMessage {
 }
 
 class Project extends $pb.GeneratedMessage {
-  factory Project() => create();
+  factory Project({
+    $core.String? title,
+    $core.String? subtitle,
+    $core.String? label,
+    $core.String? details,
+    Contact? manager,
+  }) {
+    final $result = create();
+    if (title != null) {
+      $result.title = title;
+    }
+    if (subtitle != null) {
+      $result.subtitle = subtitle;
+    }
+    if (label != null) {
+      $result.label = label;
+    }
+    if (details != null) {
+      $result.details = details;
+    }
+    if (manager != null) {
+      $result.manager = manager;
+    }
+    return $result;
+  }
   Project._() : super();
   factory Project.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Project.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -314,7 +520,15 @@ class Project extends $pb.GeneratedMessage {
 }
 
 class Projects extends $pb.GeneratedMessage {
-  factory Projects() => create();
+  factory Projects({
+    $core.Iterable<Project>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
   Projects._() : super();
   factory Projects.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Projects.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -350,7 +564,27 @@ class Projects extends $pb.GeneratedMessage {
 }
 
 class KarlsruherTransfer extends $pb.GeneratedMessage {
-  factory KarlsruherTransfer() => create();
+  factory KarlsruherTransfer({
+    $core.String? title,
+    $core.String? subtitle,
+    $core.String? imageUrl,
+    $core.String? pdfUrl,
+  }) {
+    final $result = create();
+    if (title != null) {
+      $result.title = title;
+    }
+    if (subtitle != null) {
+      $result.subtitle = subtitle;
+    }
+    if (imageUrl != null) {
+      $result.imageUrl = imageUrl;
+    }
+    if (pdfUrl != null) {
+      $result.pdfUrl = pdfUrl;
+    }
+    return $result;
+  }
   KarlsruherTransfer._() : super();
   factory KarlsruherTransfer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory KarlsruherTransfer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -422,7 +656,15 @@ class KarlsruherTransfer extends $pb.GeneratedMessage {
 }
 
 class KarlsruherTransfers extends $pb.GeneratedMessage {
-  factory KarlsruherTransfers() => create();
+  factory KarlsruherTransfers({
+    $core.Iterable<KarlsruherTransfer>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
   KarlsruherTransfers._() : super();
   factory KarlsruherTransfers.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory KarlsruherTransfers.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);

@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -34,6 +34,10 @@ class AppServicesClient extends $grpc.Client {
       '/endpoints.fcs.v1.AppServices/GetKarlsruherTransfers',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.KarlsruherTransfers.fromBuffer(value));
+  static final _$getLinks = $grpc.ClientMethod<$0.Empty, $1.Links>(
+      '/endpoints.fcs.v1.AppServices/GetLinks',
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.Links.fromBuffer(value));
 
   AppServicesClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -51,6 +55,10 @@ class AppServicesClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$1.KarlsruherTransfers> getKarlsruherTransfers($0.Empty request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getKarlsruherTransfers, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.Links> getLinks($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getLinks, request, options: options);
   }
 }
 
@@ -80,6 +88,13 @@ abstract class AppServicesServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($1.KarlsruherTransfers value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.Links>(
+        'GetLinks',
+        getLinks_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($1.Links value) => value.writeToBuffer()));
   }
 
   $async.Future<$1.Events> getEvents_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
@@ -94,7 +109,12 @@ abstract class AppServicesServiceBase extends $grpc.Service {
     return getKarlsruherTransfers(call, await request);
   }
 
+  $async.Future<$1.Links> getLinks_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getLinks(call, await request);
+  }
+
   $async.Future<$1.Events> getEvents($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$1.Projects> getProjects($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$1.KarlsruherTransfers> getKarlsruherTransfers($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$1.Links> getLinks($grpc.ServiceCall call, $0.Empty request);
 }
