@@ -10,7 +10,8 @@ e.V.
 - [x] Show Karlsruher Transfer magazines
 - [x] Grant fuks e.V. members access to the office
 
-Download the app on [Google Play](https://play.google.com/store/apps/details?id=org.fuks.app) or [App Store](https://apps.apple.com/de/app/fuks/id6468768640).
+Download the app on [Google Play](https://play.google.com/store/apps/details?id=org.fuks.app)
+or [App Store](https://apps.apple.com/de/app/fuks/id6468768640).
 
 ## Project structure
 
@@ -70,7 +71,7 @@ Prepare a new release by following these steps:
     5. Commit and push all changes: `git commit -am "Update dependencies"; git push`
 6. Push all changes to `main` branch with `git push`
 7. Create a new git tag (replace X.X.X with new version number):
-    1. `git tag -a vX.X.X -m "Release vX.X.X"`
+    1. `git tag vX.X.X`
     2. `git push origin vX.X.X`
 8. Merge `main` branch into `release` branch on GitHub:
     1. Go to https://github.com/fuks-kit/fuks_app/tree/release
