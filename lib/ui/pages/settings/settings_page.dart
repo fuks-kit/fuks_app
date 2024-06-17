@@ -9,7 +9,7 @@ import 'package:fuks_app/utils/authenticate.dart';
 import 'package:fuks_app/utils/terms_and_privacy.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-const _version = '2.1.1';
+const _version = '2.1.2';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
