@@ -10,6 +10,8 @@ e.V.
 - [x] Show Karlsruher Transfer magazines
 - [x] Grant fuks e.V. members access to the office
 
+Download the app on [Google Play](https://play.google.com/store/apps/details?id=org.fuks.app) or [App Store](https://apps.apple.com/de/app/fuks/id6468768640).
+
 ## Project structure
 
 ```bash
