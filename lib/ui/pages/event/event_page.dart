@@ -46,13 +46,13 @@ class _EventPage extends StatelessWidget {
     if (event.contact.imageUrl.isNotEmpty) {
       managerAvatar = CircleAvatar(
         foregroundColor: colorScheme.onSurfaceVariant,
-        backgroundColor: colorScheme.surfaceVariant,
+        backgroundColor: colorScheme.surfaceContainerHighest,
         backgroundImage: NetworkImage(event.contact.imageUrl),
       );
     } else {
       managerAvatar = CircleAvatar(
         foregroundColor: colorScheme.onSurfaceVariant,
-        backgroundColor: colorScheme.surfaceVariant,
+        backgroundColor: colorScheme.surfaceContainerHighest,
         child: const Icon(Icons.person_outline),
       );
     }
@@ -102,7 +102,7 @@ class _EventPage extends StatelessWidget {
             subtitle: Text(GermanDateUtils.format(event.date)),
             leading: CircleAvatar(
               foregroundColor: colorScheme.onSurfaceVariant,
-              backgroundColor: colorScheme.surfaceVariant,
+              backgroundColor: colorScheme.surfaceContainerHighest,
               child: const Icon(Icons.event_outlined),
             ),
           ),
@@ -120,7 +120,7 @@ class _EventPage extends StatelessWidget {
               },
               leading: CircleAvatar(
                 foregroundColor: colorScheme.onSurfaceVariant,
-                backgroundColor: colorScheme.surfaceVariant,
+                backgroundColor: colorScheme.surfaceContainerHighest,
                 child: const Icon(Icons.pin_drop_outlined),
               ),
             ),
@@ -138,7 +138,7 @@ class _EventPage extends StatelessWidget {
               ),
               leading: CircleAvatar(
                 foregroundColor: colorScheme.onSurfaceVariant,
-                backgroundColor: colorScheme.surfaceVariant,
+                backgroundColor: colorScheme.surfaceContainerHighest,
                 child: linkIcon,
               ),
             ),

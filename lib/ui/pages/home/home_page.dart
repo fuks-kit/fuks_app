@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fuks_app/ui/pages/events/events_page.dart';
-import 'package:fuks_app/ui/pages/kt/kt_page.dart';
-import 'package:fuks_app/ui/pages/projects/projects_body.dart';
-import 'package:fuks_app/ui/pages/office/office_page.dart';
+import 'package:fuks_app/ui/pages/home/event_list.dart';
+import 'package:fuks_app/ui/pages/home/links_body.dart';
+import 'package:fuks_app/ui/pages/home/office_access/office_body.dart';
+import 'package:fuks_app/ui/pages/home/projects_body.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
 import 'package:fuks_app/ui/widgets/fuks_logo.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -31,9 +31,9 @@ class _HomePageState extends State<HomePage> {
       label: 'Projekte',
     ),
     NavigationDestination(
-      icon: Icon(Icons.newspaper_outlined),
-      selectedIcon: Icon(Icons.newspaper),
-      label: 'Karlsruher Transfer',
+      icon: Icon(Icons.link_outlined),
+      selectedIcon: Icon(Icons.link),
+      label: 'Links',
     ),
     NavigationDestination(
       icon: Icon(Icons.key_outlined),
@@ -65,27 +65,21 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Divider(height: 1),
-          NavigationBar(
-            elevation: 2,
-            selectedIndex: _selectedIndex,
-            height: 56,
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            onDestinationSelected: (index) =>
-                setState(() => _selectedIndex = index),
-            destinations: _destinations,
-          ),
-        ],
+      bottomNavigationBar: NavigationBar(
+        elevation: 2,
+        selectedIndex: _selectedIndex,
+        height: 56,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        onDestinationSelected: (index) =>
+            setState(() => _selectedIndex = index),
+        destinations: _destinations,
       ),
       body: IndexedStack(
         index: _selectedIndex,
         children: const [
-          EventsBody(),
+          EventsList(),
           ProjectsBody(),
-          KTBody(),
+          LinksBody(),
           OfficeBody(),
         ],
       ),

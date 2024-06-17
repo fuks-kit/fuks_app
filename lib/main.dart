@@ -6,10 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:fuks_app/firebase_options.dart';
 import 'package:fuks_app/services/challenge.dart';
 import 'package:fuks_app/ui/pages/event/event_page.dart';
-import 'package:fuks_app/ui/pages/events/events_page.dart';
-import 'package:fuks_app/ui/pages/kt/kt_page.dart';
-import 'package:fuks_app/ui/pages/projects/projects_body.dart';
-import 'package:fuks_app/ui/pages/office/office_page.dart';
 import 'package:fuks_app/ui/pages/project/project_page.dart';
 import 'package:fuks_app/ui/pages/home/home_page.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
@@ -77,15 +73,11 @@ class _FuksAppState extends State<FuksApp> {
           ? SignInPage.route
           : HomePage.route,
       routes: {
-        OfficePage.route: (context) => const OfficePage(),
         SignInPage.route: (context) => const SignInPage(),
         SettingsPage.route: (context) => const SettingsPage(),
         HomePage.route: (context) => const HomePage(),
-        EventsPage.route: (context) => const EventsPage(),
         EventPage.route: (context) => const EventPage(),
         ProjectPage.route: (context) => const ProjectPage(),
-        ProjectsPage.route: (context) => const ProjectsPage(),
-        KTPage.route: (context) => const KTPage(),
       },
     );
   }

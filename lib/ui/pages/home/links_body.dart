@@ -8,28 +8,8 @@ import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:undraw/undraw.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class KTPage extends StatelessWidget {
-  const KTPage({super.key});
-
-  static const String route = 'karlsruher-transfer';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Karlsruher Transfer'),
-      ),
-      body: const KTBody(),
-    );
-  }
-
-  static void show(BuildContext context) {
-    Navigator.of(context).pushNamed(route);
-  }
-}
-
-class KTBody extends StatelessWidget {
-  const KTBody({super.key});
+class LinksBody extends StatelessWidget {
+  const LinksBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +21,8 @@ class KTBody extends StatelessWidget {
     );
     final subtitleStyle = textTheme.bodySmall;
 
-    return FutureBuilder<KarlsruherTransfers>(
-      future: fuksCloud.getKarlsruherTransfers(Empty()),
+    return FutureBuilder<Links>(
+      future: fuksCloud.getLinks(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(error: snap.error);
@@ -52,13 +32,13 @@ class KTBody extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        final data = snap.data?.items ?? <KarlsruherTransfer>[];
+        final data = snap.data?.items ?? <Link>[];
 
         if (data.isEmpty) {
           return const Center(
             child: TextIllustration(
               illustration: UnDrawIllustration.void_,
-              text: 'Gerade sind keine Karlsruher Transfers verfügbar',
+              text: 'Gerade sind keine Links verfügbar',
             ),
           );
         }
@@ -72,20 +52,22 @@ class KTBody extends StatelessWidget {
           ),
           itemCount: data.length,
           itemBuilder: (context, index) {
-            final kt = data[index];
+            final item = data[index];
 
             return ListTile(
               title: Text(
-                kt.title,
+                item.title,
                 style: titleStyle,
               ),
-              subtitle: Text(
-                kt.subtitle,
-                style: subtitleStyle,
-                maxLines: 3,
-              ),
-              onTap: () => launchUrlString(kt.pdfUrl),
-              trailing: Image.network(kt.imageUrl),
+              subtitle: item.description.isNotEmpty
+                  ? Text(
+                      item.description,
+                      style: subtitleStyle,
+                      maxLines: 3,
+                    )
+                  : null,
+              trailing: const Icon(Icons.open_in_new),
+              onTap: () => launchUrlString(item.url),
             );
           },
         );

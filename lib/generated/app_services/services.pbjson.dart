@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -12,6 +12,33 @@
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
+
+@$core.Deprecated('Use linkDescriptor instead')
+const Link$json = {
+  '1': 'Link',
+  '2': [
+    {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
+    {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
+    {'1': 'url', '3': 3, '4': 1, '5': 9, '10': 'url'},
+  ],
+};
+
+/// Descriptor for `Link`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List linkDescriptor = $convert.base64Decode(
+    'CgRMaW5rEhQKBXRpdGxlGAEgASgJUgV0aXRsZRIgCgtkZXNjcmlwdGlvbhgCIAEoCVILZGVzY3'
+    'JpcHRpb24SEAoDdXJsGAMgASgJUgN1cmw=');
+
+@$core.Deprecated('Use linksDescriptor instead')
+const Links$json = {
+  '1': 'Links',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoints.fcs.v1.Link', '10': 'items'},
+  ],
+};
+
+/// Descriptor for `Links`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List linksDescriptor = $convert.base64Decode(
+    'CgVMaW5rcxIsCgVpdGVtcxgBIAMoCzIWLmVuZHBvaW50cy5mY3MudjEuTGlua1IFaXRlbXM=');
 
 @$core.Deprecated('Use eventDescriptor instead')
 const Event$json = {

@@ -9,28 +9,8 @@ import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:fuks_app/utils/date.dart';
 import 'package:undraw/illustrations.g.dart';
 
-class EventsPage extends StatelessWidget {
-  const EventsPage({super.key});
-
-  static const String route = 'events';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Events'),
-      ),
-      body: const EventsBody(),
-    );
-  }
-
-  static void show(BuildContext context) {
-    Navigator.of(context).pushNamed(route);
-  }
-}
-
-class EventsBody extends StatelessWidget {
-  const EventsBody({super.key});
+class EventsList extends StatelessWidget {
+  const EventsList({super.key});
 
   @override
   Widget build(BuildContext context) {

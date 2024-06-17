@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/app_services/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/app_services/services.pb.dart';
@@ -7,26 +8,6 @@ import 'package:fuks_app/ui/widgets/constrained_list_view.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
 import 'package:fuks_app/ui/widgets/illustration.dart';
 import 'package:undraw/undraw.dart';
-
-class ProjectsPage extends StatelessWidget {
-  const ProjectsPage({super.key});
-
-  static const String route = 'projects';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Projekte'),
-      ),
-      body: const ProjectsBody(),
-    );
-  }
-
-  static void show(BuildContext context) {
-    Navigator.of(context).pushNamed(route);
-  }
-}
 
 class ProjectsBody extends StatelessWidget {
   const ProjectsBody({super.key});
@@ -74,12 +55,21 @@ class ProjectsBody extends StatelessWidget {
           itemBuilder: (context, index) {
             final project = data[index];
 
+            Widget? managerAvatar;
+            if (project.manager.imageUrl.isNotEmpty) {
+              managerAvatar = managerAvatar = CachedNetworkImage(
+                placeholder: (context, url) => const SizedBox(),
+                errorWidget: (context, url, error) => const SizedBox(),
+                fit: BoxFit.contain,
+                imageUrl: project.manager.imageUrl,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  backgroundImage: imageProvider,
+                ),
+              );
+            }
+
             return ListTile(
-              trailing: project.manager.imageUrl.isNotEmpty
-                  ? CircleAvatar(
-                      backgroundImage: NetworkImage(project.manager.imageUrl),
-                    )
-                  : null,
+              trailing: managerAvatar,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

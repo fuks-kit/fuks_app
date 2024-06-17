@@ -4,30 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/doorman/doorman.pb.dart';
 import 'package:fuks_app/services/challenge.dart';
 import 'package:fuks_app/services/doorman.dart';
-import 'package:fuks_app/ui/pages/office/access.dart';
-import 'package:fuks_app/ui/pages/office/no_access.dart';
-import 'package:fuks_app/ui/pages/office/not_in_reach.dart';
+import 'package:fuks_app/ui/pages/home/office_access/access.dart';
+import 'package:fuks_app/ui/pages/home/office_access/no_access.dart';
+import 'package:fuks_app/ui/pages/home/office_access/not_in_reach.dart';
 import 'package:fuks_app/ui/widgets/error_scaffold.dart';
-
-class OfficePage extends StatelessWidget {
-  const OfficePage({super.key});
-
-  static const String route = 'office';
-
-  static void show(BuildContext context) {
-    Navigator.of(context).pushNamed(route);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Büro Zugang'),
-      ),
-      body: const OfficeBody(),
-    );
-  }
-}
 
 class OfficeBody extends StatefulWidget {
   const OfficeBody({super.key});
