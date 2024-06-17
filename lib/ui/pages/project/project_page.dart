@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:fuks_app/generated/app_services/services.pb.dart';
@@ -42,8 +43,17 @@ class _ProjectPage extends StatelessWidget {
 
     Widget managerAvatar;
     if (project.manager.imageUrl.isNotEmpty) {
-      managerAvatar = CircleAvatar(
-        backgroundImage: NetworkImage(project.manager.imageUrl),
+      managerAvatar = CachedNetworkImage(
+        placeholder: (context, url) => const CircleAvatar(
+          child: Icon(Icons.person),
+        ),
+        errorWidget: (context, url, error) => const CircleAvatar(
+          child: Icon(Icons.person),
+        ),
+        fit: BoxFit.contain,
+        imageUrl: project.manager.imageUrl,
+        imageBuilder: (context, imageProvider) =>
+            CircleAvatar(backgroundImage: imageProvider),
       );
     } else {
       managerAvatar = const CircleAvatar(

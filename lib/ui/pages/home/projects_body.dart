@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fuks_app/generated/app_services/google/protobuf/empty.pb.dart';
 import 'package:fuks_app/generated/app_services/services.pb.dart';
@@ -54,12 +55,21 @@ class ProjectsBody extends StatelessWidget {
           itemBuilder: (context, index) {
             final project = data[index];
 
+            Widget? managerAvatar;
+            if (project.manager.imageUrl.isNotEmpty) {
+              managerAvatar = managerAvatar = CachedNetworkImage(
+                placeholder: (context, url) => const SizedBox(),
+                errorWidget: (context, url, error) => const SizedBox(),
+                fit: BoxFit.contain,
+                imageUrl: project.manager.imageUrl,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  backgroundImage: imageProvider,
+                ),
+              );
+            }
+
             return ListTile(
-              trailing: project.manager.imageUrl.isNotEmpty
-                  ? CircleAvatar(
-                      backgroundImage: NetworkImage(project.manager.imageUrl),
-                    )
-                  : null,
+              trailing: managerAvatar,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
