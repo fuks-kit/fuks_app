@@ -66,6 +66,7 @@ class LinksBody extends StatelessWidget {
                       maxLines: 3,
                     )
                   : null,
+              trailing: const Icon(Icons.open_in_new),
               onTap: () => launchUrlString(item.url),
             );
           },
