@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuks_app/ui/pages/home/event_list.dart';
-import 'package:fuks_app/ui/pages/home/kt_body.dart';
+import 'package:fuks_app/ui/pages/home/links_body.dart';
 import 'package:fuks_app/ui/pages/home/office_access/office_body.dart';
 import 'package:fuks_app/ui/pages/home/projects_body.dart';
 import 'package:fuks_app/ui/pages/settings/settings_page.dart';
@@ -31,9 +31,9 @@ class _HomePageState extends State<HomePage> {
       label: 'Projekte',
     ),
     NavigationDestination(
-      icon: Icon(Icons.newspaper_outlined),
-      selectedIcon: Icon(Icons.newspaper),
-      label: 'Karlsruher Transfer',
+      icon: Icon(Icons.link_outlined),
+      selectedIcon: Icon(Icons.link),
+      label: 'Links',
     ),
     NavigationDestination(
       icon: Icon(Icons.key_outlined),
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
         children: const [
           EventsList(),
           ProjectsBody(),
-          KTBody(),
+          LinksBody(),
           OfficeBody(),
         ],
       ),
