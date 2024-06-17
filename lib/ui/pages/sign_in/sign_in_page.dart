@@ -59,47 +59,34 @@ class SignInPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: Container(
-        // Gradient background
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     begin: Alignment.topLeft,
-        //     end: Alignment.bottomRight,
-        //     colors: [
-        //       colorScheme.surfaceVariant,
-        //       colorScheme.surface,
-        //     ],
-        //   ),
-        // ),
-        child: SafeArea(
-          child: Center(
-            child: ConstrainedListView(
-              maxWidth: 400,
-              shrinkWrap: true,
-              primary: false,
-              children: [
-                Text(
-                  'Sign in',
-                  textAlign: TextAlign.center,
-                  style: textTheme.displaySmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedListView(
+            maxWidth: 400,
+            shrinkWrap: true,
+            primary: false,
+            children: [
+              Text(
+                'Sign in',
+                textAlign: TextAlign.center,
+                style: textTheme.displaySmall?.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
-                const SizedBox(height: 54),
-                const FuksIcon(size: 128),
-                const SizedBox(height: 54),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: buttons,
-                ),
-                const SizedBox(height: 54),
-                const ListTile(
-                  title: TermsAndConditions(),
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 54),
+              const FuksIcon(size: 128),
+              const SizedBox(height: 54),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: buttons,
+              ),
+              const SizedBox(height: 54),
+              const ListTile(
+                title: TermsAndConditions(),
+              ),
+            ],
           ),
         ),
       ),
