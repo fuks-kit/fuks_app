@@ -65,20 +65,14 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Divider(height: 1),
-          NavigationBar(
-            elevation: 2,
-            selectedIndex: _selectedIndex,
-            height: 56,
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            onDestinationSelected: (index) =>
-                setState(() => _selectedIndex = index),
-            destinations: _destinations,
-          ),
-        ],
+      bottomNavigationBar: NavigationBar(
+        elevation: 2,
+        selectedIndex: _selectedIndex,
+        height: 56,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        onDestinationSelected: (index) =>
+            setState(() => _selectedIndex = index),
+        destinations: _destinations,
       ),
       body: IndexedStack(
         index: _selectedIndex,

@@ -7,8 +7,6 @@ const _seedColor = fuksColor;
 final _colorsLight = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: _seedColor,
-  background: Colors.white,
-  onBackground: Colors.black,
   surface: Colors.white,
   onSurface: Colors.black,
   surfaceTint: Colors.white,
@@ -16,15 +14,13 @@ final _colorsLight = ColorScheme.fromSeed(
   outline: Colors.grey[700],
   outlineVariant: Colors.grey[400],
   secondary: fuksColor,
-  surfaceVariant: Colors.grey[200],
   onSurfaceVariant: Colors.grey[800],
+  surfaceContainer: Colors.grey[200],
 );
 
 final _colorsDark = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   seedColor: _seedColor,
-  background: Colors.grey[900],
-  onBackground: Colors.white,
   surface: Colors.grey[900],
   onSurface: Colors.white,
   surfaceTint: Colors.black,
@@ -32,8 +28,8 @@ final _colorsDark = ColorScheme.fromSeed(
   outline: Colors.grey[600],
   outlineVariant: Colors.grey[800],
   secondary: fuksColor,
-  surfaceVariant: Colors.grey[800],
   onSurfaceVariant: Colors.grey[200],
+  surfaceContainer: Colors.grey[800],
 );
 
 const _listTileTheme = ListTileThemeData(
@@ -51,6 +47,7 @@ final fuksThemeLight = ThemeData(
     scrolledUnderElevation: 2,
     shadowColor: _colorsLight.shadow,
   ),
+  scaffoldBackgroundColor: _colorsLight.surface,
   listTileTheme: _listTileTheme,
   chipTheme: ChipThemeData(
     backgroundColor: _colorsLight.primaryContainer,
@@ -67,42 +64,42 @@ final fuksThemeLight = ThemeData(
     ),
   ),
   textTheme: TextTheme(
-    displayLarge: GoogleFonts.raleway(color: _colorsLight.onBackground),
-    displayMedium: GoogleFonts.raleway(color: _colorsLight.onBackground),
-    displaySmall: GoogleFonts.raleway(color: _colorsLight.onBackground),
-    headlineLarge: GoogleFonts.raleway(color: _colorsLight.onBackground),
-    headlineMedium: GoogleFonts.raleway(color: _colorsLight.onBackground),
-    headlineSmall: GoogleFonts.raleway(color: _colorsLight.onBackground),
+    displayLarge: GoogleFonts.raleway(color: _colorsLight.onSurface),
+    displayMedium: GoogleFonts.raleway(color: _colorsLight.onSurface),
+    displaySmall: GoogleFonts.raleway(color: _colorsLight.onSurface),
+    headlineLarge: GoogleFonts.raleway(color: _colorsLight.onSurface),
+    headlineMedium: GoogleFonts.raleway(color: _colorsLight.onSurface),
+    headlineSmall: GoogleFonts.raleway(color: _colorsLight.onSurface),
     titleLarge: GoogleFonts.raleway(
-      color: _colorsLight.onBackground,
+      color: _colorsLight.onSurface,
       fontWeight: FontWeight.w600,
     ),
     titleMedium: GoogleFonts.raleway(
-      color: _colorsLight.onBackground,
+      color: _colorsLight.onSurface,
       fontWeight: FontWeight.w600,
     ),
     titleSmall: GoogleFonts.raleway(
-      color: _colorsLight.onBackground,
+      color: _colorsLight.onSurface,
       fontWeight: FontWeight.w600,
     ),
-    bodyLarge: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
-    bodyMedium: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
-    bodySmall: GoogleFonts.sourceSans3(color: _colorsLight.onBackground),
+    bodyLarge: GoogleFonts.sourceSans3(color: _colorsLight.onSurface),
+    bodyMedium: GoogleFonts.sourceSans3(color: _colorsLight.onSurface),
+    bodySmall: GoogleFonts.sourceSans3(color: _colorsLight.onSurface),
     labelLarge: GoogleFonts.raleway(
-      color: _colorsLight.onBackground,
+      color: _colorsLight.onSurface,
       fontWeight: FontWeight.w600,
     ),
     labelMedium: GoogleFonts.raleway(
-      color: _colorsLight.onBackground,
+      color: _colorsLight.onSurface,
       fontWeight: FontWeight.w600,
     ),
     labelSmall: GoogleFonts.raleway(
-      color: _colorsLight.onBackground,
+      color: _colorsLight.onSurface,
       fontWeight: FontWeight.w600,
     ),
   ),
   navigationBarTheme: NavigationBarThemeData(
-    iconTheme: MaterialStateProperty.all(IconThemeData(
+    iconTheme: WidgetStateProperty.all(IconThemeData(
       color: _colorsLight.onSurface,
     )),
     indicatorColor: _colorsLight.outlineVariant.withOpacity(0.5),
@@ -127,6 +124,7 @@ final fuksThemeDark = ThemeData(
     scrolledUnderElevation: 2,
     shadowColor: _colorsLight.shadow,
   ),
+  scaffoldBackgroundColor: _colorsDark.surface,
   listTileTheme: _listTileTheme,
   chipTheme: ChipThemeData(
     backgroundColor: _colorsDark.primaryContainer,
@@ -143,45 +141,45 @@ final fuksThemeDark = ThemeData(
     ),
   ),
   textTheme: TextTheme(
-    displayLarge: GoogleFonts.raleway(color: _colorsDark.onBackground),
-    displayMedium: GoogleFonts.raleway(color: _colorsDark.onBackground),
-    displaySmall: GoogleFonts.raleway(color: _colorsDark.onBackground),
-    headlineLarge: GoogleFonts.raleway(color: _colorsDark.onBackground),
-    headlineMedium: GoogleFonts.raleway(color: _colorsDark.onBackground),
-    headlineSmall: GoogleFonts.raleway(color: _colorsDark.onBackground),
+    displayLarge: GoogleFonts.raleway(color: _colorsDark.onSurface),
+    displayMedium: GoogleFonts.raleway(color: _colorsDark.onSurface),
+    displaySmall: GoogleFonts.raleway(color: _colorsDark.onSurface),
+    headlineLarge: GoogleFonts.raleway(color: _colorsDark.onSurface),
+    headlineMedium: GoogleFonts.raleway(color: _colorsDark.onSurface),
+    headlineSmall: GoogleFonts.raleway(color: _colorsDark.onSurface),
     titleLarge: GoogleFonts.raleway(
-      color: _colorsDark.onBackground,
+      color: _colorsDark.onSurface,
       fontWeight: FontWeight.w600,
     ),
     titleMedium: GoogleFonts.raleway(
-      color: _colorsDark.onBackground,
+      color: _colorsDark.onSurface,
       fontWeight: FontWeight.w600,
     ),
     titleSmall: GoogleFonts.raleway(
-      color: _colorsDark.onBackground,
+      color: _colorsDark.onSurface,
       fontWeight: FontWeight.w600,
     ),
-    bodyLarge: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
-    bodyMedium: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
-    bodySmall: GoogleFonts.sourceSans3(color: _colorsDark.onBackground),
+    bodyLarge: GoogleFonts.sourceSans3(color: _colorsDark.onSurface),
+    bodyMedium: GoogleFonts.sourceSans3(color: _colorsDark.onSurface),
+    bodySmall: GoogleFonts.sourceSans3(color: _colorsDark.onSurface),
     labelLarge: GoogleFonts.raleway(
-      color: _colorsDark.onBackground,
+      color: _colorsDark.onSurface,
       fontWeight: FontWeight.w600,
     ),
     labelMedium: GoogleFonts.raleway(
-      color: _colorsDark.onBackground,
+      color: _colorsDark.onSurface,
       fontWeight: FontWeight.w600,
     ),
     labelSmall: GoogleFonts.raleway(
-      color: _colorsDark.onBackground,
+      color: _colorsDark.onSurface,
       fontWeight: FontWeight.w600,
     ),
   ),
   navigationBarTheme: NavigationBarThemeData(
-    iconTheme: MaterialStateProperty.all(IconThemeData(
+    iconTheme: WidgetStateProperty.all(IconThemeData(
       color: _colorsDark.onSurface,
     )),
-    indicatorColor: _colorsDark.outlineVariant.withOpacity(0.5),
+    indicatorColor: Colors.grey[700],
     // indicatorColor: _colorsDark.primary,
   ),
   iconButtonTheme: IconButtonThemeData(
