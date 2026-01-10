@@ -8,7 +8,7 @@ import Foundation
 import app_settings
 import firebase_auth
 import firebase_core
-import flutter_blue_plus_darwin
+import flutter_blue_plus
 import google_sign_in_ios
 import path_provider_foundation
 import shared_preferences_foundation

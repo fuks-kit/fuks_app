@@ -45,7 +45,7 @@ dependencies:
   flutter_markdown: ^0.7.3
   intl: ^0.20.2
   google_fonts: ^6.1.0
-  flutter_blue_plus: ^1.28.10
+  flutter_blue_plus: 1.32.8
   cached_network_image: ^3.3.1
 
 dev_dependencies:
